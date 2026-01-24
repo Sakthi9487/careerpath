@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap</title>
+    <link rel="stylesheet" href="/css/roadmap.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header id="Header">
+        <div class="header">
+            <div class="container">
+     
+                <div class="hamburger" id="hamburger">
+                    ☰
+                </div>
+
+                <div class="logo">
+					<div class="logos">
+					    <a href="/Landing.html">CP</a>
+					</div>
+
+                    <h3>CareerPath</h3>
+
+                    <a href="/tutorials.html">Tutorials</a>
+                    <a href="/reference.html">References</a>
+
+
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Search skills ,courses,roles..." id="search">
+                    <button class="icon" id="search-btn">🔍</button>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li>Jobs</li>
+                        <li>Resume Builder</li>
+                        <li><button><a href="/login.html">Login /</a>
+
+                                <a href="/register.html">SignUp</a>
+                            </button></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#">Jobs</a>
+        <a href="#">Resume Builder</a>
+        <a href="#">Login</a>
+        <a href="./registration.html">Sign Up</a>
+    </div>
+
+    <div class="where">
+        <section id="whereToStartSection">
+            
+           
+            <h2>Where to Start</h2>
+
+            <p style="color:#9AA4B2; margin-bottom:20px;">
+                Choose a domain to see the recommended learning roadmap
+            </p>
+
+            <select id="domainSelect" class="domain-select">
+                <option value="">Select your domain</option>
+                <option value="web">Web Development</option>
+                <option value="data">Data Science</option>
+                <option value="ai">AI & ML</option>
+                <option value="cyber">Cybersecurity</option>
+            </select>
+
+        </section>
+
+        <section id="roadmapSection">
+
+                <div class="roadmap hidden" id="web">
+                    <h2>Web Development Roadmap</h2>
+                    <ul>
+                        <li>HTML, CSS, Git</li>
+                        <div class="arrow">↓</div>
+                        <li>JavaScript & DOM</li>
+                        <div class="arrow">↓</div>
+                        <li>React & APIs</li>
+                        <div class="arrow">↓</div>
+                        <li>Projects & Deployment</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap hidden" id="data">
+                    <h2>Data Science Roadmap</h2>
+                    <ul>
+                        <li>Python & Statistics</li>
+                        <div class="arrow">↓</div>
+                        <li>Pandas & SQL</li>
+                        <div class="arrow">↓</div>
+                        <li>Data Visualization</li>
+                        <div class="arrow">↓</div>
+                        <li>Machine Learning</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap hidden" id="ai">
+                    <h2>AI & ML Roadmap</h2>
+                    <ul>
+                        <li>Python & Math</li>
+                        <div class="arrow">↓</div>
+                        <li>ML Algorithms</li>
+                        <div class="arrow">↓</div>
+                        <li>Deep Learning</li>
+                        <div class="arrow">↓</div>
+                        <li>AI Projects</li>
+                    </ul>
+                </div>
+
+                <div class="roadmap hidden" id="cyber">
+                    <h2>Cybersecurity Roadmap</h2>
+                    <ul>
+                        <li>Networking & Linux</li>
+                        <div class="arrow">↓</div>
+                        <li>Web Security</li>
+                        <div class="arrow">↓</div>
+                        <li>Ethical Hacking</li>
+                        <div class="arrow">↓</div>
+                        <li>Penetration Testing</li>
+                    </ul>
+                </div>
+            
+
+        </section>
+    </div>
+
+    <script src="/js/roadmap.js"></script>
+</body>
+
+</html>

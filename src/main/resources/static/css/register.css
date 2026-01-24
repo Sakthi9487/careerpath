@@ -1,0 +1,213 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    background: #020617;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E5EDFF;
+}
+
+
+a {
+    text-decoration: none;
+    color: #93C5FD; 
+    font-weight: 600;
+}
+
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title h2 {
+    font-size: 32px;
+    font-weight: 800;
+    color: #E5EDFF;
+}
+
+.career-card {
+    height: 400px;
+    width: 350px;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    color: #E5EDFF;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    padding: 20px;
+}
+
+.career-card h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.career-card p {
+    font-size: 18px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.career-card .bg-hat {
+    width: 150px;
+    opacity: 0.3;
+    margin: 20px auto 0;
+    display: block;
+}
+
+
+.form-card {
+    width: 380px;
+    background: #0F172A; 
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.14);
+}
+
+
+.hide {
+    display: none;
+}
+
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    background: #0B1225; 
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 8px;
+    color: #E5EDFF;
+    font-size: 14px;
+}
+
+/* Focus state */
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #4A6CF7;
+}
+
+/* Placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: #64748B; /* Disabled Text */
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    color: #020617;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(74,108,247,0.4);
+}
+
+
+.form-card .logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin-top: 18px;
+}
+
+.form-card span {
+    margin-top: 12px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9AA4B2; /* Secondary Text */
+    text-align: center;
+    display: block;
+}
+
+.form-card p {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 14px;
+    color: #9AA4B2;
+}
+
+
+.error {
+    color: #EF4444; /* Error */
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.input.error-input {
+    border: 1.5px solid #EF4444;
+}
+
+
+.success {
+    color: #22C55E;
+}
+
+.warning {
+    color: #FACC15;
+}
+.terms-box {
+    display: flex;
+    gap: 8px;          /* earlier 12px */
+    margin: 6px 0;    /* earlier 8px */
+    font-size: 12px;  /* earlier 14px */
+    align-items: center;
+}
+
+/* checkbox size reduce */
+.terms-box input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+}
+
+.terms-box a {
+    color: #0066ff;
+    text-decoration: none;
+    font-size: 12px;  /* keep link text same as body */
+}
+
+.terms-box a:hover {
+    text-decoration: underline;
+}
+
+.terms-error {
+    color: red;
+    font-size: 10px;  /* earlier 8px (too small, unreadable) */
+}
