@@ -51,50 +51,60 @@
             <p class="signup-txt">Are you new? <a class="nxt-page" href="/register.html">Create an Account</a></p>
         </form>
     </div>
-    <script>
-		document.addEventListener("DOMContentLoaded", () => {
+	<script>
+	document.addEventListener("DOMContentLoaded", () => {
 
-		  const loginForm = document.getElementById("loginForm");
+	  const loginForm = document.getElementById("loginForm");
 
-		  loginForm.addEventListener("submit", async (e) => {
-		    e.preventDefault();
+	  loginForm.addEventListener("submit", async (e) => {
+	    e.preventDefault();
 
-		    const email = document.getElementById("email").value.trim();
-		    const password = document.getElementById("password").value.trim();
+	    const email = document.getElementById("email").value.trim();
+	    const password = document.getElementById("password").value.trim();
 
-		    if (email === "" || password === "") {
-		      alert("Email and Password are required");
-		      return;
-		    }
+	    if (!email || !password) {
+	      alert("Email and Password are required");
+	      return;
+	    }
 
-		    try {
-		      const response = await fetch("http://localhost:8080/api/auth/login", {
-		        method: "POST",
-		        headers: {
-		          "Content-Type": "application/json"
-		        },
-		        body: JSON.stringify({
-		          email: email,
-		          password: password
-		        })
-		      });
+	    try {
+	      const response = await fetch("http://localhost:8080/api/auth/login", {
+	        method: "POST",
+	        headers: {
+	          "Content-Type": "application/json"
+	        },
+	        body: JSON.stringify({
+	          email: email,
+	          password: password
+	        })
+	      });
 
-		      const message = await response.text();
+	      if (!response.ok) {
+	        const err = await response.text();
+	        throw new Error(err);
+	      }
 
-		      if (!response.ok) {
-		        throw new Error(message);
-		      }
+		  const token = await response.text();
 
-		 
-		      window.location.href = "/Landing.html";
 
-		    } catch (error) {
-		      alert(error.message); 
-		    }
-		  });
+		  localStorage.setItem("token", token);
+		  console.log("STORED TOKEN:", localStorage.getItem("token"));
 
-		});
+		  
 
-    </script>
+		  setTimeout(() => {
+		    window.location.href = "/dashboard.html";
+		  }, 500);
+
+	    } catch (error) {
+	      alert(error.message);
+	    }
+	  });
+
+	});
+	</script>
+
+
+
 </body>
 </html>
