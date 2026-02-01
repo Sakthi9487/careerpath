@@ -20,7 +20,6 @@ public class ActivityController {
         this.activityService = activityService;
         this.userRepository = userRepository;
     }
-
     @PostMapping("/log")
     public String logActivity(@RequestParam ActivityType type,
                               @RequestParam String description,
