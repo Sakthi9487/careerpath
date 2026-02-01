@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const COURSE_CONTAINER = document.getElementById("course-card");
   const BASE_URL = "http://localhost:8080/api/public";
 
-  // CHAT
+
   chatIcon.addEventListener("click", () => {
     chatWidget.classList.add("open");
   });
@@ -22,12 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     chatWidget.classList.remove("open");
   });
 
-  // HAMBURGER
   hamburger.addEventListener("click", () => {
     mobileNav.classList.toggle("open");
   });
 
-  // ================= FEATURED COURSES =================
+  
 
   function loadFeaturedCourses() {
     fetch(`${BASE_URL}/featured-courses`)
@@ -110,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= SEARCH =================
+
 
   searchBtn.addEventListener("click", searchCourses);
 

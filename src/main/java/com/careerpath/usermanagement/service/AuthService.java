@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.careerpath.usermanagement.security.JwtUtil;
 
 import com.careerpath.usermanagement.dto.LoginRequest;
 import com.careerpath.usermanagement.dto.RegisterRequest;
@@ -15,11 +16,14 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;  
 
     public AuthService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder) {
+                       PasswordEncoder passwordEncoder,
+                       JwtUtil jwtUtil) {   
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.jwtUtil = jwtUtil;      
     }
 
     // REGISTER
@@ -40,35 +44,35 @@ public class AuthService {
     }
 
     // LOGIN
-    public boolean login(LoginRequest request) {
+    public String login(LoginRequest request) {
 
-        User user = userRepository.findByEmail(request.getEmail()).orElse(null);
+        String email = request.getEmail().trim().toLowerCase();
+        String password = request.getPassword().trim();
 
-        if (user == null) {
-            return false;
+
+        User user = userRepository.findByEmailIgnoreCase(email)
+                .orElseThrow(() -> new RuntimeException("Email not found"));
+
+        System.out.println("DB EMAIL: [" + user.getEmail() + "]");
+        System.out.println("DB PASSWORD HASH: " + user.getPassword());
+
+        boolean match = passwordEncoder.matches(password, user.getPassword());
+        System.out.println("PASSWORD MATCH RESULT: " + match);
+
+        if (!match) {
+            throw new RuntimeException("Password mismatch");
         }
 
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            return false;
-        }
-
-        user.setLoggedIn(true);
+     
         user.setLastLoginAt(LocalDateTime.now());
-        user.setLastLogoutAt(null);
-
         userRepository.save(user);
-        return true;
+
+        return jwtUtil.generateToken(user.getEmail());
     }
 
-    // LOGOUT
-    public void logout(String email) {
-
-        User user = userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found"));
-
-        user.setLoggedIn(false);
-        user.setLastLogoutAt(LocalDateTime.now());
-
-        userRepository.save(user);
+    public long getJwtExpiration() {
+        return jwtUtil.getExpiration();
     }
+
+
 }
