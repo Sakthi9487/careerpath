@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Java Editor - CareerPath</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../assets/css/editor.css">
+    
+    <style>
+        #javaInput { color: #ff79c6; } 
+        
+        .console-output {
+            flex: 1;
+            background-color: #1e1e2f;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #consoleDiv {
+            flex: 1;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: auto;
+            color: #cbd5e1;
+            font-size: 14px;
+            white-space: pre-wrap; 
+        }
+
+        .log-error { color: #ff4757; }
+        .log-normal { color: #00ffb3; }
+        .log-loading { color: #f1fa8c; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">☕</span> Real Java Workspace</h2>
+        <button class="run-btn" id="runBtn">Compile & Run ❯</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <p class="pane-label">Main.java</p>
+            <textarea id="javaInput" spellcheck="false" aria-label="Java Input"></textarea>
+        </div>
+        
+        <div class="result-pane">
+            <div class="console-output">
+                <p class="pane-label" style="padding:10px 20px 0;">Terminal Output</p>
+                <div id="consoleDiv">
+                    <span class="log-normal">Ready to compile Java code...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const javaInput = document.getElementById('javaInput');
+        const consoleDiv = document.getElementById('consoleDiv');
+        const runBtn = document.getElementById('runBtn');
+
+        // Fetch saved code or use a default Java template
+        const savedCode = localStorage.getItem('careerPathJavaCode');
+        javaInput.value = savedCode ? savedCode : `public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello from the Java execution server!");
+        
+        int a = 15;
+        int b = 25;
+        System.out.println("The sum of " + a + " and " + b + " is: " + (a + b));
+    }
+}`;
+
+        // Function to send code to the Piston API
+        async function executeJava() {
+            const code = javaInput.value.trim();
+            
+            if (!code) {
+                consoleDiv.innerHTML = '<span class="log-error">Please enter some Java code.</span>';
+                return;
+            }
+
+            // Set loading state
+            runBtn.disabled = true;
+            runBtn.innerText = "Running...";
+            consoleDiv.innerHTML = '<span class="log-loading">Compiling and running on remote server... please wait.</span>';
+
+            try {
+                // We use the free Piston API to run backend code
+                const response = await fetch('https://emkc.org/api/v2/piston/execute', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        language: "java",
+                        version: "15.0.2",
+                        files: [{
+                            name: "Main.java",
+                            content: code
+                        }]
+                    })
+                });
+
+                const result = await response.json();
+
+                // Handle the response
+                if (result.run && result.run.code !== 0) {
+                    // Compilation or Runtime Error
+                    consoleDiv.innerHTML = `<span class="log-error">${result.run.stderr || result.run.output}</span>`;
+                } else if (result.compile && result.compile.code !== 0) {
+                    // Compile Error
+                    consoleDiv.innerHTML = `<span class="log-error">${result.compile.stderr}</span>`;
+                } else {
+                    // Success!
+                    consoleDiv.innerHTML = `<span class="log-normal">${result.run.output}</span>`;
+                }
+            } catch (error) {
+                consoleDiv.innerHTML = `<span class="log-error">Network Error: Could not reach the execution server. Please try again later.</span>`;
+            } finally {
+                // Reset button
+                runBtn.disabled = false;
+                runBtn.innerText = "Compile & Run ❯";
+            }
+        }
+
+        // Run when button is clicked
+        runBtn.addEventListener('click', executeJava);
+    </script>
+</body>
+</html>

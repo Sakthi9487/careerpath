@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CareerPath - Exercises</title>
+  <link rel="stylesheet" href="../assets/css/exercise.css">
+  <script src="../assets/js/exercise.js"></script>
+</head>
+
+<body>
+  <header class="navbar">
+    <h1>CareerPath</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="exercises.html" class="active">Exercises</a>
+      <a href="quizzes.html">Quizzes</a>
+      <a href="login.html">Login / Sign Up</a>
+    </nav>
+  </header>
+
+  <main class="exercise-page">
+    <h2>Practice Exercises</h2>
+    <p class="tagline">Sharpen your skills step by step 🚀</p>
+
+    <!-- Tabs -->
+    <div class="exercise-tabs">
+      <button class="active" onclick="showExercise('frontend')">Frontend</button>
+      <button onclick="showExercise('backend')">Backend</button>
+      <button onclick="showExercise('database')">Databases</button>
+    </div>
+
+    <!-- Exercise Content -->
+    <div id="exercise-box">
+      <div id="frontend-exercise">
+        <h3>Frontend Exercise</h3>
+        <p>Create a simple HTML page with a heading and a paragraph.</p>
+        <textarea class="exercise-editor">
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello World!</h1>
+  <p>This is a paragraph.</p>
+</body>
+</html>
+        </textarea>
+        <button class="btn-run" onclick="runExercise('frontend')">Run</button>
+        <iframe id="frontend-output"></iframe>
+      </div>
+
+      <div id="backend-exercise" style="display:none;">
+        <h3>Backend Exercise</h3>
+        <p>Write a Node.js server that responds with "Hello World".</p>
+        <textarea class="exercise-editor">
+// Backend Example
+const express = require('express');
+const app = express();
+app.get('/', (req,res)=> res.send('Hello World'));
+app.listen(3000);
+        </textarea>
+        <button class="btn-run">Run (copy to Node.js)</button>
+      </div>
+
+      <div id="database-exercise" style="display:none;">
+        <h3>Database Exercise</h3>
+        <p>Write a SQL query to select all users from a table.</p>
+        <textarea class="exercise-editor">
+-- SQL Example
+SELECT * FROM users;
+        </textarea>
+        <button class="btn-run">Run (use SQL environment)</button>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

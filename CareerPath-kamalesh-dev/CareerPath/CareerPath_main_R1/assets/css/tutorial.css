@@ -1,0 +1,545 @@
+/* =========================================
+   GLOBAL RESET & TYPOGRAPHY
+========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0b1120; /* Deep dark blue background */
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Prevents full page scroll, scrolls inside grid */
+}
+
+/* =========================================
+   TOP HEADER
+========================================= */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #0d1527;
+    border-bottom: 1px solid #1e293b;
+    height: 65px;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.menu-icon {
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.logo-circle {
+    width: 36px;
+    height: 36px;
+    background-color: #4371ff; /* Solid blue */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 15px;
+}
+
+.tutorial-dropdown select {
+    background-color: #0b1120;
+    color: #ffffff;
+    border: 1px solid #1e293b;
+    padding: 8px 12px;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #1a2235;
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: 1px solid #2d3748;
+    margin-left: 10px;
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    width: 120px;
+}
+
+.search-icon {
+    color: #4371ff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.header-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.header-link:hover {
+    color: #ffffff;
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    background-color: #00b5b5; /* Teal circle */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+/* =========================================
+   TECH NAVIGATION BAR
+========================================= */
+.tech-nav {
+    display: flex;
+    gap: 25px;
+    padding: 0 24px;
+    background-color: #0d1527;
+    border-bottom: 1px solid #1e293b;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 45px;
+    align-items: center;
+}
+
+.tech-nav::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for clean look */
+}
+
+.tech-nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+.tech-nav a:hover, .tech-nav a.active {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+/* =========================================
+   MAIN LAYOUT (SIDEBAR, CONTENT, RIGHT PANEL)
+========================================= */
+.main-layout {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 110px);
+}
+
+/* --- Left Sidebar --- */
+.left-sidebar {
+    width: 200px;
+    padding: 20px 0;
+    background-color: #0b1120;
+    border-right: 1px solid #1e293b;
+    overflow-y: auto;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    padding: 12px 24px;
+    color: #cbd5e1;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sidebar-menu li:hover {
+    background-color: #1e293b;
+    color: #ffffff;
+}
+
+/* First item active state (Test) */
+.sidebar-menu li:first-child {
+    color: #ffffff;
+}
+
+/* --- Content Area --- */
+.content-area {
+    flex: 1;
+    padding: 40px 50px;
+    overflow-y: auto;
+    background-color: #0b1120;
+}
+
+.content-area h1 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.content-area h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.description {
+    font-size: 15px;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.feature-list {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.feature-list li {
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* --- Syntax Box with Neon Glow --- */
+.syntax-wrapper {
+    background-color: #0d1527;
+    border: 1px solid #00ffb3; /* Neon green border */
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 179, 0.15); /* Soft neon glow */
+    max-width: 800px;
+    overflow: hidden;
+}
+
+.syntax-header {
+    padding: 12px 20px;
+    color: #3b82f6; /* Bright blue text */
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.code-editor {
+    background-color: #050a15; /* Darker inner background */
+    padding: 20px;
+    border-top: 1px solid #1e293b;
+}
+
+.code-editor pre {
+    color: #cbd5e1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: auto;
+}
+
+/* --- Right Sidebar (Cards) --- */
+.right-sidebar {
+    width: 350px;
+    padding: 24px;
+    background-color: #0d1527;
+    border-left: 1px solid #1e293b;
+    overflow-y: auto;
+}
+
+.course-card {
+    background-color: #121b2f;
+    padding: 24px 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #1e293b;
+}
+
+.card-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #00ffb3; /* Neon green title text */
+}
+
+.card-desc {
+    color: #94a3b8;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.gradient-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background: linear-gradient(90deg, #3b82f6, #00ffb3); /* Blue to Green gradient */
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.gradient-btn:hover {
+    opacity: 0.9;
+}
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}
+/* =========================================
+   TUTORIAL CONTENT STYLING (Stacking Flow)
+========================================= */
+
+.page-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #1e293b;
+}
+
+.bottom-nav {
+    margin-top: 40px;
+    border-bottom: none;
+    border-top: 1px solid #1e293b;
+    padding-top: 20px;
+    padding-bottom: 0;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 10px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+/* Matching your neon gradient for the primary "Next" button */
+.btn-primary {
+    background: linear-gradient(90deg, #3b82f6, #00ffb3);
+    color: #0b1120;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    box-shadow: 0 0 10px rgba(0, 255, 179, 0.3);
+}
+
+/* Subtle dark button for the "Home" or "Previous" button */
+.btn-secondary {
+    background-color: #1e293b;
+    color: #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background-color: #2d3748;
+    color: #ffffff;
+}
+
+.content-section {
+    margin-bottom: 40px;
+}
+
+.text-block {
+    font-size: 15px;
+    color: #cbd5e1;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+/* =========================================
+   "TRY IT YOURSELF" EXAMPLE CARD
+========================================= */
+
+.example-card {
+    background-color: #121b2f; /* Slightly lighter dark blue to stand out */
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    padding: 24px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.example-card h4 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+.example-code {
+    background-color: #050a15; /* Deep dark background for the code */
+    border-left: 4px solid #00ffb3; /* Neon green accent line */
+    padding: 16px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+}
+
+.example-code pre {
+    color: #cbd5e1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* The iconic action button */
+.btn-try-it {
+    background-color: #00ffb3; /* Solid neon green */
+    color: #0b1120; /* Dark text for high contrast */
+    border: none;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-try-it:hover {
+    background-color: #00e6a1; /* Slightly deeper green on hover */
+    box-shadow: 0 4px 12px rgba(0, 255, 179, 0.2);
+    transform: translateY(-1px);
+}
+/* =========================================
+   LIVE CODE EDITOR MODAL
+========================================= */
+.editor-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(5, 10, 21, 0.85); /* Dark semi-transparent overlay */
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.editor-modal.active {
+    display: flex; /* Shows the modal when this class is added via JS */
+}
+
+.editor-content {
+    background-color: #0d1527;
+    width: 90%;
+    height: 85%;
+    border-radius: 12px;
+    border: 1px solid #1e293b;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 255, 179, 0.15); /* Neon glow shadow */
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background-color: #0b1120;
+    border-bottom: 1px solid #1e293b;
+}
+
+.close-editor-btn {
+    background: none;
+    border: none;
+    color: #cbd5e1;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-editor-btn:hover {
+    color: #ff4757; /* Turns red on hover */
+}
+
+.editor-workspace {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+.editor-icon {
+    color: #00ffb3; /* Neon green icon color */
+}
+.editor-pane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #1e293b;
+}
+
+.editor-pane:last-child {
+    border-right: none;
+}
+
+.pane-label {
+    background-color: #121b2f;
+    padding: 8px 15px;
+    font-size: 13px;
+    color: #94a3b8;
+    border-bottom: 1px solid #1e293b;
+    font-weight: 600;
+}
+
+/* Textarea (Code Input) */
+#htmlInput {
+    flex: 1;
+    background-color: #050a15;
+    color: #cbd5e1;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+    padding: 20px;
+    border: none;
+    outline: none;
+    resize: none;
+    line-height: 1.6;
+}
+
+/* Iframe (Live Output) */
+#htmlOutput {
+    flex: 1;
+    background-color: #ffffff; /* White background so HTML looks normal */
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.editor-modal {
+    display: none;
+}
+
+.editor-modal.active {
+    display: flex;
+}

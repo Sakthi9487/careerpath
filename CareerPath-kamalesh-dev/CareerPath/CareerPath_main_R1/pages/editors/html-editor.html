@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live HTML Editor - CareerPath</title>
+ 
+
+<link rel="stylesheet" href="../../assets/css/editor.css"> 
+    
+    <style>
+        /* HTML Editor Specific Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: sans-serif;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #2a2a40;
+            border-bottom: 2px solid #00ffb3;
+            color: #fff;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .run-btn {
+            background-color: #00ffb3;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .run-btn:hover {
+            background-color: #00cc90;
+        }
+
+        .workspace {
+            display: flex;
+            flex: 1;
+            height: 100%;
+        }
+
+        .editor-pane {
+            flex: 1; /* Left 50% */
+            background-color: #0a0a23;
+            padding: 20px;
+            border-right: 2px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pane-label {
+            color: #888;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        #htmlInput {
+            flex: 1;
+            width: 100%;
+            background-color: transparent;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            border: none;
+            resize: none;
+            outline: none;
+        }
+
+        .result-pane {
+            flex: 1; /* Right 50% */
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* The iframe acts as a mini-browser window inside our page */
+        #htmlOutput {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">&lt;/&gt;</span> Real Web Workspace</h2>
+        <button class="run-btn" id="runBtn">Run Code ❯</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <p class="pane-label">index.html (HTML, CSS, & JS)</p>
+            <textarea id="htmlInput" spellcheck="false" aria-label="HTML Input"></textarea>
+        </div>
+        <div class="result-pane">
+            <iframe id="htmlOutput" title="Live Preview"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const htmlInput = document.getElementById('htmlInput');
+        const htmlOutput = document.getElementById('htmlOutput');
+        const runBtn = document.getElementById('runBtn');
+
+        // 1. A fun default template to show students they can use CSS and JS here!
+        const defaultTemplate = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 40px;
+  }
+  h1 {
+    color: #2a2a40;
+  }
+  .btn {
+    background-color: #00ffb3;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+  <h1>Hello, Web Developer!</h1>
+  <p>Edit the code on the left and click "Run Code".</p>
+  <button class="btn" onclick="sayHello()">Click Me!</button>
+
+  <script>
+    function sayHello() {
+      alert('JavaScript is working perfectly!');
+    }
+  <\/script>
+
+</body>
+</html>`;
+
+        // 2. Fetch code passed from the main app, or use the default template
+        const savedCode = localStorage.getItem('careerPathHtmlCode');
+        htmlInput.value = savedCode ? savedCode : defaultTemplate;
+
+        // 3. The Execution Function
+        function executeHTML() {
+            const code = htmlInput.value;
+            
+            // Get the document object inside the iframe
+            const iframeDoc = htmlOutput.contentWindow.document;
+            
+            // Open, write the new code, and close the document to render it
+            iframeDoc.open();
+            iframeDoc.write(code);
+            iframeDoc.close();
+        }
+
+        // Run when the button is clicked
+        runBtn.addEventListener('click', executeHTML);
+
+        // Auto-run the code the moment the page loads!
+        executeHTML();
+    </script>
+</body>
+</html>

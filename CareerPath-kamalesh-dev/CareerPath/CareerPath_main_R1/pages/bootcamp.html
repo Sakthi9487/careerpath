@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CareerPath Bootcamp</title>
+  <link rel="stylesheet" href="../assets/css/navbar.css">
+  <link rel="stylesheet" href="../assets/css/bootcamp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="bootcamp-page">
+
+  <!-- SHARED NAVBAR (injected by navbar.js) -->
+  <div id="navbar-root"></div>
+
+  <div class="bootcamp-layout">
+    <!-- Sidebar -->
+    <aside class="bootcamp-sidebar">
+      <h3>Bootcamp Topics</h3>
+      <ul>
+        <li><a href="#">Web Development</a></li>
+        <li><a href="#">HTML & CSS</a></li>
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">Backend Node.js</a></li>
+        <li><a href="#">Frontend React</a></li>
+        <li><a href="#">DevOps</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">SQL</a></li>
+        <li><a href="#">Figma</a></li>
+      </ul>
+
+      <h3>Resources</h3>
+      <ul>
+        <li><a href="#">Instructors</a></li>
+        <li><a href="#">Calendar</a></li>
+        <li><a href="#">Certifications</a></li>
+        <li><a href="#">Success Stories</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Area -->
+    <div class="bootcamp-main">
+      <div class="search">
+        <input type="text" placeholder="Search skills ,courses,roles..." id="boot-search">
+        <button class="icon" id="search-btn">🔍</button>
+      </div>
+      <!-- Hero Section -->
+      <section class="bootcamp-hero">
+        <span class="label">Live Online Bootcamps</span>
+        <h1>CareerPath Coding Bootcamps</h1>
+        <p>Turn your passion into a career.
+          Learn, build, and get certified with CareerPath Bootcamps.</p>
+        <div class="hero-buttons">
+          <a href="#explore" class="btn-primary">Explore Bootcamps</a>
+          <a href="#info" class="btn-secondary">Request Info</a>
+        </div>
+      </section>
+
+      <!-- Content -->
+      <main class="bootcamp-content" id="explore">
+        <h2>Why Join Our Bootcamps?</h2>
+        <p>✔ Live sessions with expert mentors</p>
+        <p>✔ Hands‑on projects</p>
+        <p>✔ Certification upon completion</p>
+        <p>✔ Career guidance and job support</p>
+
+        <!-- Stats Strip -->
+        <section class="bootcamp-stats">
+          <div class="stat">
+            <h2>70m+</h2>
+            <p>Monthly Visitors</p>
+          </div>
+          <div class="stat">
+            <h2>25+</h2>
+            <p>Years of Excellence</p>
+          </div>
+          <div class="stat">
+            <h2>3bn+</h2>
+            <p>Yearly Pageviews</p>
+          </div>
+        </section>
+
+        <!-- Upcoming bootcamp -->
+        <section class="bootcamp-upcoming">
+          <h2>Upcoming Bootcamps</h2>
+          <p>Reserve your spot for our next cohorts</p>
+
+          <table class="bootcamp-table">
+            <thead>
+              <tr>
+                <th>Bootcamp</th>
+                <th>Next Start Date</th>
+                <th>Duration</th>
+                <th>Price</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><i class="fa-solid fa-code"></i> Web Development</td>
+                <td>
+                  <div class="date-pill">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>March 17, 2026</span>
+                  </div>
+                </td>
+                <td>24 weeks</td>
+                <td>$2,995</td>
+                <td><a href="#" class="enroll-btn">Start Learning</a></td>
+              </tr>
+              <tr>
+                <td><i class="fa-brands fa-html5"></i> HTML & CSS</td>
+                <td>
+                  <div class="date-pill">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>March 17, 2026</span>
+                  </div>
+                </td>
+                <td>3 weeks</td>
+                <td>$495</td>
+                <td><a href="#" class="enroll-btn">Enroll</a></td>
+              </tr>
+              <tr>
+                <td><i class="fa-brands fa-python"></i> Python</td>
+                <td>
+                  <div class="date-pill">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>March 17, 2026</span>
+                  </div>
+                </td>
+                <td>4 weeks</td>
+                <td>$695</td>
+                <td><a href="#" class="enroll-btn">Enroll</a></td>
+              </tr>
+              <tr>
+                <td><i class="fa-solid fa-database"></i> SQL</td>
+                <td>
+                  <div class="date-pill">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>March 17, 2026</span>
+                  </div>
+                </td>
+                <td>4 weeks</td>
+                <td>$695</td>
+                <td><a href="#" class="enroll-btn">Enroll</a></td>
+              </tr>
+              <tr>
+                <td><i class="fa-brands fa-js"></i> JavaScript</td>
+                <td>
+                  <div class="date-pill">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span>March 17, 2026</span>
+                  </div>
+                </td>
+                <td>4 weeks</td>
+                <td>$695</td>
+                <td><a href="#" class="enroll-btn">Enroll</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../assets/js/navbar.js"></script>
+</body>
+
+</html>

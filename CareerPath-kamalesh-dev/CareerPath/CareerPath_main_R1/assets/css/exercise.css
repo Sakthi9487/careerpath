@@ -1,0 +1,96 @@
+:root {
+    --primary: #4A6CF7;
+    --accent: #00C985;
+    --bg-main: #020617;
+    --bg-secondary: #050B1C;
+    --bg-section: #071026;
+    --card-bg: #0F172A;
+    --surface: #0B1225;
+    --border: rgba(255, 255, 255, 0.14);
+    --text-main: #E5EDFF;
+    --text-secondary: #9AA4B2;
+    --text-muted: #94A3B8;
+    --text-disabled: #64748B;
+}
+
+
+.exercise-page {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 900px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.exercise-page h2 {
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.exercise-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-tabs button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.exercise-tabs button.active {
+  background: var(--accent);
+  color: var(--bg-main);
+  transform: scale(1.05);
+}
+
+.exercise-editor {
+  width: 100%;
+  height: 200px;
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: monospace;
+  margin-bottom: 1rem;
+}
+
+.btn-run {
+  background: var(--accent);
+  color: var(--bg-main);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-run:hover {
+  background: #00e09c;
+  transform: translateY(-2px);
+}
+
+iframe {
+  width: 100%;
+  height: 200px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 1rem;
+}

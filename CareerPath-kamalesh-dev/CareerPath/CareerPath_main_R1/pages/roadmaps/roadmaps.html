@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmaps | CareerPath</title>
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/roadmaps.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SHARED NAVBAR (injected by navbar.js) -->
+    <div id="navbar-root"></div>
+
+    <!-- ROADMAPS -->
+    <h1 class="main-title">CareerPath Roadmaps</h1>
+    <div class="course-filters">
+        <select id="levelFilter">
+            <option value="all">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search roadmaps..." />
+        <p id="noResults" style="display:none;">No roadmaps found</p>
+    </div>
+    <div id="cardContainer" class="card-container"></div>
+
+    <script src="../../assets/js/navbar.js"></script>
+    <script>
+        const API_BASE = "http://localhost:8080";
+        let roadmaps = [];
+
+        async function loadRoadmaps() {
+            try {
+                const res = await fetch(`${API_BASE}/api/user/roadmaps`);
+                if (!res.ok) throw new Error("Failed to load roadmaps");
+                roadmaps = await res.json();
+                applyFilters();
+            } catch (err) {
+                console.error(err);
+                document.getElementById("cardContainer").innerHTML =
+                    "<p style='color:#f66; text-align:center; padding:40px;'>Failed to load roadmaps. Is the backend running?</p>";
+            }
+        }
+
+        function renderCards(data) {
+            const container = document.getElementById("cardContainer");
+            container.innerHTML = "";
+
+            data.forEach(roadmap => {
+                const progress = 0;
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                const duration = roadmap.durationValue
+                    ? `${roadmap.durationValue} ${(roadmap.durationUnit || "").toLowerCase()}`
+                    : "-";
+
+                card.innerHTML = `
+                <div class="card-inner">
+                    <div class="card-front">
+                        <h2>${roadmap.title}</h2>
+                        <p>${roadmap.jobRole || ""}</p>
+                        <div class="meta">
+                            <p><strong>Level:</strong> ${roadmap.difficulty || "-"}</p>
+                            <p><strong>Role:</strong> ${roadmap.jobRole || "-"}</p>
+                            <p><strong>Duration:</strong> ${duration}</p>
+                        </div>
+                        <div class="progress-container">
+                            <div class="progress-bar" style="width:${progress}%"></div>
+                        </div>
+                        <div class="progress-text">${progress}% Completed</div>
+                    </div>
+                    <div class="card-back">
+                        <h3>${roadmap.title}</h3>
+                        <a href="modules.html?roadmapId=${roadmap.id}" class="learn-btn">Learn More →</a>
+                    </div>
+                </div>`;
+
+                container.appendChild(card);
+            });
+        }
+
+        const searchInput = document.getElementById("searchInput");
+        const levelFilter = document.getElementById("levelFilter");
+        const noResults = document.getElementById("noResults");
+
+        function applyFilters() {
+            const searchValue = searchInput.value.toLowerCase();
+            const selectedLevel = levelFilter.value.toLowerCase();
+
+            const filteredData = roadmaps.filter(roadmap => {
+                const matchesSearch =
+                    (roadmap.title || "").toLowerCase().includes(searchValue) ||
+                    (roadmap.jobRole || "").toLowerCase().includes(searchValue);
+                const matchesLevel =
+                    selectedLevel === "all" ||
+                    (roadmap.difficulty || "").toLowerCase() === selectedLevel;
+                return matchesSearch && matchesLevel;
+            });
+
+            renderCards(filteredData);
+            noResults.style.display = filteredData.length === 0 ? "block" : "none";
+        }
+
+        searchInput.addEventListener("input", applyFilters);
+        levelFilter.addEventListener("change", applyFilters);
+
+        loadRoadmaps();
+    </script>
+</body>
+
+</html>
