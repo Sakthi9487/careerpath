@@ -1,0 +1,27 @@
+{
+  "tutorials": [
+    { "file": "htmlPages.json", "name": "HTML", "category": "Frontend", "icon": "🌐", "desc": "The language for building web pages" },
+    { "file": "cssPages.json", "name": "CSS", "category": "Frontend", "icon": "🎨", "desc": "The language for styling web pages" },
+    { "file": "jsPages.json", "name": "JavaScript", "category": "Frontend", "icon": "⚡", "desc": "The programming language of the web" },
+    { "file": "bootstrapPages.json", "name": "Bootstrap", "category": "Framework", "icon": "🅱️", "desc": "Popular CSS framework for responsive design" },
+    { "file": "reactPages.json", "name": "React", "category": "Framework", "icon": "⚛️", "desc": "JavaScript library for building user interfaces" },
+    { "file": "jqueryPages.json", "name": "jQuery", "category": "Frontend", "icon": "📦", "desc": "Fast and feature-rich JavaScript library" },
+    { "file": "xmlPages.json", "name": "XML", "category": "Frontend", "icon": "📄", "desc": "Markup language for structured data" },
+    { "file": "pythonPages.json", "name": "Python", "category": "Backend", "icon": "🐍", "desc": "Versatile language for backend and data science" },
+    { "file": "javaPages.json", "name": "Java", "category": "Backend", "icon": "☕", "desc": "Enterprise-grade object-oriented language" },
+    { "file": "phpPages.json", "name": "PHP", "category": "Backend", "icon": "🐘", "desc": "Server-side scripting language for the web" },
+    { "file": "cPages.json", "name": "C", "category": "Backend", "icon": "💻", "desc": "Low-level language for system programming" },
+    { "file": "cInc.json", "name": "C++", "category": "Backend", "icon": "⚙️", "desc": "Powerful language for high-performance apps" },
+    { "file": "cSharpPages.json", "name": "C#", "category": "Backend", "icon": "🔷", "desc": "Modern language for Windows and game dev" },
+    { "file": "nodejsPages.json", "name": "Node.js", "category": "Backend", "icon": "🟢", "desc": "JavaScript runtime for server-side development" },
+    { "file": "djangoPages.json", "name": "Django", "category": "Framework", "icon": "🎸", "desc": "High-level Python web framework" },
+    { "file": "sqlPages.json", "name": "SQL", "category": "Database", "icon": "🗃️", "desc": "Standard language for managing databases" },
+    { "file": "mysqlPages.json", "name": "MySQL", "category": "Database", "icon": "🐬", "desc": "Popular open-source relational database" },
+    { "file": "mongodbPages.json", "name": "MongoDB", "category": "Database", "icon": "🍃", "desc": "NoSQL database for modern applications" },
+    { "file": "excelPages.json", "name": "Excel", "category": "Tools", "icon": "📊", "desc": "Spreadsheet tool for data analysis" },
+    { "file": "gitPages.json", "name": "Git", "category": "Tools", "icon": "🔀", "desc": "Version control system for source code" },
+    { "file": "numpyPages.json", "name": "NumPy", "category": "Data Science", "icon": "🔢", "desc": "Python library for numerical computing" },
+    { "file": "pandasPages.json", "name": "Pandas", "category": "Data Science", "icon": "🐼", "desc": "Data manipulation and analysis library" },
+    { "file": "dsaPages.json", "name": "DSA", "category": "Computer Science", "icon": "🧮", "desc": "Data Structures and Algorithms essentials" }
+  ]
+}

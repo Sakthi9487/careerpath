@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Html References</title>
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="../../assets/css/htmlreference.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- SHARED NAVBAR (injected by navbar.js) -->
+  <div id="navbar-root"></div>
+
+  <!-- Aside -->
+  <aside class="side-content open">
+    <div class="side-close"><button id="side-close">✕</button></div>
+    <div class="contents">
+      <h2>Table of Contents</h2>
+      <div class="container">
+        <ul id="tocList"></ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- All tag sections — built by JS -->
+  <div id="sectionsContainer"></div>
+
+  <!-- Complete tag list — built by JS -->
+  <section class="complete" id="completes">
+    <h1>Complete Tag List (Alphabetical)</h1>
+    <div class="list" id="completeList"></div>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="line"></div>
+  </div>
+
+  <!-- Additional references — built by JS -->
+  <section class="additional" id="add">
+    <h1>Additional HTML References</h1>
+    <div class="resources">
+      <ul id="additionalList"></ul>
+    </div>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="line"></div>
+  </div>
+
+  <!-- Summary — built by JS -->
+  <section class="summary" id="sum">
+    <h1>Summary Statistics</h1>
+    <div>
+      <ul id="summaryList"></ul>
+    </div>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="line"></div>
+  </div>
+
+  <!-- Notes — built by JS -->
+  <section class="notes" id="note">
+    <h1>Notes</h1>
+    <ol id="notesList"></ol>
+  </section>
+
+  <div class="content-wrapper">
+    <div class="line"></div>
+  </div>
+
+  <script>
+    /* =====================================================
+       JSON DATA  — all page content lives here.
+       To add/edit/remove anything, only touch this object.
+    ===================================================== */
+    const DATA = {
+
+      keywords: [
+        { "word": "HTML", "course": "htmlPages.json", "topic": "HTML Intro" },
+        { "word": "CSS", "course": "cssPages.json", "topic": "CSS Intro" },
+        { "word": "JavaScript", "course": "javascriptPages.json", "topic": "JavaScript Intro" },
+        { "word": "DOM", "course": "javascriptPages.json", "topic": "JavaScript DOM" },
+        { "word": "HTTP", "course": "webconcepts.json", "topic": "HTTP Basics" },
+        { "word": "URL", "course": "webconcepts.json", "topic": "URL Structure" },
+        { "word": "SEO", "course": "htmlPages.json", "topic": "HTML SEO" },
+        { "word": "Unicode", "course": "htmlPages.json", "topic": "HTML Character Sets" },
+        { "word": "UTF-8", "course": "htmlPages.json", "topic": "HTML Character Sets" },
+        { "word": "JSON", "course": "jsonPages.json", "topic": "JSON Intro" },
+        { "word": "SVG", "course": "htmlPages.json", "topic": "HTML SVG" },
+        { "word": "canvas", "course": "htmlPages.json", "topic": "HTML Canvas" },
+        { "word": "iframe", "course": "htmlPages.json", "topic": "HTML Iframes" },
+        { "word": "W3C", "course": "htmlPages.json", "topic": "HTML Standards" },
+        { "word": "accessibility", "course": "htmlPages.json", "topic": "HTML Accessibility" },
+        { "word": "metadata", "course": "htmlPages.json", "topic": "HTML Meta Tags" },
+        { "word": "viewport", "course": "htmlPages.json", "topic": "HTML Viewport" },
+        { "word": "regex", "course": "javascriptPages.json", "topic": "JavaScript Regular Expressions" },
+        { "word": "hyperlink", "course": "htmlPages.json", "topic": "HTML Links" },
+        { "word": "favicon", "course": "htmlPages.json", "topic": "HTML Favicon" }
+      ],
+
+      courses: [
+        "HTML", "CSS", "JAVASCRIPT", "SQL", "PYTHON", "JAVA", "PHP", "C", "C++", "C#",
+        "BOOTSTRAP", "REACT", "MYSQL", "JQUERY", "EXCEL", "XML", "DJANGO", "NUMPY",
+        "PANDAS", "NODEJS", "DSA", "TYPESCRIPT", "MANGODB", "GIT", "ANGULAR", "DATASCIENCE"
+      ],
+
+      references: {
+        frontend: [
+          { label: "HTML", href: "./htmlreference.html", note: "Reference" },
+          { label: "CSS", href: "./cssreference.html", note: "Reference" },
+          { label: "JAVASCRIPT", href: "./jsreference.html", note: "Reference" },
+          { label: "REACT", href: "", note: "Reference" },
+          { label: "ICONS", href: "./iconrefer.html", note: "Reference" },
+          { label: "UTF-8", href: "./utf-8refer.html", note: "Reference" },
+          { label: "COLOR NAMES", href: "./colors.html", note: "Reference" },
+          { label: "HTML DOM", href: "#", note: "Reference" }
+        ],
+        backend: [
+          { label: "PYTHON", href: "./pythonrefer.html", note: "Reference" },
+          { label: "JAVA", href: "", note: "Reference" },
+          { label: "C", href: "", note: "Reference" },
+          { label: "C++", href: "", note: "Reference" },
+          { label: "jQuery", href: "", note: "Reference" },
+          { label: "Angular", href: "", note: "Reference" }
+        ]
+      },
+
+      toc: [
+        { href: "#basic", label: "Basic HTML" },
+        { href: "#format", label: "Formatting Tags" },
+        { href: "#forms", label: "Forms and Input" },
+        { href: "#frame", label: "Frames" },
+        { href: "#image", label: "Images" },
+        { href: "#audio", label: "Audio / Video" },
+        { href: "#link", label: "Links" },
+        { href: "#listss", label: "Lists" },
+        { href: "#table", label: "Tables" },
+        { href: "#semantic", label: "Styles and Semantics" },
+        { href: "#metas", label: "Meta Info" },
+        { href: "#program", label: "Programming" },
+        { href: "#completes", label: "Complete Tag List(Alphabetical)" }
+      ],
+
+      sections: [
+        {
+          id: "basic", wrapClass: "basic-html", titleClass: "section-title",
+          descClass: "section-desc", title: "Basic HTML",
+          desc: "Essential tags for creating the structure of an HTML document.",
+          hasSearch: true,
+          tags: [
+            { tag: "<!DOCTYPE>", desc: "Defines the document type", html5: true },
+            { tag: "<html>", desc: "Defines an HTML document", html5: true },
+            { tag: "<head>", desc: "Contains metadata/information for the document", html5: true },
+            { tag: "<title>", desc: "Defines a title for the document", html5: true },
+            { tag: "<body>", desc: "Defines the document's body", html5: true },
+            { tag: "<h1> To <h6>", desc: "Defines HTML headings", html5: true },
+            { tag: "<p>", desc: "Defines a paragraph", html5: true },
+            { tag: "<br>", desc: "Inserts a single line break", html5: true },
+            { tag: "<hr>", desc: "Defines a thematic change in the content", html5: true },
+            { tag: "<!--...-->", desc: "Defines a comment", html5: true }
+          ]
+        },
+        {
+          id: "format", wrapClass: "format-tags", titleClass: "format-title",
+          descClass: "format-desc", title: "Formatting Tags",
+          desc: "Tags used to format and style text content.",
+          tags: [
+            { tag: "<abbr>", desc: "Defines an abbreviation or an acronym", html5: true },
+            { tag: "<acronym>", desc: "Defines an acronym (use &lt;abbr&gt; instead)", html5: false },
+            { tag: "<address>", desc: "Defines contact information for the author/owner", html5: true },
+            { tag: "<b>", desc: "Defines bold text", html5: true },
+            { tag: "<bdi>", desc: "Isolates text that might be formatted in a different direction", html5: true },
+            { tag: "<bdo>", desc: "Overrides the current text direction", html5: true },
+            { tag: "<big>", desc: "Defines big text (use CSS instead)", html5: false },
+            { tag: "<blockquote>", desc: "Defines a section quoted from another source", html5: true },
+            { tag: "<center>", desc: "Defines centered text (use CSS instead)", html5: false },
+            { tag: "<cite>", desc: "Defines the title of a work", html5: true },
+            { tag: "<code>", desc: "Defines a piece of computer code", html5: true },
+            { tag: "<del>", desc: "Defines text that has been deleted from a document", html5: true },
+            { tag: "<dfn>", desc: "Specifies a term to be defined within content", html5: true },
+            { tag: "<em>", desc: "Defines emphasized text", html5: true },
+            { tag: "<font>", desc: "Defines font, color, and size (use CSS instead)", html5: false },
+            { tag: "<i>", desc: "Defines text in an alternate voice or mood", html5: true },
+            { tag: "<ins>", desc: "Defines text that has been inserted into a document", html5: true },
+            { tag: "<kbd>", desc: "Defines keyboard input", html5: true },
+            { tag: "<mark>", desc: "Defines marked/highlighted text", html5: true },
+            { tag: "<meter>", desc: "Defines a scalar measurement within a known range", html5: true },
+            { tag: "<pre>", desc: "Defines preformatted text", html5: true },
+            { tag: "<progress>", desc: "Represents the progress of a task", html5: true },
+            { tag: "<q>", desc: "Defines a short quotation", html5: true },
+            { tag: "<rp>", desc: "Defines what to show in browsers without ruby annotations", html5: true },
+            { tag: "<rt>", desc: "Defines explanation/pronunciation of characters", html5: true },
+            { tag: "<ruby>", desc: "Defines a ruby annotation (East Asian typography)", html5: true },
+            { tag: "<s>", desc: "Defines text that is no longer correct", html5: true },
+            { tag: "<samp>", desc: "Defines sample output from a computer program", html5: true },
+            { tag: "<small>", desc: "Defines smaller text", html5: true },
+            { tag: "<strike>", desc: "Defines strikethrough text (use &lt;del&gt; or &lt;s&gt;)", html5: false },
+            { tag: "<strong>", desc: "Defines important text", html5: true },
+            { tag: "<sub>", desc: "Defines subscripted text", html5: true },
+            { tag: "<sup>", desc: "Defines superscripted text", html5: true },
+            { tag: "<template>", desc: "Defines content hidden when page loads", html5: true },
+            { tag: "<time>", desc: "Defines a specific time or datetime", html5: true },
+            { tag: "<tt>", desc: "Defines teletype text (use CSS instead)", html5: false },
+            { tag: "<u>", desc: "Defines unarticulated text styled differently", html5: true },
+            { tag: "<var>", desc: "Defines a variable", html5: true },
+            { tag: "<wbr>", desc: "Defines a possible line-break", html5: true }
+          ]
+        },
+        {
+          id: "forms", wrapClass: "forms-input", titleClass: "form-input-title",
+          descClass: "form-input-desc", title: "Forms and Input",
+          desc: "Tags for creating interactive forms and input controls.",
+          tags: [
+            { tag: "<form>", desc: "Defines an HTML form for user input", html5: true },
+            { tag: "<input>", desc: "Defines an input control", html5: true },
+            { tag: "<textarea>", desc: "Defines a multiline input control", html5: true },
+            { tag: "<button>", desc: "Defines a clickable button", html5: true },
+            { tag: "<select>", desc: "Defines a drop-down list", html5: true },
+            { tag: "<optgroup>", desc: "Defines a group of related options in a drop-down list", html5: true },
+            { tag: "<option>", desc: "Defines an option in a drop-down list", html5: true },
+            { tag: "<label>", desc: "Defines a label for an &lt;input&gt; element", html5: true },
+            { tag: "<fieldset>", desc: "Groups related elements in a form", html5: true },
+            { tag: "<legend>", desc: "Defines a caption for a &lt;fieldset&gt; element", html5: true },
+            { tag: "<datalist>", desc: "Specifies a list of pre-defined options for input controls", html5: true },
+            { tag: "<output>", desc: "Defines the result of a calculation", html5: true }
+          ]
+        },
+        {
+          id: "frame", wrapClass: "frames", titleClass: "frames-title",
+          descClass: "frames-desc", title: "Frames",
+          desc: "Tags for creating frames (mostly deprecated in HTML5).",
+          tags: [
+            { tag: "<frame>", desc: "Defines a window (frame) in a frameset", html5: false },
+            { tag: "<frameset>", desc: "Defines a set of frames", html5: false },
+            { tag: "<noframes>", desc: "Defines alternate content for users without frame support", html5: false },
+            { tag: "<iframe>", desc: "Defines an inline frame", html5: true }
+          ]
+        },
+        {
+          id: "image", wrapClass: "images", titleClass: "images-title",
+          descClass: "images-desc", title: "Images",
+          desc: "Tags for embedding and managing images.",
+          tags: [
+            { tag: "<img>", desc: "Defines an image", html5: true },
+            { tag: "<map>", desc: "Defines a client-side image map", html5: true },
+            { tag: "<area>", desc: "Defines an area inside an image map", html5: true },
+            { tag: "<canvas>", desc: "Used to draw graphics via scripting (usually JavaScript)", html5: true },
+            { tag: "<figcaption>", desc: "Defines a caption for a &lt;figure&gt; element", html5: true },
+            { tag: "<figure>", desc: "Specifies self-contained content", html5: true },
+            { tag: "<picture>", desc: "Defines a container for multiple image resources", html5: true },
+            { tag: "<svg>", desc: "Defines a container for SVG graphics", html5: true }
+          ]
+        },
+        {
+          id: "audio", wrapClass: "audioVideo", titleClass: "audioVideo-title",
+          descClass: "audioVideo-desc", title: "Audio / Video",
+          desc: "Tags for embedding audio and video content.",
+          tags: [
+            { tag: "<audio>", desc: "Defines sound content", html5: true },
+            { tag: "<source>", desc: "Defines multiple media resources for media elements", html5: true },
+            { tag: "<track>", desc: "Defines text tracks for media elements", html5: true },
+            { tag: "<video>", desc: "Defines a video or movie", html5: true }
+          ]
+        },
+        {
+          id: "link", wrapClass: "links", titleClass: "links-title",
+          descClass: "links-desc", title: "Links",
+          desc: "Tags for creating hyperlinks and navigation.",
+          tags: [
+            { tag: "<a>", desc: "Defines a hyperlink", html5: true },
+            { tag: "<link>", desc: "Defines relationship between document and external resource", html5: true },
+            { tag: "<nav>", desc: "Defines navigation links", html5: true }
+          ]
+        },
+        {
+          id: "listss", wrapClass: "lists", titleClass: "lists-title",
+          descClass: "lists-desc", title: "Lists",
+          desc: "Tags for creating ordered, unordered, and description lists.",
+          tags: [
+            { tag: "<ul>", desc: "Defines an unordered list", html5: true },
+            { tag: "<ol>", desc: "Defines an ordered list", html5: true },
+            { tag: "<li>", desc: "Defines a list item", html5: true },
+            { tag: "<dl>", desc: "Defines a description list", html5: true },
+            { tag: "<dt>", desc: "Defines a term/name in a description list", html5: true },
+            { tag: "<dd>", desc: "Defines a description of a term/name", html5: true },
+            { tag: "<menu>", desc: "Defines an alternative unordered list", html5: true },
+            { tag: "<dir>", desc: "Defines a directory list (use &lt;ul&gt; instead)", html5: false }
+          ]
+        },
+        {
+          id: "table", wrapClass: "tables", titleClass: "tables-title",
+          descClass: "tables-desc", title: "Tables",
+          desc: "Tags for creating and structuring tables.",
+          tags: [
+            { tag: "<table>", desc: "Defines a table", html5: true },
+            { tag: "<caption>", desc: "Defines a table caption", html5: true },
+            { tag: "<th>", desc: "Defines a header cell in a table", html5: true },
+            { tag: "<tr>", desc: "Defines a row in a table", html5: true },
+            { tag: "<td>", desc: "Defines a cell in a table", html5: true },
+            { tag: "<thead>", desc: "Groups the header content in a table", html5: true },
+            { tag: "<tbody>", desc: "Groups the body content in a table", html5: true },
+            { tag: "<tfoot>", desc: "Groups the footer content in a table", html5: true },
+            { tag: "<col>", desc: "Specifies column properties for each column", html5: true },
+            { tag: "<colgroup>", desc: "Specifies a group of columns in a table", html5: true }
+          ]
+        },
+        {
+          id: "semantic", wrapClass: "semantics", titleClass: "semantics-title",
+          descClass: "semantics-desc", title: "Styles and Semantics",
+          desc: "Tags for structuring content semantically and adding styles.",
+          tags: [
+            { tag: "<style>", desc: "Defines style information for a document", html5: true },
+            { tag: "<div>", desc: "Defines a section in a document", html5: true },
+            { tag: "<span>", desc: "Defines a section in a document", html5: true },
+            { tag: "<header>", desc: "Defines a header for a document or section", html5: true },
+            { tag: "<hgroup>", desc: "Defines a header and related content", html5: true },
+            { tag: "<footer>", desc: "Defines a footer for a document or section", html5: true },
+            { tag: "<main>", desc: "Specifies the main content of a document", html5: true },
+            { tag: "<section>", desc: "Defines a section in a document", html5: true },
+            { tag: "<search>", desc: "Defines a search section", html5: true },
+            { tag: "<article>", desc: "Defines an article", html5: true },
+            { tag: "<aside>", desc: "Defines content aside from the page content", html5: true },
+            { tag: "<details>", desc: "Defines additional details user can view/hide", html5: true },
+            { tag: "<dialog>", desc: "Defines a dialog box or window", html5: true },
+            { tag: "<summary>", desc: "Defines a visible heading for a &lt;details&gt; element", html5: true },
+            { tag: "<data>", desc: "Adds a machine-readable translation of content", html5: true }
+          ]
+        },
+        {
+          id: "metas", wrapClass: "meta", titleClass: "meta-title",
+          descClass: "meta-desc", title: "Meta Info",
+          desc: "Tags for defining metadata about the HTML document.",
+          tags: [
+            { tag: "<head>", desc: "Defines information about the document", html5: true },
+            { tag: "<meta>", desc: "Defines metadata about an HTML document", html5: true },
+            { tag: "<base>", desc: "Specifies the base URL/target for all relative URLs", html5: true },
+            { tag: "<basefont>", desc: "Specifies default color, size, font (use CSS instead)", html5: false }
+          ]
+        },
+        {
+          id: "program", wrapClass: "programming", titleClass: "programming-title",
+          descClass: "programming-desc", title: "Programming",
+          desc: "Tags for embedding scripts and external applications.",
+          tags: [
+            { tag: "<script>", desc: "Defines a client-side script", html5: true },
+            { tag: "<noscript>", desc: "Defines alternate content for non-script users", html5: true },
+            { tag: "<embed>", desc: "Defines a container for an external resource", html5: true },
+            { tag: "<object>", desc: "Defines a container for an external resource", html5: true },
+            { tag: "<param>", desc: "Defines a parameter for an object", html5: true },
+            { tag: "<applet>", desc: "Defines an embedded applet (use &lt;embed&gt; or &lt;object&gt;)", html5: false }
+          ]
+        }
+      ],
+
+      allTags: {
+        "A-D": [
+          { tag: "<!--...-->", desc: "Comment" },
+          { tag: "<!DOCTYPE>", desc: "Document type declaration" },
+          { tag: "<a>", desc: "Anchor/Hyperlink" },
+          { tag: "<abbr>", desc: "Abbreviation" },
+          { tag: "<acronym>", desc: "Acronym (deprecated)" },
+          { tag: "<address>", desc: "Contact information" },
+          { tag: "<applet>", desc: "Java applet (deprecated)" },
+          { tag: "<area>", desc: "Image map area" },
+          { tag: "<article>", desc: "Article content" },
+          { tag: "<aside>", desc: "Aside content" },
+          { tag: "<audio>", desc: "Audio content" },
+          { tag: "<b>", desc: "Bold text" },
+          { tag: "<base>", desc: "Base URL" },
+          { tag: "<basefont>", desc: "Base font (deprecated)" },
+          { tag: "<bdi>", desc: "Bi-directional isolation" },
+          { tag: "<bdo>", desc: "Bi-directional override" },
+          { tag: "<big>", desc: "Big text (deprecated)" },
+          { tag: "<blockquote>", desc: "Block quotation" },
+          { tag: "<body>", desc: "Document body" },
+          { tag: "<br>", desc: "Line break" },
+          { tag: "<button>", desc: "Button" },
+          { tag: "<canvas>", desc: "Graphics canvas" },
+          { tag: "<caption>", desc: "Table caption" },
+          { tag: "<center>", desc: "Centered text (deprecated)" },
+          { tag: "<cite>", desc: "Citation" },
+          { tag: "<code>", desc: "Computer code" },
+          { tag: "<col>", desc: "Table column" },
+          { tag: "<colgroup>", desc: "Table column group" },
+          { tag: "<data>", desc: "Machine-readable data" },
+          { tag: "<datalist>", desc: "Input options list" },
+          { tag: "<dd>", desc: "Description list description" },
+          { tag: "<del>", desc: "Deleted text" },
+          { tag: "<details>", desc: "Disclosure widget" },
+          { tag: "<dfn>", desc: "Definition term" },
+          { tag: "<dialog>", desc: "Dialog box" },
+          { tag: "<dir>", desc: "Directory list (deprecated)" },
+          { tag: "<div>", desc: "Division/section" },
+          { tag: "<dl>", desc: "Description list" },
+          { tag: "<dt>", desc: "Description list term" }
+        ],
+        "E-M": [
+          { tag: "<em>", desc: "Emphasized text" },
+          { tag: "<embed>", desc: "Embedded content" },
+          { tag: "<fieldset>", desc: "Form field grouping" },
+          { tag: "<figcaption>", desc: "Figure caption" },
+          { tag: "<figure>", desc: "Figure with caption" },
+          { tag: "<font>", desc: "Font styling (deprecated)" },
+          { tag: "<footer>", desc: "Footer section" },
+          { tag: "<form>", desc: "HTML form" },
+          { tag: "<frame>", desc: "Frame (deprecated)" },
+          { tag: "<frameset>", desc: "Frameset (deprecated)" },
+          { tag: "<h1> to <h6>", desc: "Headings" },
+          { tag: "<head>", desc: "Document head" },
+          { tag: "<header>", desc: "Header section" },
+          { tag: "<hgroup>", desc: "Heading group" },
+          { tag: "<hr>", desc: "Horizontal rule" },
+          { tag: "<html>", desc: "HTML document root" },
+          { tag: "<i>", desc: "Italic text" },
+          { tag: "<iframe>", desc: "Inline frame" },
+          { tag: "<img>", desc: "Image" },
+          { tag: "<input>", desc: "Input control" },
+          { tag: "<ins>", desc: "Inserted text" },
+          { tag: "<kbd>", desc: "Keyboard input" },
+          { tag: "<label>", desc: "Form label" },
+          { tag: "<legend>", desc: "Fieldset legend" },
+          { tag: "<li>", desc: "List item" },
+          { tag: "<link>", desc: "External resource link" },
+          { tag: "<main>", desc: "Main content" },
+          { tag: "<map>", desc: "Image map" },
+          { tag: "<mark>", desc: "Marked text" },
+          { tag: "<menu>", desc: "Menu list" },
+          { tag: "<meta>", desc: "Metadata" },
+          { tag: "<meter>", desc: "Scalar measurement" }
+        ],
+        "N-Z": [
+          { tag: "<nav>", desc: "Navigation links" },
+          { tag: "<noframes>", desc: "No frames fallback (deprecated)" },
+          { tag: "<noscript>", desc: "No script fallback" },
+          { tag: "<object>", desc: "Embedded object" },
+          { tag: "<ol>", desc: "Ordered list" },
+          { tag: "<optgroup>", desc: "Option group" },
+          { tag: "<option>", desc: "Select option" },
+          { tag: "<output>", desc: "Output result" },
+          { tag: "<p>", desc: "Paragraph" },
+          { tag: "<param>", desc: "Object parameter" },
+          { tag: "<picture>", desc: "Picture container" },
+          { tag: "<pre>", desc: "Preformatted text" },
+          { tag: "<progress>", desc: "Progress indicator" },
+          { tag: "<q>", desc: "Short quotation" },
+          { tag: "<rp>", desc: "Ruby parenthesis" },
+          { tag: "<rt>", desc: "Ruby text" },
+          { tag: "<ruby>", desc: "Ruby annotation" },
+          { tag: "<s>", desc: "Strikethrough" },
+          { tag: "<samp>", desc: "Sample output" },
+          { tag: "<script>", desc: "Client-side script" },
+          { tag: "<search>", desc: "Search section" },
+          { tag: "<section>", desc: "Document section" },
+          { tag: "<select>", desc: "Selection list" },
+          { tag: "<small>", desc: "Small text" },
+          { tag: "<source>", desc: "Media source" },
+          { tag: "<span>", desc: "Inline container" },
+          { tag: "<strike>", desc: "Strikethrough (deprecated)" },
+          { tag: "<strong>", desc: "Strong importance" },
+          { tag: "<style>", desc: "Style information" },
+          { tag: "<sub>", desc: "Subscript" },
+          { tag: "<summary>", desc: "Details summary" },
+          { tag: "<sup>", desc: "Superscript" },
+          { tag: "<svg>", desc: "SVG graphics" },
+          { tag: "<table>", desc: "Table" },
+          { tag: "<tbody>", desc: "Table body" },
+          { tag: "<td>", desc: "Table data cell" },
+          { tag: "<template>", desc: "Template content" },
+          { tag: "<textarea>", desc: "Multi-line text input" },
+          { tag: "<tfoot>", desc: "Table footer" },
+          { tag: "<th>", desc: "Table header cell" },
+          { tag: "<thead>", desc: "Table head" },
+          { tag: "<time>", desc: "Date/time" },
+          { tag: "<title>", desc: "Document title" },
+          { tag: "<tr>", desc: "Table row" },
+          { tag: "<track>", desc: "Text track" },
+          { tag: "<tt>", desc: "Teletype text (deprecated)" },
+          { tag: "<u>", desc: "Underlined text" },
+          { tag: "<ul>", desc: "Unordered list" },
+          { tag: "<var>", desc: "Variable" },
+          { tag: "<video>", desc: "Video content" },
+          { tag: "<wbr>", desc: "Word break opportunity" }
+        ]
+      },
+
+      additionalRefs: [
+        { title: "HTML Attributes Reference", desc: "Complete list of all HTML attributes" },
+        { title: "HTML Global Attributes", desc: "Attributes that can be used on any HTML element" },
+        { title: "HTML Event Attributes", desc: "Event handler attributes for interactive elements" },
+        { title: "HTML Colors", desc: "Color names and codes reference" },
+        { title: "HTML Canvas Reference", desc: "Canvas API methods and properties" },
+        { title: "HTML Audio/Video DOM", desc: "Audio and video DOM reference" },
+        { title: "HTML Character Sets", desc: "Character encoding references" },
+        { title: "HTML Doctypes", desc: "Document type declarations" },
+        { title: "HTML URL Encode", desc: "URL encoding reference" },
+        { title: "HTML Language Codes", desc: "ISO language code" },
+        { title: "HTML Country Codes", desc: "ISO country codes" },
+        { title: "HTTP Messages", desc: "HTTP status codes and messages" },
+        { title: "HTTP Methods", desc: "HTTP request methods (GET, POST, etc.)" }
+      ],
+
+      summary: {
+        totalTags: "107+",
+        deprecatedTags: 12,
+        newInHTML5: [
+          "<dialog>", "<article>", "<aside>", "<figure>", "<footer>", "<audio>",
+          "<canvas>", "<datalist>", "<header>", "<main>", "<mark>", "<meter>",
+          "<details>", "<nav>", "<output>", "<picture>", "<progress>", "<search>",
+          "<section>", "<summary>", "<template>", "<time>", "<video>"
+        ]
+      },
+
+      notes: [
+        {
+          title: "Deprecated Tags:",
+          body: 'Tags marked as "Not supported in HTML5" will still work in most browsers but are not recommended for new projects. Use CSS or modern alternatives instead.'
+        },
+        {
+          title: "Semantic HTML: ",
+          body: "HTML5 introduced many semantic tags ( &lt;article&gt; , &lt;aside&gt; , &lt;header&gt; , &lt;footer&gt; , &lt;nav&gt; , &lt;section&gt; ) that provide meaning to your content and improve accessibility and SEO"
+        },
+        {
+          title: "Best Practices:",
+          list: [
+            "Always use lowercase tag names",
+            "Close all tags properly",
+            "Use semantic tags when appropriate",
+            "Include alt attributes for images",
+            "Use proper heading hierarchy (h1-h6)",
+            "Validate your HTML"
+          ]
+        },
+        {
+          title: "Browser Support:",
+          body: "While deprecated tags may still render in browsers, it's best to follow W3C recommendations and use HTML5-compliant markup."
+        }
+      ]
+
+    }; // end DATA
+
+
+    /* =====================================================
+       HELPER
+    ===================================================== */
+    function setText(el, str) {
+      el.textContent = str;
+    }
+
+
+    /* =====================================================
+       RENDER: Course Nav
+    ===================================================== */
+    function renderCourseNav() {
+      const c = document.getElementById('courseNavContainer');
+      DATA.courses.forEach(name => {
+        const a = document.createElement('a');
+        a.href = '#';
+        setText(a, name);
+        c.appendChild(a);
+      });
+    }
+
+
+    /* =====================================================
+       RENDER: Table of Contents (Aside)
+    ===================================================== */
+    function renderTOC() {
+      const ul = document.getElementById('tocList');
+      DATA.toc.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.href;
+        setText(a, item.label);
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    }
+
+
+    /* =====================================================
+       RENDER: Reference Card popup
+    ===================================================== */
+    function renderReferenceCard() {
+      const container = document.getElementById('referenceContainer');
+
+      const feDiv = document.createElement('div');
+      feDiv.className = 'frontend-col';
+      const feH3 = document.createElement('h3');
+      setText(feH3, 'Front-end');
+      const feUl = document.createElement('ul');
+      DATA.references.frontend.forEach(r => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = r.href;
+        setText(a, r.label + ' ');
+        const span = document.createElement('span');
+        setText(span, r.note);
+        a.appendChild(span);
+        li.appendChild(a);
+        feUl.appendChild(li);
+      });
+      feDiv.appendChild(feH3);
+      feDiv.appendChild(feUl);
+
+      const beDiv = document.createElement('div');
+      beDiv.className = 'backend-col';
+      const beH3 = document.createElement('h3');
+      setText(beH3, 'Back-end');
+      const beUl = document.createElement('ul');
+      DATA.references.backend.forEach(r => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = r.href;
+        setText(a, r.label);
+        const span = document.createElement('span');
+        setText(span, r.note);
+        a.appendChild(span);
+        li.appendChild(a);
+        beUl.appendChild(li);
+      });
+      beDiv.appendChild(beH3);
+      beDiv.appendChild(beUl);
+
+      container.appendChild(feDiv);
+      container.appendChild(beDiv);
+    }
+
+
+    /* =====================================================
+       RENDER: All tag sections
+    ===================================================== */
+    function renderSections() {
+      const container = document.getElementById('sectionsContainer');
+
+      DATA.sections.forEach(sec => {
+        const section = document.createElement('section');
+        section.className = sec.wrapClass;
+        section.id = sec.id;
+
+        if (sec.hasSearch) {
+          const searchDiv = document.createElement('div');
+          searchDiv.className = 'search';
+          const inp = document.createElement('input');
+          inp.type = 'text';
+          inp.placeholder = 'Search skills ,courses,roles...';
+          inp.id = 'search-html';
+          const btn = document.createElement('button');
+          btn.className = 'icon';
+          btn.id = 'search-btn';
+          setText(btn, '🔍');
+          searchDiv.appendChild(inp);
+          searchDiv.appendChild(btn);
+          section.appendChild(searchDiv);
+        }
+
+        const wrapper = document.createElement('div');
+
+        const h1 = document.createElement('h1');
+        h1.className = sec.titleClass;
+        setText(h1, sec.title);
+        wrapper.appendChild(h1);
+
+        const p = document.createElement('p');
+        p.className = sec.descClass;
+        setText(p, sec.desc);
+        wrapper.appendChild(p);
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const hRow = document.createElement('tr');
+        ['Tag', 'Description', 'HTML5 Support'].forEach(text => {
+          const th = document.createElement('th');
+          setText(th, text);
+          hRow.appendChild(th);
+        });
+        thead.appendChild(hRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        sec.tags.forEach(t => {
+          const tr = document.createElement('tr');
+
+          const tdTag = document.createElement('td');
+          tdTag.className = 'tag';
+          setText(tdTag, t.tag);
+
+          const tdDesc = document.createElement('td');
+          tdDesc.innerHTML = t.desc;
+
+          const tdSupport = document.createElement('td');
+          tdSupport.className = 'check';
+          setText(tdSupport, t.html5 ? '✓' : '✗ Not supported in HTML5');
+
+          tr.appendChild(tdTag);
+          tr.appendChild(tdDesc);
+          tr.appendChild(tdSupport);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+
+        wrapper.appendChild(table);
+        section.appendChild(wrapper);
+        container.appendChild(section);
+      });
+    }
+
+
+    /* =====================================================
+       RENDER: Complete alphabetical tag list
+    ===================================================== */
+    function renderCompleteList() {
+      const container = document.getElementById('completeList');
+      const ul = document.createElement('ul');
+
+      Object.entries(DATA.allTags).forEach(([group, tags]) => {
+        const p = document.createElement('p');
+        setText(p, group);
+        ul.appendChild(p);
+
+        tags.forEach(t => {
+          const li = document.createElement('li');
+          setText(li, t.tag + ' - ' + t.desc);
+          ul.appendChild(li);
+        });
+      });
+
+      container.appendChild(ul);
+    }
+
+
+    /* =====================================================
+       RENDER: Additional References
+    ===================================================== */
+    function renderAdditional() {
+      const ul = document.getElementById('additionalList');
+      DATA.additionalRefs.forEach(r => {
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        setText(span, r.title);
+        li.appendChild(span);
+        li.appendChild(document.createTextNode(' - ' + r.desc));
+        ul.appendChild(li);
+      });
+    }
+
+
+    /* =====================================================
+       RENDER: Summary Statistics
+    ===================================================== */
+    function renderSummary() {
+      const ul = document.getElementById('summaryList');
+
+      const li1 = document.createElement('li');
+      const s1 = document.createElement('span');
+      setText(s1, 'Total HTML5 Tags:');
+      li1.appendChild(s1);
+      li1.appendChild(document.createTextNode(' ' + DATA.summary.totalTags + ' tags officially supported'));
+      ul.appendChild(li1);
+
+      const li2 = document.createElement('li');
+      const s2 = document.createElement('span');
+      setText(s2, 'Deprecated Tags: ');
+      li2.appendChild(s2);
+      li2.appendChild(document.createTextNode(DATA.summary.deprecatedTags + ' tags not supported in HTML5'));
+      ul.appendChild(li2);
+
+      const li3 = document.createElement('li');
+      const s3 = document.createElement('span');
+      setText(s3, 'New in HTML5: ');
+      li3.appendChild(s3);
+      li3.appendChild(document.createTextNode('Tags like ' + DATA.summary.newInHTML5.join(' , ')));
+      ul.appendChild(li3);
+    }
+
+
+    /* =====================================================
+       RENDER: Notes
+    ===================================================== */
+    function renderNotes() {
+      const ol = document.getElementById('notesList');
+      DATA.notes.forEach(n => {
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        setText(span, n.title);
+        li.appendChild(span);
+
+        if (n.body) {
+          const text = document.createElement('span');
+          text.innerHTML = ' ' + n.body;
+          li.appendChild(text);
+        }
+
+        if (n.list) {
+          const div = document.createElement('div');
+          div.className = 'third';
+          const innerUl = document.createElement('ul');
+          n.list.forEach(item => {
+            const innerLi = document.createElement('li');
+            setText(innerLi, item);
+            innerUl.appendChild(innerLi);
+          });
+          div.appendChild(innerUl);
+          li.appendChild(div);
+        }
+
+        ol.appendChild(li);
+      });
+    }
+
+
+    /* =====================================================
+       AUTOMATED KEYWORD HYPERLINKING ENGINE (BRD Phase 1)
+       - Runs AFTER all content is rendered
+       - First occurrence only, word-boundary, case-insensitive
+       - Skips existing <a> tags and code/script content
+       - Opens in new tab
+    ===================================================== */
+    /* =====================================================
+       AUTOMATED KEYWORD HYPERLINKING ENGINE 
+       - Reads the 'course' and 'topic' to build the URL
+       - Redirects to main index.html with query parameters
+    ===================================================== */
+    function runKeywordEngine() {
+      const linked = new Set();
+
+      // Collect all description <td> cells (2nd column of every table row)
+      const descCells = document.querySelectorAll('#sectionsContainer td:nth-child(2)');
+
+      descCells.forEach(cell => {
+        // UPDATED: Destructure course and topic instead of link
+        DATA.keywords.forEach(({ word, course, topic }) => {
+          if (linked.has(word.toLowerCase())) return;
+
+          // Only replace in text nodes — skip any existing <a> inside the cell
+          const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+              // Skip if inside an <a> tag
+              let parent = node.parentElement;
+              while (parent && parent !== cell) {
+                if (parent.tagName === 'A') return NodeFilter.FILTER_REJECT;
+                parent = parent.parentElement;
+              }
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+
+          const textNodes = [];
+          let n;
+          while ((n = walker.nextNode())) textNodes.push(n);
+
+          textNodes.forEach(textNode => {
+            if (linked.has(word.toLowerCase())) return;
+            const safeWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp('\\b(' + safeWord + ')\\b', 'i');
+            if (regex.test(textNode.nodeValue)) {
+              const parts = textNode.nodeValue.split(regex);
+              if (parts.length > 1) {
+                const frag = document.createDocumentFragment();
+                parts.forEach((part, i) => {
+                  if (i % 2 === 1) {
+                    const a = document.createElement('a');
+
+                    // UPDATED: Build the dynamic URL!
+                    const url = `../index.html?course=${encodeURIComponent(course)}&topic=${encodeURIComponent(topic)}`;
+                    a.href = url;
+
+                    // Optional: Remove target="_blank" if you want it to open in the same tab instead of a new one
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+
+                    // Styled to match your neon teal theme
+                    a.style.color = '#00ffb3';
+                    a.style.textDecoration = 'none';
+                    a.style.fontWeight = 'bold';
+
+                    a.className = 'auto-kw';
+                    a.textContent = part;
+                    frag.appendChild(a);
+                    linked.add(word.toLowerCase());
+                  } else {
+                    frag.appendChild(document.createTextNode(part));
+                  }
+                });
+                textNode.parentNode.replaceChild(frag, textNode);
+              }
+            }
+          });
+        });
+      });
+    }
+
+
+    /* =====================================================
+       INIT — render everything then run keyword engine
+    ===================================================== */
+    renderTOC();
+    renderSections();
+    renderCompleteList();
+    renderAdditional();
+    renderSummary();
+    renderNotes();
+    runKeywordEngine();
+
+
+    /* =====================================================
+       ASIDE SIDEBAR LOGIC
+    ===================================================== */
+    const aside = document.querySelector(".side-content");
+    const sideBtn = document.getElementById("side-close");
+
+    if (sideBtn) {
+      sideBtn.addEventListener("click", () => {
+        aside.classList.remove("open");
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (aside) aside.classList.remove("open");
+      }
+    });
+
+  </script>
+
+  <script src="../../assets/js/navbar.js"></script>
+
+</body>
+
+</html>

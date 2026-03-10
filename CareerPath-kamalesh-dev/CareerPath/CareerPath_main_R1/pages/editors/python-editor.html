@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Python Editor - CareerPath</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../assets/css/editor.css">
+    
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    
+    <style>
+       
+        #pythonInput { color: #f1fa8c; } 
+        
+        .console-output {
+            flex: 1;
+            background-color: #1e1e2f;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #consoleDiv {
+            flex: 1;
+            padding: 10px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: auto;
+            color: #cbd5e1;
+            font-size: 14px;
+            white-space: pre-wrap; 
+        }
+
+        .log-error { color: #ff4757; }
+        .log-normal { color: #00ffb3; }
+        .log-loading { color: #8be9fd; font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">🐍</span> Real Python Workspace</h2>
+        <button class="run-btn" id="runBtn" disabled>Loading Python...</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <p class="pane-label">main.py</p>
+            <textarea id="pythonInput" spellcheck="false" aria-label="Python Input"></textarea>
+        </div>
+        
+        <div class="result-pane">
+            <div class="console-output">
+                <p class="pane-label" style="padding:10px 20px 0;">Terminal Output</p>
+                <div id="consoleDiv">
+                    <span class="log-loading">Initializing WebAssembly Python Engine... please wait.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pythonInput = document.getElementById('pythonInput');
+        const consoleDiv = document.getElementById('consoleDiv');
+        const runBtn = document.getElementById('runBtn');
+        
+        let pyodideInstance = null;
+
+        // Fetch saved code or use a default Python template
+        const savedCode = localStorage.getItem('careerPathPythonCode');
+        pythonInput.value = savedCode ? savedCode : `# Write your Python code here!
+print("Hello from the Browser-based Python Engine!")
+
+def calculate_fibonacci(n):
+    sequence = [0, 1]
+    while len(sequence) < n:
+        sequence.append(sequence[-1] + sequence[-2])
+    return sequence
+
+print(f"First 10 Fibonacci numbers: {calculate_fibonacci(10)}")`;
+
+        // Function to append text to our visual console
+        function appendToConsole(text, className) {
+            const span = document.createElement('span');
+            span.className = className;
+            span.textContent = text + '\n';
+            consoleDiv.appendChild(span);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight; // Auto-scroll
+        }
+
+        // Initialize Pyodide
+        async function main() {
+            try {
+                // Initialize with custom stdout/stderr to capture print() statements
+                pyodideInstance = await loadPyodide({
+                    stdout: (text) => appendToConsole(text, 'log-normal'),
+                    stderr: (text) => appendToConsole(text, 'log-error')
+                });
+                
+                consoleDiv.innerHTML = '<span class="log-normal">✔ Python Engine Ready! Click Run Code.</span>\n\n';
+                runBtn.disabled = false;
+                runBtn.innerText = "Run Code ❯";
+            } catch (err) {
+                consoleDiv.innerHTML = `<span class="log-error">Failed to load Python engine: ${err.message}</span>`;
+            }
+        }
+
+        // Execute Python code
+        async function executePython() {
+            if (!pyodideInstance) return;
+            
+            const code = pythonInput.value.trim();
+            if (!code) {
+                consoleDiv.innerHTML = '<span class="log-error">Please enter some Python code.</span>\n';
+                return;
+            }
+
+            // Clear previous output, but keep a "running" indicator
+            consoleDiv.innerHTML = '<span class="log-loading">>>> Running script...</span>\n';
+            runBtn.disabled = true;
+
+            try {
+                // Run the code! (Output is automatically routed to our consoleDiv by Pyodide)
+                await pyodideInstance.runPythonAsync(code);
+            } catch (err) {
+                // Catch Syntax errors and Runtime errors
+                appendToConsole(err, 'log-error');
+            } finally {
+                runBtn.disabled = false;
+            }
+        }
+
+        runBtn.addEventListener('click', executePython);
+
+        // Start loading the engine immediately
+        main();
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    background: #6B7280;
+}
+
+a {
+    text-decoration: none;
+    color: #1E3A8A;
+    font-weight: 700;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Career-CARD */
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.title>h2 {
+
+    color: var(--bg-main);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
+
+.career-card {
+    height: 300px;
+    width: 350px;
+    background: linear-gradient(135deg, #0d6efd, #084298);
+    color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    padding: 10px;
+}
+
+.career-card>h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.career-card>p {
+    color: var(--bg-main);
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+    opacity: 0.9;
+}
+
+.career-card>.bg-hat {
+    width: 150px;
+    opacity: 0.4;
+    margin-left: 80px;
+}
+
+/* Registration CARD */
+.form-card {
+    width: 380px;
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+}
+
+.hide {
+    display: none;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #2D8CFF;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+input,
+select,
+textarea:focus {
+    outline: none;
+    border-color: #0d6efd;
+}
+
+button:hover {
+    background: #0057ff;
+}
+
+
+.register>.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.register>span {
+    font-size: 14px;
+    padding-left: 40px;
+    font-weight: 300;
+}
+
+.register>p {
+    text-align: center;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.input.error-input {
+    border: 1.5px solid red;
+}
+
+/* terms  */
+.terms-box {
+    display: flex;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.terms-box a {
+    color: #0066ff;
+    text-decoration: none;
+}
+
+.terms-box a:hover {
+    text-decoration: underline;
+}
+
+.terms-error {
+    color: red;
+    font-size: 12px;
+}

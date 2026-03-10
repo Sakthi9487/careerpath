@@ -1,0 +1,1469 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Reference</title>
+  <link rel="stylesheet" href="../../assets/css/navbar.css">
+  <link rel="stylesheet" href="../../assets/css/cssreference.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- SHARED NAVBAR (injected by navbar.js) -->
+  <div id="navbar-root"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="side-content">
+    <div class="side-close"><button id="side-close">✕</button></div>
+    <h2>Table of Contents</h2>
+    <ul id="tocList"></ul>
+  </aside>
+
+  <!-- INTRODUCTION — static (code syntax boxes kept as HTML) -->
+  <section class="introduction" id="Introduction">
+    <div class="search">
+      <input type="text" placeholder="Search skills ,courses,roles..." id="search-hero">
+      <button class="icon" id="search-btns">🔍</button>
+    </div>
+    <div class="intro-title">
+      <h2>Introduction</h2>
+      <p>
+        <span>CSS (Cascading Style Sheets) is the language used to style and layout web pages. This comprehensive</span>
+        <span>reference guide includes all CSS properties, selectors, at-rules, and functions as documented by
+          W3Schools.</span>
+      </p>
+    </div>
+    <h3>CSS Syntax</h3>
+    <div class="intro-syntax-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="selector">selector</span> <span class="brace">{</span>
+    <span class="property">property</span>: <span class="value">value</span>;
+<span class="brace">}</span>
+    </pre>
+    </div>
+    <h3>Example:</h3>
+    <div class="intro-syntax-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="selector">p</span> <span class="brace">{</span>
+    <span class="property">color</span>: <span class="value">red</span>;
+    <span class="property">text-align</span>: <span class="value">center</span>;
+<span class="brace">}</span>
+    </pre>
+    </div>
+  </section>
+
+  <!-- CSS PROPERTIES — rendered by JS -->
+  <section class="css-properties" id="CSS-properties">
+    <hr>
+    <div id="propertiesContainer"></div>
+    <hr>
+  </section>
+
+  <!-- CSS SELECTORS — rendered by JS -->
+  <section class="css-selectors" id="CSS-selector">
+    <h2>CSS Selectors</h2>
+    <div id="selectorsContainer"></div>
+    <hr>
+  </section>
+
+  <!-- CSS AT-RULES — rendered by JS -->
+  <section class="css-at-rules" id="CSS-At-Rules">
+    <h2>CSS At-Rules</h2>
+    <p>At-rules are CSS statements that instruct CSS how to behave.</p>
+    <div id="atRulesContainer"></div>
+    <h3>Example Usage</h3>
+    <div class="rule-code-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="comment">/* Media - Responsive design */</span>
+<span class="at-rule">@media</span> screen and (<span class="property">max-width</span>: <span class="value">600px</span>) <span class="brace">{</span>
+    <span class="selector">body</span> <span class="brace">{</span>
+        <span class="property">background-color</span>: <span class="value">lightblue</span>;
+    <span class="brace">}</span>
+<span class="brace">}</span>
+
+<span class="comment">/* Keyframes - Animation */</span>
+<span class="at-rule">@keyframes</span> <span class="selector">slide</span> <span class="brace">{</span>
+    <span class="selector">from</span> <span class="brace">{</span>
+        <span class="property">left</span>: <span class="value">0px</span>;
+    <span class="brace">}</span>
+    <span class="selector">to</span> <span class="brace">{</span>
+        <span class="property">left</span>: <span class="value">200px</span>;
+    <span class="brace">}</span>
+<span class="brace">}</span>
+
+<span class="comment">/* Font Face - Custom font */</span>
+<span class="at-rule">@font-face</span> <span class="brace">{</span>
+    <span class="property">font-family</span>: <span class="value">myFont</span>;
+    <span class="property">src</span>: <span class="value">url("myfont.woff")</span>;
+<span class="brace">}</span>
+
+<span class="comment">/* Supports - Feature detection */</span>
+<span class="at-rule">@supports</span> (<span class="property">display</span>: <span class="value">grid</span>) <span class="brace">{</span>
+    <span class="selector">div</span> <span class="brace">{</span>
+        <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="brace">}</span>
+<span class="brace">}</span>
+    </pre>
+    </div>
+    <hr>
+  </section>
+
+  <!-- CSS FUNCTIONS — rendered by JS -->
+  <section class="css-functions" id="CSS-functions">
+    <h2>CSS Functions</h2>
+    <p class="section-desc">CSS functions are used as property values to perform calculations or manipulations.</p>
+    <div id="functionsContainer"></div>
+    <hr>
+  </section>
+
+  <!-- CSS UNITS — rendered by JS -->
+  <section class="css-units" id="CSS-units">
+    <h2>CSS Units</h2>
+    <div id="unitsContainer"></div>
+    <hr>
+  </section>
+
+  <!-- CSS COLOR VALUES — static (code boxes kept as HTML) -->
+  <section id="CSS-color-values" class="css-color-values">
+    <h2>CSS Color Values</h2>
+    <h3>Color Names</h3>
+    <p>CSS supports 140 standard color names. Examples:</p>
+    <ul class="color-name-list">
+      <li><code>red</code>, <code>blue</code>, <code>green</code>, <code>yellow</code></li>
+      <li><code>black</code>, <code>white</code>, <code>gray</code></li>
+      <li><code>orange</code>, <code>purple</code>, <code>pink</code></li>
+      <li><code>brown</code>, <code>cyan</code>, <code>magenta</code></li>
+    </ul>
+    <h3>RGB / RGBA</h3>
+    <div class="rule-code-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="comment">/* RGB */</span>
+<span class="property">color</span>: <span class="value">rgb(255, 0, 0)</span>;     <span class="comment">/* Red */</span>
+<span class="property">color</span>: <span class="value">rgb(0, 255, 0)</span>;     <span class="comment">/* Green */</span>
+<span class="property">color</span>: <span class="value">rgb(0, 0, 255)</span>;     <span class="comment">/* Blue */</span>
+
+<span class="comment">/* RGBA (with alpha/opacity) */</span>
+<span class="property">color</span>: <span class="value">rgba(255, 0, 0, 0.5)</span>; <span class="comment">/* Red with 50% opacity */</span>
+        </pre>
+    </div>
+    <h3>HEX</h3>
+    <div class="rule-code-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="property">color</span>: <span class="value">#ff0000</span>;  <span class="comment">/* Red */</span>
+<span class="property">color</span>: <span class="value">#00ff00</span>;  <span class="comment">/* Green */</span>
+<span class="property">color</span>: <span class="value">#0000ff</span>;  <span class="comment">/* Blue */</span>
+<span class="property">color</span>: <span class="value">#000</span>;     <span class="comment">/* Black (shorthand) */</span>
+<span class="property">color</span>: <span class="value">#fff</span>;     <span class="comment">/* White (shorthand) */</span>
+        </pre>
+    </div>
+    <h3>HSL / HSLA</h3>
+    <div class="rule-code-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="comment">/* HSL */</span>
+<span class="property">color</span>: <span class="value">hsl(0, 100%, 50%)</span>;    <span class="comment">/* Red */</span>
+<span class="property">color</span>: <span class="value">hsl(120, 100%, 50%)</span>;  <span class="comment">/* Green */</span>
+<span class="property">color</span>: <span class="value">hsl(240, 100%, 50%)</span>;  <span class="comment">/* Blue */</span>
+
+<span class="comment">/* HSLA */</span>
+<span class="property">color</span>: <span class="value">hsla(0, 100%, 50%, 0.5)</span>; <span class="comment">/* Red with 50% opacity */</span>
+        </pre>
+    </div>
+    <h3>Special Values</h3>
+    <div class="rule-code-box">
+      <div class="lang">css</div>
+      <pre>
+<span class="property">color</span>: <span class="value">currentColor</span>; <span class="comment">/* Current color value */</span>
+<span class="property">color</span>: <span class="value">transparent</span>;  <span class="comment">/* Fully transparent */</span>
+<span class="property">color</span>: <span class="value">inherit</span>;      <span class="comment">/* Inherits parent value */</span>
+<span class="property">color</span>: <span class="value">initial</span>;      <span class="comment">/* Default value */</span>
+        </pre>
+    </div>
+    <hr>
+  </section>
+
+  <!-- ADDITIONAL RESOURCES — rendered by JS -->
+  <section id="CSS-additional-resources" class="additional-resources">
+    <div id="additionalContainer"></div>
+    <hr>
+  </section>
+
+  <script>
+    /* =======================================================
+       DATA  — all page content. Edit only this object.
+    ======================================================= */
+    const DATA = {
+
+      keywords: [
+        { word: "CSS" },
+        { word: "HTML" },
+        { word: "JavaScript" },
+        { word: "flexbox" },
+        { word: "grid" },
+        { word: "animation" },
+        { word: "transform" },
+        { word: "gradient" },
+        { word: "viewport" },
+        { word: "W3C" },
+        { word: "SVG" },
+        { word: "accessibility" },
+        { word: "media query" },
+        { word: "selector" },
+        { word: "pseudo-class" },
+        { word: "typography" },
+        { word: "RGB" },
+        { word: "opacity" },
+        { word: "transition" },
+        { word: "cascade" }
+      ],
+
+      courses: [
+        "HTML", "CSS", "JAVASCRIPT", "SQL", "PYTHON", "JAVA", "PHP", "C", "C++", "C#",
+        "BOOTSTRAP", "REACT", "MYSQL", "JQUERY", "EXCEL", "XML", "DJANGO", "NUMPY",
+        "PANDAS", "NODEJS", "DSA", "TYPESCRIPT", "MANGODB", "GIT", "ANGULAR", "DATASCIENCE"
+      ],
+
+      toc: [
+        { href: "#Introduction", label: "Introduction" },
+        { href: "#CSS-properties", label: "CSS Properties A-Z" },
+        { href: "#CSS-selector", label: "CSS Selectors" },
+        { href: "#CSS-At-Rules", label: "CSS At-Rules" },
+        { href: "#CSS-functions", label: "CSS Functions" },
+        { href: "#CSS-units", label: "CSS Units" },
+        { href: "#CSS-color-values", label: "CSS Color Values" },
+        { href: "#CSS-additional-resources", label: "Additional Resources" }
+      ],
+
+      references: {
+        frontend: [
+          { label: "HTML", href: "./htmlreference.html", note: "Reference" },
+          { label: "CSS", href: "./cssreference.html", note: "Reference" },
+          { label: "JAVASCRIPT", href: "./jsreference.html", note: "Reference" },
+          { label: "REACT", href: "", note: "Reference" },
+          { label: "ICONS", href: "./iconrefer.html", note: "Reference" },
+          { label: "UTF-8", href: "./utf-8refer.html", note: "Reference" },
+          { label: "COLOR NAMES", href: "./colors.html", note: "Reference" },
+          { label: "HTML DOM", href: "#", note: "Reference" }
+        ],
+        backend: [
+          { label: "PYTHON", href: "./pythonrefer.html", note: "Reference" },
+          { label: "JAVA", href: "", note: "Reference" },
+          { label: "C", href: "", note: "Reference" },
+          { label: "C++", href: "", note: "Reference" },
+          { label: "jQuery", href: "", note: "Reference" },
+          { label: "Angular", href: "", note: "Reference" }
+        ]
+      },
+
+      /* ── CSS PROPERTIES A-Z ── */
+      propertyGroups: [
+        {
+          id: "A-property", label: "A-Properties",
+          rows: [
+            { prop: "accent-color", desc: "Specifies an accent color for user-interface controls", ver: "CSS4" },
+            { prop: "align-content", desc: "Specifies the alignment between lines inside a flexible container", ver: "CSS3" },
+            { prop: "align-items", desc: "Specifies the alignment for items inside a flexible container", ver: "CSS3" },
+            { prop: "all", desc: "Resets all properties (except unicode-bidi and direction)", ver: "CSS3" },
+            { prop: "animation", desc: "A shorthand property for all animation properties", ver: "CSS3" },
+            { prop: "animation-delay", desc: "Specifies a delay for the start of an animation", ver: "CSS3" },
+            { prop: "animation-direction", desc: "Specifies animation playback direction", ver: "CSS3" },
+            { prop: "animation-duration", desc: "Specifies how long an animation takes to complete", ver: "CSS3" },
+            { prop: "animation-fill-mode", desc: "Specifies a style when animation is not playing", ver: "CSS3" },
+            { prop: "animation-iteration-count", desc: "Specifies the number of times an animation is played", ver: "CSS3" },
+            { prop: "animation-name", desc: "Specifies a name for the @keyframes animation", ver: "CSS3" },
+            { prop: "animation-timing-function", desc: "Specifies the speed curve of an animation", ver: "CSS3" },
+            { prop: "aspect-ratio", desc: "Specifies preferred aspect ratio of an element", ver: "CSS4" }
+          ]
+        },
+        {
+          id: "B-property", label: "B-Properties",
+          rows: [
+            { prop: "backdrop-filter", desc: "Defines graphical effects behind an element", ver: "CSS3" },
+            { prop: "backface-visibility", desc: "Defines visibility of element's back face", ver: "CSS3" },
+            { prop: "background", desc: "Shorthand for all background properties", ver: "CSS1/CSS3" },
+            { prop: "background-attachment", desc: "Sets if background scrolls with page or is fixed", ver: "CSS1" },
+            { prop: "background-blend-mode", desc: "Specifies blending mode of background layers", ver: "CSS3" },
+            { prop: "background-color", desc: "Specifies background color", ver: "CSS1" },
+            { prop: "background-image", desc: "Specifies background images", ver: "CSS1" },
+            { prop: "background-origin", desc: "Specifies origin position of background image", ver: "CSS3" },
+            { prop: "background-position", desc: "Specifies position of background image", ver: "CSS1" },
+            { prop: "background-position-x", desc: "Specifies background position on x-axis", ver: "CSS3" },
+            { prop: "background-position-y", desc: "Specifies background position on y-axis", ver: "CSS3" },
+            { prop: "background-repeat", desc: "Sets how background image repeats", ver: "CSS1" },
+            { prop: "background-size", desc: "Specifies size of background images", ver: "CSS3" },
+            { prop: "block-size", desc: "Specifies size of element in block direction", ver: "CSS3" },
+            { prop: "border", desc: "Shorthand for border properties", ver: "CSS1" },
+            { prop: "border-block", desc: "Shorthand for block border properties", ver: "CSS3" },
+            { prop: "border-block-color", desc: "Sets color of block borders", ver: "CSS3" },
+            { prop: "border-block-end", desc: "Shorthand for block-end border", ver: "CSS3" },
+            { prop: "border-block-end-color", desc: "Sets block-end border color", ver: "CSS3" },
+            { prop: "border-block-end-style", desc: "Sets block-end border style", ver: "CSS3" },
+            { prop: "border-block-end-width", desc: "Sets block-end border width", ver: "CSS3" },
+            { prop: "border-block-start", desc: "Shorthand for block-start border", ver: "CSS3" },
+            { prop: "border-block-start-color", desc: "Sets block-start border color", ver: "CSS3" },
+            { prop: "border-block-start-style", desc: "Sets block-start border style", ver: "CSS3" },
+            { prop: "border-block-start-width", desc: "Sets block-start border width", ver: "CSS3" },
+            { prop: "border-block-style", desc: "Sets style of block borders", ver: "CSS3" },
+            { prop: "border-block-width", desc: "Sets width of block borders", ver: "CSS3" },
+            { prop: "border-bottom", desc: "Shorthand for bottom border", ver: "CSS1" },
+            { prop: "border-bottom-color", desc: "Sets bottom border color", ver: "CSS1" },
+            { prop: "border-bottom-left-radius", desc: "Defines bottom-left corner radius", ver: "CSS3" },
+            { prop: "border-bottom-right-radius", desc: "Defines bottom-right corner radius", ver: "CSS3" },
+            { prop: "border-bottom-style", desc: "Sets bottom border style", ver: "CSS1" },
+            { prop: "border-bottom-width", desc: "Sets bottom border width", ver: "CSS1" },
+            { prop: "border-collapse", desc: "Sets table border collapse mode", ver: "CSS1" },
+            { prop: "border-color", desc: "Sets color of all four borders", ver: "CSS1" },
+            { prop: "border-end-end-radius", desc: "Sets corner radius between block-end and inline-end", ver: "CSS3" },
+            { prop: "border-end-start-radius", desc: "Sets corner radius between block-end and inline-start", ver: "CSS3" },
+            { prop: "border-image", desc: "Shorthand for border-image properties", ver: "CSS3" },
+            { prop: "border-image-outset", desc: "Specifies border image outset", ver: "CSS3" },
+            { prop: "border-image-repeat", desc: "Specifies border image repeat", ver: "CSS3" },
+            { prop: "border-image-slice", desc: "Specifies how to slice border image", ver: "CSS3" },
+            { prop: "border-image-source", desc: "Specifies path to border image", ver: "CSS3" },
+            { prop: "border-image-width", desc: "Specifies border image width", ver: "CSS3" },
+            { prop: "border-inline", desc: "Shorthand for inline border properties", ver: "CSS3" },
+            { prop: "border-inline-color", desc: "Sets color of inline borders", ver: "CSS3" },
+            { prop: "border-inline-end", desc: "Shorthand for inline-end border", ver: "CSS3" },
+            { prop: "border-inline-end-color", desc: "Sets inline-end border color", ver: "CSS3" },
+            { prop: "border-inline-end-style", desc: "Sets inline-end border style", ver: "CSS3" },
+            { prop: "border-inline-end-width", desc: "Sets inline-end border width", ver: "CSS3" },
+            { prop: "border-inline-style", desc: "Sets style of inline borders", ver: "CSS3" },
+            { prop: "border-inline-width", desc: "Sets width of inline borders", ver: "CSS3" },
+            { prop: "border-left", desc: "Shorthand for left border", ver: "CSS1" },
+            { prop: "border-left-color", desc: "Sets left border color", ver: "CSS1" },
+            { prop: "border-left-style", desc: "Sets left border style", ver: "CSS1" },
+            { prop: "border-left-width", desc: "Sets left border width", ver: "CSS1" },
+            { prop: "border-radius", desc: "Shorthand for all corner radius properties", ver: "CSS3" },
+            { prop: "border-right", desc: "Shorthand for right border", ver: "CSS1" },
+            { prop: "border-right-color", desc: "Sets right border color", ver: "CSS1" },
+            { prop: "border-right-style", desc: "Sets right border style", ver: "CSS1" },
+            { prop: "border-right-width", desc: "Sets right border width", ver: "CSS1" },
+            { prop: "border-spacing", desc: "Sets distance between table cell borders", ver: "CSS1" },
+            { prop: "border-start-end-radius", desc: "Sets corner radius between block-start and inline-end", ver: "CSS3" },
+            { prop: "border-start-start-radius", desc: "Sets corner radius between block-start and inline-start", ver: "CSS3" },
+            { prop: "border-style", desc: "Sets style of all four borders", ver: "CSS1" },
+            { prop: "border-top", desc: "Shorthand for top border", ver: "CSS1" },
+            { prop: "border-top-color", desc: "Sets top border color", ver: "CSS1" },
+            { prop: "border-top-left-radius", desc: "Defines top-left corner radius", ver: "CSS3" },
+            { prop: "border-top-right-radius", desc: "Defines top-right corner radius", ver: "CSS3" },
+            { prop: "border-top-style", desc: "Sets top border style", ver: "CSS1" },
+            { prop: "border-top-width", desc: "Sets top border width", ver: "CSS1" },
+            { prop: "border-width", desc: "Sets width of all four borders", ver: "CSS1" },
+            { prop: "bottom", desc: "Sets element's bottom position", ver: "CSS2" },
+            { prop: "box-decoration-break", desc: "Sets behavior at page/line breaks", ver: "CSS3" },
+            { prop: "box-reflect", desc: "Creates a reflection of an element", ver: "CSS3" },
+            { prop: "box-shadow", desc: "Attaches shadows to an element", ver: "CSS3" },
+            { prop: "box-sizing", desc: "Defines how width and height are calculated", ver: "CSS3" },
+            { prop: "break-after", desc: "Specifies page/column break after element", ver: "CSS3" },
+            { prop: "break-before", desc: "Specifies page/column break before element", ver: "CSS3" },
+            { prop: "break-inside", desc: "Specifies page/column break inside element", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "C-property", label: "C-Properties",
+          rows: [
+            { prop: "caption-side", desc: "Specifies table caption placement", ver: "CSS2" },
+            { prop: "caret-color", desc: "Specifies color of text cursor", ver: "CSS3" },
+            { prop: "clear", desc: "Specifies behavior next to floating elements", ver: "CSS1" },
+            { prop: "clip", desc: "Clips an absolutely positioned element (deprecated)", ver: "CSS2" },
+            { prop: "clip-path", desc: "Clips an element to a shape or SVG", ver: "CSS3" },
+            { prop: "color", desc: "Sets the text color", ver: "CSS1" },
+            { prop: "color-scheme", desc: "Indicates OS color scheme preference", ver: "CSS3" },
+            { prop: "column-count", desc: "Specifies number of columns", ver: "CSS3" },
+            { prop: "column-fill", desc: "Specifies how to fill columns", ver: "CSS3" },
+            { prop: "column-gap", desc: "Specifies gap between columns", ver: "CSS3" },
+            { prop: "column-rule", desc: "Shorthand for column rule properties", ver: "CSS3" },
+            { prop: "column-rule-color", desc: "Specifies color of rule between columns", ver: "CSS3" },
+            { prop: "column-rule-style", desc: "Specifies style of rule between columns", ver: "CSS3" },
+            { prop: "column-rule-width", desc: "Specifies width of rule between columns", ver: "CSS3" },
+            { prop: "column-span", desc: "Specifies column span", ver: "CSS1" },
+            { prop: "column-width", desc: "Specifies column width", ver: "CSS3" },
+            { prop: "columns", desc: "Shorthand for column properties", ver: "CSS3" },
+            { prop: "content", desc: "Inserts generated content", ver: "CSS2" },
+            { prop: "counter-increment", desc: "Increments CSS counters", ver: "CSS2" },
+            { prop: "counter-reset", desc: "Creates or resets CSS counters", ver: "CSS2" },
+            { prop: "counter-set", desc: "Creates or sets CSS counters", ver: "CSS3" },
+            { prop: "cursor", desc: "Specifies mouse cursor type", ver: "CSS2" }
+          ]
+        },
+        {
+          id: "D-property", label: "D-Properties",
+          rows: [
+            { prop: "direction", desc: "Specifies text direction", ver: "CSS2" },
+            { prop: "display", desc: "Specifies element display type", ver: "CSS1" }
+          ]
+        },
+        {
+          id: "E-property", label: "E-Properties",
+          rows: [
+            { prop: "empty-cells", desc: "Specifies empty table cell display", ver: "CSS2" }
+          ]
+        },
+        {
+          id: "F-property", label: "F-Properties",
+          rows: [
+            { prop: "filter", desc: "Defines visual effects (blur, brightness, etc.)", ver: "CSS3" },
+            { prop: "flex", desc: "Shorthand for flex properties", ver: "CSS3" },
+            { prop: "flex-basis", desc: "Specifies initial length of flex item", ver: "CSS3" },
+            { prop: "flex-direction", desc: "Specifies direction of flex items", ver: "CSS3" },
+            { prop: "flex-flow", desc: "Shorthand for flex-direction and flex-wrap", ver: "CSS3" },
+            { prop: "flex-grow", desc: "Specifies flex item growth", ver: "CSS3" },
+            { prop: "flex-shrink", desc: "Specifies flex item shrinkage", ver: "CSS3" },
+            { prop: "flex-wrap", desc: "Specifies if flex items should wrap", ver: "CSS3" },
+            { prop: "float", desc: "Specifies float direction", ver: "CSS1" },
+            { prop: "font", desc: "Shorthand for font properties", ver: "CSS1" },
+            { prop: "font-family", desc: "Specifies font family", ver: "CSS1" },
+            { prop: "font-feature-settings", desc: "Controls OpenType font features", ver: "CSS3" },
+            { prop: "font-kerning", desc: "Controls font kerning", ver: "CSS3" },
+            { prop: "font-size", desc: "Specifies font size", ver: "CSS1" },
+            { prop: "font-size-adjust", desc: "Preserves text readability with fallback fonts", ver: "CSS3" },
+            { prop: "font-stretch", desc: "Selects font width variant", ver: "CSS3" },
+            { prop: "font-style", desc: "Specifies font style", ver: "CSS1" },
+            { prop: "font-variant", desc: "Specifies font variant", ver: "CSS1" },
+            { prop: "font-variant-caps", desc: "Controls capital letter glyphs", ver: "CSS3" },
+            { prop: "font-weight", desc: "Specifies font weight", ver: "CSS1" }
+          ]
+        },
+        {
+          id: "G-property", label: "G-Properties",
+          rows: [
+            { prop: "gap", desc: "Shorthand for row-gap and column-gap", ver: "CSS3" },
+            { prop: "grid", desc: "Shorthand for grid properties", ver: "CSS3" },
+            { prop: "grid-area", desc: "Specifies grid item name or position", ver: "CSS3" },
+            { prop: "grid-auto-columns", desc: "Specifies default column size", ver: "CSS3" },
+            { prop: "grid-auto-flow", desc: "Specifies auto-placement algorithm", ver: "CSS3" },
+            { prop: "grid-auto-rows", desc: "Specifies default row size", ver: "CSS3" },
+            { prop: "grid-column", desc: "Shorthand for grid-column position", ver: "CSS3" },
+            { prop: "grid-column-end", desc: "Specifies grid item column end", ver: "CSS3" },
+            { prop: "grid-column-start", desc: "Specifies grid item column start", ver: "CSS3" },
+            { prop: "grid-row", desc: "Shorthand for grid-row position", ver: "CSS3" },
+            { prop: "grid-row-end", desc: "Specifies grid item row end", ver: "CSS3" },
+            { prop: "grid-row-start", desc: "Specifies grid item row start", ver: "CSS3" },
+            { prop: "grid-template", desc: "Shorthand for grid template properties", ver: "CSS3" },
+            { prop: "grid-template-areas", desc: "Specifies named grid areas", ver: "CSS3" },
+            { prop: "grid-template-columns", desc: "Specifies column sizes", ver: "CSS3" },
+            { prop: "grid-template-rows", desc: "Specifies row sizes", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "H-property", label: "H-Properties",
+          rows: [
+            { prop: "hanging-punctuation", desc: "Specifies punctuation hanging", ver: "CSS3" },
+            { prop: "height", desc: "Sets element height", ver: "CSS1" },
+            { prop: "hyphens", desc: "Sets hyphenation rules", ver: "CSS3" },
+            { prop: "hyphenate-character", desc: "Sets hyphenation character", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "I-property", label: "I-Properties",
+          rows: [
+            { prop: "image-rendering", desc: "Specifies image scaling algorithm", ver: "CSS3" },
+            { prop: "initial-letter", desc: "Specifies initial letter size", ver: "CSS3" },
+            { prop: "inline-size", desc: "Specifies size in inline direction", ver: "CSS3" },
+            { prop: "inset", desc: "Shorthand for distance from parent", ver: "CSS3" },
+            { prop: "inset-block", desc: "Specifies block direction distance", ver: "CSS3" },
+            { prop: "inset-block-end", desc: "Specifies block-end distance", ver: "CSS3" },
+            { prop: "inset-block-start", desc: "Specifies block-start distance", ver: "CSS3" },
+            { prop: "inset-inline", desc: "Specifies inline direction distance", ver: "CSS3" },
+            { prop: "inset-inline-end", desc: "Specifies inline-end distance", ver: "CSS3" },
+            { prop: "inset-inline-start", desc: "Specifies inline-start distance", ver: "CSS3" },
+            { prop: "isolation", desc: "Specifies stacking context isolation", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "J-property", label: "J-Properties",
+          rows: [
+            { prop: "justify-content", desc: "Specifies alignment in flex container", ver: "CSS3" },
+            { prop: "justify-items", desc: "Specifies grid item inline alignment", ver: "CSS3" },
+            { prop: "justify-self", desc: "Specifies individual grid item inline alignment", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "L-property", label: "L-Properties",
+          rows: [
+            { prop: "left", desc: "Specifies left position of positioned element", ver: "CSS2" },
+            { prop: "letter-spacing", desc: "Increases/decreases character spacing", ver: "CSS1" },
+            { prop: "line-height", desc: "Sets line height", ver: "CSS1" },
+            { prop: "list-style", desc: "Shorthand for list properties", ver: "CSS1" },
+            { prop: "list-style-image", desc: "Specifies list item marker image", ver: "CSS1" },
+            { prop: "list-style-position", desc: "Specifies list item marker position", ver: "CSS1" },
+            { prop: "list-style-type", desc: "Specifies list item marker type", ver: "CSS1" }
+          ]
+        },
+        {
+          id: "M-property", label: "M-Properties",
+          rows: [
+            { prop: "margin", desc: "Shorthand for all margin properties", ver: "CSS1" },
+            { prop: "margin-block", desc: "Specifies block direction margin", ver: "CSS3" },
+            { prop: "margin-block-end", desc: "Specifies block-end margin", ver: "CSS3" },
+            { prop: "margin-block-start", desc: "Specifies block-start margin", ver: "CSS3" },
+            { prop: "margin-bottom", desc: "Sets bottom margin", ver: "CSS1" },
+            { prop: "margin-inline", desc: "Specifies inline direction margin", ver: "CSS3" },
+            { prop: "margin-inline-end", desc: "Specifies inline-end margin", ver: "CSS3" },
+            { prop: "margin-inline-start", desc: "Specifies inline-start margin", ver: "CSS3" },
+            { prop: "margin-left", desc: "Sets left margin", ver: "CSS1" },
+            { prop: "margin-right", desc: "Sets right margin", ver: "CSS1" },
+            { prop: "margin-top", desc: "Sets top margin", ver: "CSS1" },
+            { prop: "marker", desc: "Points to SVG marker (all vertices)", ver: "CSS3" },
+            { prop: "marker-end", desc: "Points to SVG marker (last vertex)", ver: "CSS3" },
+            { prop: "marker-mid", desc: "Points to SVG marker (middle vertices)", ver: "CSS3" },
+            { prop: "marker-start", desc: "Points to SVG marker (first vertex)", ver: "CSS3" },
+            { prop: "mask", desc: "Shorthand for mask properties", ver: "CSS3" },
+            { prop: "mask-clip", desc: "Specifies mask area", ver: "CSS3" },
+            { prop: "mask-composite", desc: "Specifies mask compositing operation", ver: "CSS3" },
+            { prop: "mask-image", desc: "Specifies mask image", ver: "CSS3" },
+            { prop: "mask-mode", desc: "Specifies mask mode (luminance/alpha)", ver: "CSS3" },
+            { prop: "mask-origin", desc: "Specifies mask origin position", ver: "CSS3" },
+            { prop: "mask-position", desc: "Sets mask starting position", ver: "CSS3" },
+            { prop: "mask-repeat", desc: "Specifies mask repeat", ver: "CSS3" },
+            { prop: "mask-size", desc: "Specifies mask size", ver: "CSS3" },
+            { prop: "mask-type", desc: "Specifies SVG mask type", ver: "CSS3" },
+            { prop: "max-block-size", desc: "Sets maximum block size", ver: "CSS3" },
+            { prop: "max-height", desc: "Sets maximum height", ver: "CSS1" },
+            { prop: "max-inline-size", desc: "Sets maximum inline size", ver: "CSS3" },
+            { prop: "max-width", desc: "Sets maximum width", ver: "CSS1" },
+            { prop: "min-block-size", desc: "Sets minimum block size", ver: "CSS3" },
+            { prop: "min-height", desc: "Sets minimum height", ver: "CSS1" },
+            { prop: "min-inline-size", desc: "Sets minimum inline size", ver: "CSS3" },
+            { prop: "min-width", desc: "Sets minimum width", ver: "CSS1" },
+            { prop: "mix-blend-mode", desc: "Specifies content blending", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "O-property", label: "O-Properties",
+          rows: [
+            { prop: "object-fit", desc: "Specifies how replaced element fits", ver: "CSS3" },
+            { prop: "object-position", desc: "Specifies replaced element alignment", ver: "CSS3" },
+            { prop: "offset", desc: "Shorthand for offset properties", ver: "CSS3" },
+            { prop: "offset-anchor", desc: "Specifies offset anchor point", ver: "CSS3" },
+            { prop: "offset-distance", desc: "Specifies position along path", ver: "CSS3" },
+            { prop: "offset-path", desc: "Specifies animation path", ver: "CSS3" },
+            { prop: "offset-position", desc: "Specifies initial position on path", ver: "CSS3" },
+            { prop: "offset-rotate", desc: "Specifies rotation along path", ver: "CSS3" },
+            { prop: "opacity", desc: "Sets opacity level", ver: "CSS3" },
+            { prop: "order", desc: "Sets flex item order", ver: "CSS3" },
+            { prop: "orphans", desc: "Sets minimum lines at bottom of page", ver: "CSS2" },
+            { prop: "outline", desc: "Shorthand for outline properties", ver: "CSS2" },
+            { prop: "outline-color", desc: "Sets outline color", ver: "CSS2" },
+            { prop: "outline-offset", desc: "Offsets outline from border", ver: "CSS3" },
+            { prop: "outline-style", desc: "Sets outline style", ver: "CSS2" },
+            { prop: "outline-width", desc: "Sets outline width", ver: "CSS2" },
+            { prop: "overflow", desc: "Specifies overflow behavior", ver: "CSS2" },
+            { prop: "overflow-anchor", desc: "Specifies scroll anchoring", ver: "CSS3" },
+            { prop: "overflow-wrap", desc: "Specifies line breaking with long words", ver: "CSS3" },
+            { prop: "overflow-x", desc: "Specifies horizontal overflow", ver: "CSS3" },
+            { prop: "overflow-y", desc: "Specifies vertical overflow", ver: "CSS3" },
+            { prop: "overscroll-behavior", desc: "Specifies overscroll behavior", ver: "CSS3" },
+            { prop: "overscroll-behavior-block", desc: "Specifies block overscroll behavior", ver: "CSS3" },
+            { prop: "overscroll-behavior-inline", desc: "Specifies inline overscroll behavior", ver: "CSS3" },
+            { prop: "overscroll-behavior-x", desc: "Specifies horizontal overscroll behavior", ver: "CSS3" },
+            { prop: "overscroll-behavior-y", desc: "Specifies vertical overscroll behavior", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "P-property", label: "P-Properties",
+          rows: [
+            { prop: "padding", desc: "Shorthand for all padding properties", ver: "CSS1" },
+            { prop: "padding-block", desc: "Specifies block direction padding", ver: "CSS3" },
+            { prop: "padding-block-end", desc: "Specifies block-end padding", ver: "CSS3" },
+            { prop: "padding-block-start", desc: "Specifies block-start padding", ver: "CSS3" },
+            { prop: "padding-bottom", desc: "Sets bottom padding", ver: "CSS1" },
+            { prop: "padding-inline", desc: "Specifies inline direction padding", ver: "CSS3" },
+            { prop: "padding-inline-end", desc: "Specifies inline-end padding", ver: "CSS3" },
+            { prop: "padding-inline-start", desc: "Specifies inline-start padding", ver: "CSS3" },
+            { prop: "padding-left", desc: "Sets left padding", ver: "CSS1" },
+            { prop: "padding-right", desc: "Sets right padding", ver: "CSS1" },
+            { prop: "padding-top", desc: "Sets top padding", ver: "CSS1" },
+            { prop: "page-break-after", desc: "Sets page-break after element (deprecated)", ver: "CSS2" },
+            { prop: "page-break-before", desc: "Sets page-break before element (deprecated)", ver: "CSS2" },
+            { prop: "page-break-inside", desc: "Sets page-break inside element (deprecated)", ver: "CSS2" },
+            { prop: "paint-order", desc: "Sets SVG paint order", ver: "CSS3" },
+            { prop: "perspective", desc: "Gives 3D perspective", ver: "CSS3" },
+            { prop: "perspective-origin", desc: "Defines 3D perspective origin", ver: "CSS3" },
+            { prop: "place-content", desc: "Shorthand for align-content and justify-content", ver: "CSS3" },
+            { prop: "place-items", desc: "Shorthand for align-items and justify-items", ver: "CSS3" },
+            { prop: "place-self", desc: "Shorthand for align-self and justify-self", ver: "CSS3" },
+            { prop: "pointer-events", desc: "Defines pointer event reaction", ver: "CSS3" },
+            { prop: "position", desc: "Specifies positioning method", ver: "CSS2" }
+          ]
+        },
+        {
+          id: "Q-R-property", label: "Q-R Properties",
+          rows: [
+            { prop: "quotes", desc: "Sets quotation marks", ver: "CSS2" },
+            { prop: "resize", desc: "Specifies if/how element is resizable", ver: "CSS3" },
+            { prop: "right", desc: "Specifies right position", ver: "CSS2" },
+            { prop: "rotate", desc: "Rotates an element", ver: "CSS3" },
+            { prop: "row-gap", desc: "Specifies gap between rows", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "S-property", label: "S-Properties",
+          rows: [
+            { prop: "scale", desc: "Scales an element", ver: "CSS3" },
+            { prop: "scroll-behavior", desc: "Specifies scrolling behavior", ver: "CSS3" },
+            { prop: "scroll-margin", desc: "Shorthand for scroll-margin properties", ver: "CSS3" },
+            { prop: "scroll-margin-block", desc: "Specifies block scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-block-end", desc: "Specifies block-end scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-block-start", desc: "Specifies block-start scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-bottom", desc: "Sets bottom scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-inline", desc: "Specifies inline scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-inline-end", desc: "Specifies inline-end scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-inline-start", desc: "Specifies inline-start scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-left", desc: "Sets left scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-right", desc: "Sets right scroll margin", ver: "CSS3" },
+            { prop: "scroll-margin-top", desc: "Sets top scroll margin", ver: "CSS3" },
+            { prop: "scroll-padding", desc: "Shorthand for scroll-padding properties", ver: "CSS3" },
+            { prop: "scroll-padding-block", desc: "Specifies block scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-block-end", desc: "Specifies block-end scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-block-start", desc: "Specifies block-start scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-bottom", desc: "Sets bottom scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-inline", desc: "Specifies inline scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-inline-end", desc: "Specifies inline-end scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-inline-start", desc: "Specifies inline-start scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-left", desc: "Sets left scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-right", desc: "Sets right scroll padding", ver: "CSS3" },
+            { prop: "scroll-padding-top", desc: "Sets top scroll padding", ver: "CSS3" },
+            { prop: "scroll-snap-align", desc: "Specifies scroll snap alignment", ver: "CSS3" },
+            { prop: "scroll-snap-stop", desc: "Specifies scroll snap stopping", ver: "CSS3" },
+            { prop: "scroll-snap-type", desc: "Specifies scroll snap type", ver: "CSS3" },
+            { prop: "scrollbar-color", desc: "Specifies scrollbar colors", ver: "CSS3" },
+            { prop: "shape-outside", desc: "Defines shape for text wrapping", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "T-property", label: "T-Properties",
+          rows: [
+            { prop: "tab-size", desc: "Specifies tab character width", ver: "CSS3" },
+            { prop: "table-layout", desc: "Sets table layout algorithm", ver: "CSS2" },
+            { prop: "text-align", desc: "Specifies horizontal text alignment", ver: "CSS1" },
+            { prop: "text-align-last", desc: "Specifies last line alignment", ver: "CSS3" },
+            { prop: "text-decoration", desc: "Specifies text decoration", ver: "CSS1/CSS3" },
+            { prop: "text-decoration-color", desc: "Specifies text decoration color", ver: "CSS3" },
+            { prop: "text-decoration-line", desc: "Specifies text decoration line type", ver: "CSS3" },
+            { prop: "text-decoration-style", desc: "Specifies text decoration style", ver: "CSS3" },
+            { prop: "text-decoration-thickness", desc: "Specifies text decoration thickness", ver: "CSS3" },
+            { prop: "text-emphasis", desc: "Shorthand for text emphasis", ver: "CSS3" },
+            { prop: "text-emphasis-color", desc: "Specifies emphasis mark color", ver: "CSS3" },
+            { prop: "text-emphasis-position", desc: "Specifies emphasis mark position", ver: "CSS3" },
+            { prop: "text-emphasis-style", desc: "Specifies emphasis mark style", ver: "CSS3" },
+            { prop: "text-indent", desc: "Specifies first line indentation", ver: "CSS1" },
+            { prop: "text-justify", desc: "Specifies text justification method", ver: "CSS3" },
+            { prop: "text-orientation", desc: "Specifies text orientation", ver: "CSS3" },
+            { prop: "text-overflow", desc: "Specifies overflow text handling", ver: "CSS3" },
+            { prop: "text-shadow", desc: "Adds shadow to text", ver: "CSS3" },
+            { prop: "text-transform", desc: "Controls text capitalization", ver: "CSS1" },
+            { prop: "text-underline-offset", desc: "Specifies underline offset", ver: "CSS3" },
+            { prop: "text-underline-position", desc: "Specifies underline position", ver: "CSS3" },
+            { prop: "top", desc: "Specifies top position", ver: "CSS2" },
+            { prop: "transform", desc: "Applies 2D or 3D transformation", ver: "CSS3" },
+            { prop: "transform-origin", desc: "Changes transform origin", ver: "CSS3" },
+            { prop: "transform-style", desc: "Specifies 3D transform style", ver: "CSS3" },
+            { prop: "transition", desc: "Shorthand for transition properties", ver: "CSS3" },
+            { prop: "transition-delay", desc: "Specifies transition delay", ver: "CSS3" },
+            { prop: "transition-duration", desc: "Specifies transition duration", ver: "CSS3" },
+            { prop: "transition-property", desc: "Specifies transition property", ver: "CSS3" },
+            { prop: "transition-timing-function", desc: "Specifies transition timing", ver: "CSS3" },
+            { prop: "translate", desc: "Translates an element", ver: "CSS3" }
+          ]
+        },
+        {
+          id: "U-Z-property", label: "U-Z - Properties",
+          rows: [
+            { prop: "unicode-bidi", desc: "Used with direction property", ver: "CSS2" },
+            { prop: "user-select", desc: "Specifies text selection ability", ver: "CSS3" },
+            { prop: "vertical-align", desc: "Sets vertical alignment", ver: "CSS1" },
+            { prop: "visibility", desc: "Specifies element visibility", ver: "CSS2" },
+            { prop: "white-space", desc: "Specifies whitespace handling", ver: "CSS1" },
+            { prop: "widows", desc: "Sets minimum lines at top of page", ver: "CSS2" },
+            { prop: "width", desc: "Sets element width", ver: "CSS1" },
+            { prop: "word-break", desc: "Specifies word breaking rules", ver: "CSS3" },
+            { prop: "word-spacing", desc: "Increases/decreases word spacing", ver: "CSS1" },
+            { prop: "word-wrap", desc: "Allows long words to break", ver: "CSS3" },
+            { prop: "writing-mode", desc: "Specifies text writing mode", ver: "CSS3" },
+            { prop: "z-index", desc: "Specifies stack order", ver: "CSS2" },
+            { prop: "zoom", desc: "Specifies zoom level", ver: "CSS3" }
+          ]
+        }
+      ],
+
+      /* ── CSS SELECTORS ── */
+      selectorGroups: [
+        {
+          label: "Basic Selectors",
+          cols: ["Selector", "Example", "Description"],
+          rows: [
+            { sel: ".class", ex: ".intro", desc: 'Selects all elements with class="intro"' },
+            { sel: "#id", ex: "#firstname", desc: 'Selects element with id="firstname"' },
+            { sel: "*", ex: "*", desc: "Selects all elements" },
+            { sel: "element", ex: "p", desc: "Selects all &lt;p&gt; elements" },
+            { sel: "element,element", ex: "div, p", desc: "Selects all &lt;div&gt; and &lt;p&gt; elements" }
+          ]
+        },
+        {
+          label: "Combinator Selectors",
+          cols: ["Selector", "Example", "Description"],
+          rows: [
+            { sel: "element element", ex: "div p", desc: "Selects all &lt;p&gt; inside &lt;div&gt;" },
+            { sel: "element &gt; element", ex: "div &gt; p", desc: "Selects all &lt;p&gt; where parent is &lt;div&gt;" },
+            { sel: "element + element", ex: "div + p", desc: "Selects &lt;p&gt; immediately after &lt;div&gt;" },
+            { sel: "element ~ element", ex: "p ~ ul", desc: "Selects all &lt;ul&gt; preceded by &lt;p&gt;" }
+          ]
+        },
+        {
+          label: "Pseudo-class Selectors",
+          cols: ["Selector", "Example", "Description"],
+          rows: [
+            { sel: ":active", ex: "a:active", desc: "Selects active link" },
+            { sel: ":checked", ex: "input:checked", desc: "Selects checked input elements" },
+            { sel: ":disabled", ex: "input:disabled", desc: "Selects disabled input elements" },
+            { sel: ":empty", ex: "p:empty", desc: "Selects &lt;p&gt; with no children" },
+            { sel: ":enabled", ex: "input:enabled", desc: "Selects enabled input elements" },
+            { sel: ":first-child", ex: "p:first-child", desc: "Selects first &lt;p&gt; of its parent" },
+            { sel: ":first-of-type", ex: "p:first-of-type", desc: "Selects first &lt;p&gt; of its type" },
+            { sel: ":focus", ex: "input:focus", desc: "Selects input element with focus" },
+            { sel: ":hover", ex: "a:hover", desc: "Selects links on mouse over" },
+            { sel: ":in-range", ex: "input:in-range", desc: "Selects input with value in range" },
+            { sel: ":invalid", ex: "input:invalid", desc: "Selects input with invalid value" },
+            { sel: ":lang()", ex: "p:lang(it)", desc: 'Selects &lt;p&gt; with lang="it"' },
+            { sel: ":last-child", ex: "p:last-child", desc: "Selects last &lt;p&gt; of its parent" },
+            { sel: ":last-of-type", ex: "p:last-of-type", desc: "Selects last &lt;p&gt; of its type" },
+            { sel: ":link", ex: "a:link", desc: "Selects all unvisited links" },
+            { sel: ":not()", ex: "p:not(.intro)", desc: "Selects every element not a &lt;p&gt;" },
+            { sel: ":nth-child(n)", ex: "p:nth-child(2)", desc: "Selects second &lt;p&gt; of its parent" },
+            { sel: ":nth-last-child(n)", ex: "p:nth-last-child(2)", desc: "Selects second &lt;p&gt; from end" },
+            { sel: ":nth-last-of-type(n)", ex: "p:nth-last-of-type(2)", desc: "Selects second &lt;p&gt; from end of type" },
+            { sel: ":nth-of-type(n)", ex: "p:nth-of-type(2)", desc: "Selects second &lt;p&gt; of its type" },
+            { sel: ":only-of-type", ex: "p:only-of-type", desc: "Selects &lt;p&gt; that is only of its type" },
+            { sel: ":only-child", ex: "p:only-child", desc: "Selects &lt;p&gt; that is only child" },
+            { sel: ":optional", ex: "input:optional", desc: 'Selects input without "required"' },
+            { sel: ":out-of-range", ex: "input:out-of-range", desc: "Selects input with value out of range" },
+            { sel: ":read-only", ex: "input:read-only", desc: 'Selects input with "readonly"' },
+            { sel: ":read-write", ex: "input:read-write", desc: 'Selects input without "readonly"' },
+            { sel: ":required", ex: "input:required", desc: 'Selects input with "required"' },
+            { sel: ":root", ex: ":root", desc: "Selects document's root element" },
+            { sel: ":target", ex: "#news:target", desc: "Selects current active #news" },
+            { sel: ":valid", ex: "input:valid", desc: "Selects input with valid value" },
+            { sel: ":visited", ex: "a:visited", desc: "Selects all visited links" }
+          ]
+        },
+        {
+          label: "Pseudo-element Selectors",
+          cols: ["Selector", "Example", "Description"],
+          rows: [
+            { sel: "::after", ex: "p::after", desc: "Insert content after &lt;p&gt;" },
+            { sel: "::before", ex: "p::before", desc: "Insert content before &lt;p&gt;" },
+            { sel: "::first-letter", ex: "p::first-letter", desc: "Selects first letter of &lt;p&gt;" },
+            { sel: "::first-line", ex: "p::first-line", desc: "Selects first line of &lt;p&gt;" },
+            { sel: "::marker", ex: "::marker", desc: "Selects markers of list items" },
+            { sel: "::selection", ex: "::selection", desc: "Selects portion selected by user" }
+          ]
+        },
+        {
+          label: "Attribute Selectors",
+          cols: ["Selector", "Example", "Description"],
+          rows: [
+            { sel: "[attribute]", ex: "[target]", desc: "Selects elements with target attribute" },
+            { sel: "[attribute=value]", ex: '[target="_blank"]', desc: 'Selects elements with target="_blank"' },
+            { sel: "[attribute~=value]", ex: '[title~="flower"]', desc: 'Selects elements with title containing "flower"' },
+            { sel: '[attribute|=value]', ex: '[lang|="en"]', desc: 'Selects elements with lang starting with "en"' },
+            { sel: "[attribute^=value]", ex: 'a[href^="https"]', desc: 'Selects &lt;a&gt; with href starting with "https"' },
+            { sel: "[attribute$=value]", ex: 'a[href$=".pdf"]', desc: 'Selects &lt;a&gt; with href ending with ".pdf"' },
+            { sel: "[attribute*=value]", ex: 'a[href*="w3schools"]', desc: 'Selects &lt;a&gt; with href containing "w3schools"' }
+          ]
+        }
+      ],
+
+      /* ── CSS AT-RULES ── */
+      atRules: [
+        { rule: "@charset", desc: "Specifies the character encoding used in the style sheet" },
+        { rule: "@counter-style", desc: "Defines styles for counter styles" },
+        { rule: "@font-face", desc: "Defines custom fonts to be downloaded" },
+        { rule: "@font-feature-values", desc: "Controls advanced font features" },
+        { rule: "@import", desc: "Imports a style sheet into another style sheet" },
+        { rule: "@keyframes", desc: "Specifies animation code" },
+        { rule: "@layer", desc: "Declares a cascade layer" },
+        { rule: "@media", desc: "Sets styles for different media types/devices" },
+        { rule: "@namespace", desc: "Defines XML namespaces to be used" },
+        { rule: "@page", desc: "Defines page layout for printed pages" },
+        { rule: "@property", desc: "Defines custom CSS properties" },
+        { rule: "@scope", desc: "Defines scope for CSS rules" },
+        { rule: "@starting-style", desc: "Defines starting styles for transitions" },
+        { rule: "@supports", desc: "Tests browser support for CSS features" }
+      ],
+
+      /* ── CSS FUNCTIONS ── */
+      functionGroups: [
+        {
+          label: "Transform Functions",
+          rows: [
+            { fn: "matrix()", desc: "Defines 2D transformation matrix" },
+            { fn: "matrix3d()", desc: "Defines 3D transformation matrix" },
+            { fn: "perspective()", desc: "Defines perspective view" },
+            { fn: "rotate()", desc: "Defines 2D rotation" },
+            { fn: "rotate3d()", desc: "Defines 3D rotation" },
+            { fn: "rotateX()", desc: "Defines 3D rotation along X-axis" },
+            { fn: "rotateY()", desc: "Defines 3D rotation along Y-axis" },
+            { fn: "rotateZ()", desc: "Defines 3D rotation along Z-axis" },
+            { fn: "scale()", desc: "Defines 2D scale transformation" },
+            { fn: "scale3d()", desc: "Defines 3D scale transformation" },
+            { fn: "scaleX()", desc: "Defines scale transformation along X-axis" },
+            { fn: "scaleY()", desc: "Defines scale transformation along Y-axis" },
+            { fn: "scaleZ()", desc: "Defines scale transformation along Z-axis" },
+            { fn: "skew()", desc: "Defines 2D skew transformation" },
+            { fn: "skewX()", desc: "Defines skew transformation along X-axis" },
+            { fn: "skewY()", desc: "Defines skew transformation along Y-axis" },
+            { fn: "translate()", desc: "Defines 2D translation" },
+            { fn: "translate3d()", desc: "Defines 3D translation" },
+            { fn: "translateX()", desc: "Defines translation along X-axis" },
+            { fn: "translateY()", desc: "Defines translation along Y-axis" },
+            { fn: "translateZ()", desc: "Defines translation along Z-axis" }
+          ]
+        },
+        {
+          label: "Math Functions",
+          rows: [
+            { fn: "calc()", desc: "Performs calculations" },
+            { fn: "max()", desc: "Uses largest value" },
+            { fn: "min()", desc: "Uses smallest value" },
+            { fn: "clamp()", desc: "Clamps value between min and max" }
+          ]
+        },
+        {
+          label: "Filter Functions",
+          rows: [
+            { fn: "blur()", desc: "Applies blur effect" },
+            { fn: "brightness()", desc: "Adjusts brightness" },
+            { fn: "contrast()", desc: "Adjusts contrast" },
+            { fn: "drop-shadow()", desc: "Applies drop shadow" },
+            { fn: "grayscale()", desc: "Converts to grayscale" },
+            { fn: "hue-rotate()", desc: "Applies hue rotation" },
+            { fn: "invert()", desc: "Inverts colors" },
+            { fn: "opacity()", desc: "Sets opacity" },
+            { fn: "saturate()", desc: "Adjusts saturation" },
+            { fn: "sepia()", desc: "Converts to sepia" }
+          ]
+        },
+        {
+          label: "Color Functions",
+          rows: [
+            { fn: "rgb()", desc: "Defines RGB color" },
+            { fn: "rgba()", desc: "Defines RGB color with alpha" },
+            { fn: "hsl()", desc: "Defines HSL color" },
+            { fn: "hsla()", desc: "Defines HSL color with alpha" },
+            { fn: "color()", desc: "Defines color in specific color space" },
+            { fn: "color-mix()", desc: "Mixes two colors" }
+          ]
+        },
+        {
+          label: "Gradient Functions",
+          rows: [
+            { fn: "linear-gradient()", desc: "Creates linear gradient" },
+            { fn: "radial-gradient()", desc: "Creates radial gradient" },
+            { fn: "conic-gradient()", desc: "Creates conic gradient" },
+            { fn: "repeating-linear-gradient()", desc: "Creates repeating linear gradient" },
+            { fn: "repeating-radial-gradient()", desc: "Creates repeating radial gradient" },
+            { fn: "repeating-conic-gradient()", desc: "Creates repeating conic gradient" }
+          ]
+        },
+        {
+          label: "Other Functions",
+          rows: [
+            { fn: "attr()", desc: "Returns attribute value" },
+            { fn: "var()", desc: "Inserts custom property value" },
+            { fn: "url()", desc: "Includes external resource" },
+            { fn: "counter()", desc: "Returns counter value" },
+            { fn: "counters()", desc: "Returns nested counter values" }
+          ]
+        }
+      ],
+
+      /* ── CSS UNITS ── */
+      unitGroups: [
+        {
+          label: "Absolute Units",
+          rows: [
+            { unit: "cm", desc: "Centimeters" },
+            { unit: "mm", desc: "Millimeters" },
+            { unit: "in", desc: "Inches (1in = 96px = 2.54cm)" },
+            { unit: "px", desc: "Pixels (1px = 1/96 of 1in)" },
+            { unit: "pt", desc: "Points (1pt = 1/72 of 1in)" },
+            { unit: "pc", desc: "Picas (1pc = 12pt)" }
+          ]
+        },
+        {
+          label: "Relative Units",
+          rows: [
+            { unit: "em", desc: "Relative to font-size of element" },
+            { unit: "ex", desc: "Relative to x-height of current font" },
+            { unit: "ch", desc: "Relative to width of \"0\" character" },
+            { unit: "rem", desc: "Relative to font-size of root element" },
+            { unit: "vw", desc: "Relative to 1% of viewport width" },
+            { unit: "vh", desc: "Relative to 1% of viewport height" },
+            { unit: "vmin", desc: "Relative to 1% of viewport's smaller dimension" },
+            { unit: "vmax", desc: "Relative to 1% of viewport's larger dimension" },
+            { unit: "%", desc: "Relative to parent element" }
+          ]
+        },
+        {
+          label: "Container Query Units",
+          rows: [
+            { unit: "cqw", desc: "1% of container's width" },
+            { unit: "cqh", desc: "1% of container's height" },
+            { unit: "cqi", desc: "1% of container's inline size" },
+            { unit: "cqb", desc: "1% of container's block size" },
+            { unit: "cqmin", desc: "Smaller of cqi or cqb" },
+            { unit: "cqmax", desc: "Larger of cqi or cqb" }
+          ]
+        }
+      ],
+
+      /* ── ADDITIONAL RESOURCES ── */
+      additionalResources: [
+        "CSS Browser Support – Browser compatibility for CSS properties",
+        "CSS Selectors Reference – Complete selector syntax guide",
+        "CSS Combinators – Selector combination techniques",
+        "CSS Pseudo-classes – Dynamic pseudo-class selectors",
+        "CSS Pseudo-elements – Content generation and styling",
+        "CSS Functions – Built-in CSS functions",
+        "CSS Animatable Properties – Properties that can be animated",
+        "CSS Default Values – Default property values",
+        "CSS Entities – Special character codes",
+        "CSS Web Safe Fonts – Universally supported fonts",
+        "CSS PX-EM Converter – Unit conversion tool"
+      ],
+
+      summary: {
+        total: "350+ properties",
+        versions: [
+          { ver: "CSS1", desc: "Basic properties (color, font, margin, padding, etc.)" },
+          { ver: "CSS2", desc: "Positioning, media types, pseudo-elements" },
+          { ver: "CSS3", desc: "Animations, transforms, flexbox, grid, transitions" },
+          { ver: "CSS4", desc: "Advanced features like accent-color, container queries" }
+        ],
+        selectors: "50+ selector types",
+        atRules: "15+ at-rules",
+        functions: "60+ built-in functions",
+        units: "25+ measurement units",
+        colorFormats: "5 main color specification methods"
+      }
+
+    }; // end DATA
+
+
+    /* =======================================================
+       HELPERS
+    ======================================================= */
+    function pill(text) {
+      const span = document.createElement('span');
+      span.className = 'pill';
+      span.innerHTML = text;
+      return span;
+    }
+
+    function codeEl(text) {
+      const c = document.createElement('code');
+      c.textContent = text;
+      return c;
+    }
+
+    function propPill(text) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      return p;
+    }
+
+
+    /* =======================================================
+       RENDER: Course Nav
+    ======================================================= */
+    function renderCourseNav() {
+      const c = document.getElementById('courseNavContainer');
+      DATA.courses.forEach(name => {
+        const a = document.createElement('a');
+        a.href = '#';
+        a.textContent = name;
+        c.appendChild(a);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: Table of Contents
+    ======================================================= */
+    function renderTOC() {
+      const ul = document.getElementById('tocList');
+      DATA.toc.forEach(item => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.label;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: Reference Card
+    ======================================================= */
+    function renderReferenceCard() {
+      const container = document.getElementById('referenceContainer');
+
+      const feDiv = document.createElement('div');
+      feDiv.className = 'frontend-col';
+      const feH3 = document.createElement('h3');
+      feH3.textContent = 'Front-end';
+      const feUl = document.createElement('ul');
+      DATA.references.frontend.forEach(r => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = r.href;
+        a.textContent = r.label + ' ';
+        const span = document.createElement('span');
+        span.textContent = r.note;
+        a.appendChild(span);
+        li.appendChild(a);
+        feUl.appendChild(li);
+      });
+      feDiv.appendChild(feH3);
+      feDiv.appendChild(feUl);
+
+      const beDiv = document.createElement('div');
+      beDiv.className = 'backend-col';
+      const beH3 = document.createElement('h3');
+      beH3.textContent = 'Back-end';
+      const beUl = document.createElement('ul');
+      DATA.references.backend.forEach(r => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = r.href;
+        a.textContent = r.label;
+        const span = document.createElement('span');
+        span.textContent = r.note;
+        a.appendChild(span);
+        li.appendChild(a);
+        beUl.appendChild(li);
+      });
+      beDiv.appendChild(beH3);
+      beDiv.appendChild(beUl);
+
+      container.appendChild(feDiv);
+      container.appendChild(beDiv);
+    }
+
+
+    /* =======================================================
+       RENDER: CSS Properties A-Z
+    ======================================================= */
+    function renderProperties() {
+      const container = document.getElementById('propertiesContainer');
+
+      const titleH2 = document.createElement('h2');
+      titleH2.textContent = 'CSS Properties A-Z';
+      container.appendChild(titleH2);
+
+      DATA.propertyGroups.forEach(group => {
+        const div = document.createElement('div');
+        div.className = group.id;
+
+        const h4 = document.createElement('h4');
+        h4.textContent = group.label;
+        div.appendChild(h4);
+
+        const table = document.createElement('table');
+        // Header row
+        const thead = document.createElement('thead');
+        const hRow = document.createElement('tr');
+        ['Property', 'Description', 'CSS Version'].forEach(txt => {
+          const th = document.createElement('th');
+          th.textContent = txt;
+          hRow.appendChild(th);
+        });
+        thead.appendChild(hRow);
+        table.appendChild(thead);
+
+        // Body rows
+        const tbody = document.createElement('tbody');
+        group.rows.forEach(r => {
+          const tr = document.createElement('tr');
+          const tdProp = document.createElement('td');
+          tdProp.appendChild(propPill(r.prop));
+
+          const tdDesc = document.createElement('td');
+          tdDesc.textContent = r.desc;
+
+          const tdVer = document.createElement('td');
+          tdVer.textContent = r.ver;
+
+          tr.appendChild(tdProp);
+          tr.appendChild(tdDesc);
+          tr.appendChild(tdVer);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        div.appendChild(table);
+        container.appendChild(div);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: CSS Selectors
+    ======================================================= */
+    function renderSelectors() {
+      const container = document.getElementById('selectorsContainer');
+
+      DATA.selectorGroups.forEach(group => {
+        const table = document.createElement('table');
+        table.className = 'selector-table';
+
+        // Group label as h4 (outside the table like original)
+        const h4 = document.createElement('h4');
+        h4.textContent = group.label;
+        container.appendChild(h4);
+
+        const thead = document.createElement('thead');
+        const hRow = document.createElement('tr');
+        group.cols.forEach(col => {
+          const th = document.createElement('th');
+          th.textContent = col;
+          hRow.appendChild(th);
+        });
+        thead.appendChild(hRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        group.rows.forEach(r => {
+          const tr = document.createElement('tr');
+
+          const tdSel = document.createElement('td');
+          tdSel.appendChild(pill(r.sel));
+
+          const tdEx = document.createElement('td');
+          tdEx.appendChild(pill(r.ex));
+
+          const tdDesc = document.createElement('td');
+          tdDesc.innerHTML = r.desc;
+
+          tr.appendChild(tdSel);
+          tr.appendChild(tdEx);
+          tr.appendChild(tdDesc);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        container.appendChild(table);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: CSS At-Rules
+    ======================================================= */
+    function renderAtRules() {
+      const container = document.getElementById('atRulesContainer');
+
+      const table = document.createElement('table');
+      table.className = 'Rules-selector-table';
+
+      const thead = document.createElement('thead');
+      const hRow = document.createElement('tr');
+      ['At-Rule', 'Description'].forEach(txt => {
+        const th = document.createElement('th');
+        th.textContent = txt;
+        hRow.appendChild(th);
+      });
+      thead.appendChild(hRow);
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+      DATA.atRules.forEach(r => {
+        const tr = document.createElement('tr');
+        const tdRule = document.createElement('td');
+        tdRule.appendChild(pill(r.rule));
+        const tdDesc = document.createElement('td');
+        tdDesc.textContent = r.desc;
+        tr.appendChild(tdRule);
+        tr.appendChild(tdDesc);
+        tbody.appendChild(tr);
+      });
+      table.appendChild(tbody);
+      container.appendChild(table);
+    }
+
+
+    /* =======================================================
+       RENDER: CSS Functions
+    ======================================================= */
+    function renderFunctions() {
+      const container = document.getElementById('functionsContainer');
+
+      DATA.functionGroups.forEach(group => {
+        const h4 = document.createElement('h4');
+        h4.textContent = group.label;
+        container.appendChild(h4);
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const hRow = document.createElement('tr');
+        ['Function', 'Description'].forEach(txt => {
+          const th = document.createElement('th');
+          th.textContent = txt;
+          hRow.appendChild(th);
+        });
+        thead.appendChild(hRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        group.rows.forEach(r => {
+          const tr = document.createElement('tr');
+          const tdFn = document.createElement('td');
+          tdFn.appendChild(codeEl(r.fn));
+          const tdDesc = document.createElement('td');
+          tdDesc.textContent = r.desc;
+          tr.appendChild(tdFn);
+          tr.appendChild(tdDesc);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        container.appendChild(table);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: CSS Units
+    ======================================================= */
+    function renderUnits() {
+      const container = document.getElementById('unitsContainer');
+
+      DATA.unitGroups.forEach(group => {
+        const h4 = document.createElement('h4');
+        h4.textContent = group.label;
+        container.appendChild(h4);
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const hRow = document.createElement('tr');
+        ['Unit', 'Description'].forEach(txt => {
+          const th = document.createElement('th');
+          th.textContent = txt;
+          hRow.appendChild(th);
+        });
+        thead.appendChild(hRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        group.rows.forEach(r => {
+          const tr = document.createElement('tr');
+          const tdU = document.createElement('td');
+          tdU.appendChild(codeEl(r.unit));
+          const tdDesc = document.createElement('td');
+          tdDesc.textContent = r.desc;
+          tr.appendChild(tdU);
+          tr.appendChild(tdDesc);
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        container.appendChild(table);
+      });
+    }
+
+
+    /* =======================================================
+       RENDER: Additional Resources + Summary
+    ======================================================= */
+    function renderAdditional() {
+      const container = document.getElementById('additionalContainer');
+
+      // Resources header
+      const h2res = document.createElement('h2');
+      h2res.textContent = 'Additional Resources';
+      container.appendChild(h2res);
+
+      const h3w3 = document.createElement('h3');
+      h3w3.textContent = 'W3Schools CSS References';
+      container.appendChild(h3w3);
+
+      const ol = document.createElement('ol');
+      DATA.additionalResources.forEach(item => {
+        const li = document.createElement('li');
+        const parts = item.split(' – ');
+        const strong = document.createElement('strong');
+        strong.textContent = parts[0];
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(' – ' + (parts[1] || '')));
+        ol.appendChild(li);
+      });
+      container.appendChild(ol);
+
+      const hr = document.createElement('hr');
+      container.appendChild(hr);
+
+      // Summary
+      const h2sum = document.createElement('h2');
+      h2sum.textContent = 'Summary Statistics';
+      container.appendChild(h2sum);
+
+      const ul = document.createElement('ul');
+
+      const liTotal = document.createElement('li');
+      const sTotal = document.createElement('strong');
+      sTotal.textContent = 'Total CSS Properties: ';
+      liTotal.appendChild(sTotal);
+      liTotal.appendChild(document.createTextNode(DATA.summary.total));
+      ul.appendChild(liTotal);
+
+      const liVer = document.createElement('li');
+      const sVer = document.createElement('strong');
+      sVer.textContent = 'CSS Versions:';
+      liVer.appendChild(sVer);
+      const innerUl = document.createElement('ul');
+      DATA.summary.versions.forEach(v => {
+        const innerLi = document.createElement('li');
+        const innerS = document.createElement('strong');
+        innerS.textContent = v.ver + ': ';
+        innerLi.appendChild(innerS);
+        innerLi.appendChild(document.createTextNode(v.desc));
+        innerUl.appendChild(innerLi);
+      });
+      liVer.appendChild(innerUl);
+      ul.appendChild(liVer);
+
+      [
+        ['Selectors:', DATA.summary.selectors],
+        ['At-Rules:', DATA.summary.atRules],
+        ['Functions:', DATA.summary.functions],
+        ['Units:', DATA.summary.units],
+        ['Color Formats:', DATA.summary.colorFormats]
+      ].forEach(([label, val]) => {
+        const li = document.createElement('li');
+        const s = document.createElement('strong');
+        s.textContent = label + ' ';
+        li.appendChild(s);
+        li.appendChild(document.createTextNode(val));
+        ul.appendChild(li);
+      });
+
+      container.appendChild(ul);
+    }
+
+
+    /* =======================================================
+       AUTOMATED KEYWORD HYPERLINKING ENGINE
+       First-occurrence only, word-boundary, case-insensitive
+       Skips existing <a> and <code> content
+    ======================================================= */
+    function runKeywordEngine() {
+      const linked = new Set();
+
+      // Target all description cells in property and selector tables
+      const descCells = [
+        ...document.querySelectorAll('#propertiesContainer td:nth-child(2)'),
+        ...document.querySelectorAll('#atRulesContainer td:nth-child(2)'),
+        ...document.querySelectorAll('#functionsContainer td:nth-child(2)'),
+        ...document.querySelectorAll('#unitsContainer td:nth-child(2)'),
+        ...document.querySelectorAll('#additionalContainer li')
+      ];
+
+      descCells.forEach(cell => {
+        DATA.keywords.forEach(({ word, link }) => {
+          if (linked.has(word.toLowerCase())) return;
+
+          const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT, {
+            acceptNode: function (node) {
+              let parent = node.parentElement;
+              while (parent && parent !== cell) {
+                const tag = parent.tagName;
+                if (tag === 'A' || tag === 'CODE') return NodeFilter.FILTER_REJECT;
+                parent = parent.parentElement;
+              }
+              return NodeFilter.FILTER_ACCEPT;
+            }
+          });
+
+          const textNodes = [];
+          let n;
+          while ((n = walker.nextNode())) textNodes.push(n);
+
+          textNodes.forEach(textNode => {
+            if (linked.has(word.toLowerCase())) return;
+            const safeWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp('\\b(' + safeWord + ')\\b', 'i');
+            if (regex.test(textNode.nodeValue)) {
+              const parts = textNode.nodeValue.split(regex);
+              if (parts.length > 1) {
+                const frag = document.createDocumentFragment();
+                parts.forEach((part, i) => {
+                  if (i % 2 === 1) {
+                    const a = document.createElement('a');
+                    a.href = link;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'auto-kw';
+                    a.textContent = part;
+                    frag.appendChild(a);
+                    linked.add(word.toLowerCase());
+                  } else {
+                    frag.appendChild(document.createTextNode(part));
+                  }
+                });
+                textNode.parentNode.replaceChild(frag, textNode);
+              }
+            }
+          });
+        });
+      });
+    }
+
+
+    /* =======================================================
+       INIT
+    ======================================================= */
+    renderTOC();
+    renderProperties();
+    renderSelectors();
+    renderAtRules();
+    renderFunctions();
+    renderUnits();
+    renderAdditional();
+    runKeywordEngine();
+
+
+    /* =======================================================
+       ASIDE SIDEBAR LOGIC
+    ======================================================= */
+    const aside = document.querySelector(".side-content");
+    const sideBtn = document.getElementById("side-close");
+
+    if (sideBtn) {
+      sideBtn.addEventListener("click", () => {
+        aside.classList.remove("open");
+      });
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (aside) aside.classList.remove("open");
+      }
+    });
+
+  </script>
+
+  <script src="../../assets/js/navbar.js"></script>
+
+</body>
+
+</html>

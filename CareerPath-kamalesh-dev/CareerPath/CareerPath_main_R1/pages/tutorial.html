@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials | CareerPath</title>
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/tutorial.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SHARED NAVBAR (injected by navbar.js) -->
+    <div id="navbar-root"></div>
+
+    <div class="main-layout">
+
+        <aside class="left-sidebar">
+            <ul class="sidebar-menu">
+            </ul>
+        </aside>
+
+        <main class="content-area">
+        </main>
+
+        <aside class="right-sidebar">
+            <div class="course-card">
+                <h4 class="card-title">
+                    <span class="icon">🌐</span> Web Development Basics
+                </h4>
+                <p class="card-desc">Learn HTML, CSS and JavaScript fundamentals to build modern websites</p>
+                <button class="gradient-btn"
+                    onclick="window.location.href='./tutorial.html?course=htmlPages.json'">Explore More</button>
+            </div>
+            <div class="course-card">
+                <h4 class="card-title react-title">
+                    <span class="icon">⚛️</span> React & Frontend Frameworks
+                </h4>
+                <p class="card-desc">Master React, component-driven design, and frontend best practices.</p>
+                <button class="gradient-btn"
+                    onclick="window.location.href='./tutorial.html?course=reactPages.json'">Explore</button>
+            </div>
+            <div class="course-card">
+                <h4 class="card-title react-title">
+                    <span class="icon">🗄️</span> Full-Stack with Node.js & MongoDB
+                </h4>
+                <p class="card-desc">Build scalable apps with backend APIs and databases.</p>
+                <button class="gradient-btn"
+                    onclick="window.location.href='./tutorial.html?course=nodejsPages.json'">Explore</button>
+            </div>
+            <div class="course-card">
+                <h4 class="card-title react-title">
+                    <span class="icon">🐍</span> Python & Data Science
+                </h4>
+                <p class="card-desc">Master Python for data analysis, NumPy, and Pandas.</p>
+                <button class="gradient-btn"
+                    onclick="window.location.href='./tutorial.html?course=pythonPages.json'">Explore</button>
+            </div>
+            <div class="course-card">
+                <h4 class="card-title react-title">
+                    <span class="icon">📊</span> Data Structures & Algorithms
+                </h4>
+                <p class="card-desc">Sharpen problem-solving skills with DSA essentials.</p>
+                <button class="gradient-btn"
+                    onclick="window.location.href='./tutorial.html?course=dsaPages.json'">Explore</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="../assets/js/navbar.js"></script>
+    <script src="../assets/js/tutorial.js"></script>
+</body>
+
+</html>

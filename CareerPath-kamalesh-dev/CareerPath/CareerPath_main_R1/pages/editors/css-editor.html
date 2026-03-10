@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live CSS Editor - CareerPath</title>
+    
+<link rel="stylesheet" href="../../assets/css/editor.css"> 
+   <style>
+    .editor-pane { padding: 0; } /* Reset padding for the split boxes */
+    .code-box { flex: 1; display: flex; flex-direction: column; padding: 15px; }
+    .code-box:first-child { border-bottom: 2px solid #333; }
+    #htmlInput { color: #ffb86c; }
+    #cssInput { color: #8be9fd; }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">{ }</span> Real CSS Workspace</h2>
+        <button class="run-btn" id="runBtn">Run Code ❯</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <div class="code-box">
+                <p class="pane-label">index.html (Structure)</p>
+                <textarea id="htmlInput" spellcheck="false" aria-label="HTML Input">
+<div class="card">
+  <h2>CSS is Awesome!</h2>
+  <p>Style this card using the CSS panel below.</p>
+  <button>Click Me</button>
+</div>
+                </textarea>
+            </div>
+            <div class="code-box">
+                <p class="pane-label">styles.css (Styling)</p>
+                <textarea id="cssInput" spellcheck="false" aria-label="CSS Input"></textarea>
+            </div>
+        </div>
+        <div class="result-pane">
+            <iframe id="htmlOutput" title="Live Preview"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const htmlInput = document.getElementById('htmlInput');
+        const cssInput = document.getElementById('cssInput');
+        const htmlOutput = document.getElementById('htmlOutput');
+        const runBtn = document.getElementById('runBtn');
+
+        // Fetch the CSS code passed from the main app
+        const savedCode = localStorage.getItem('careerPathCssCode');
+        
+        // If there's saved code, use it. Otherwise, use a fun default!
+        cssInput.value = savedCode ? savedCode : `body {
+  font-family: sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+button {
+  background-color: #00ffb3;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}`;
+
+        // Combine HTML and CSS into the iframe
+        function executeCode() {
+            const html = htmlInput.value;
+            const css = cssInput.value;
+            
+            // We wrap the user's CSS in a <style> tag and combine it with their HTML
+            const combinedCode = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>${css}</style>
+                </head>
+                <body>
+                    ${html}
+                </body>
+                </html>
+            `;
+            
+            const iframeDoc = htmlOutput.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(combinedCode);
+            iframeDoc.close();
+        }
+
+        // Run when button is clicked
+        runBtn.addEventListener('click', executeCode);
+
+        // Auto-run on load
+        executeCode();
+    </script>
+</body>
+</html>

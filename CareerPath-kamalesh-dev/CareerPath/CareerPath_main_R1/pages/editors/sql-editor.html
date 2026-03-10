@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live SQL Editor - CareerPath</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    
+    <link rel="stylesheet" href="../../assets/css/editor.css">
+    <style>
+    .result-pane { padding: 20px; }
+    .result-header { margin-top: 0; margin-bottom: 15px; color: #222; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; }
+    th { background-color: #e9ecef; font-weight: bold; color: #333; }
+    .status-success { color: #28a745; font-weight: bold; margin-top: 10px; }
+    .status-error { color: #dc3545; font-weight: bold; }
+    .loading { color: #666; font-style: italic; }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">&lt;/&gt;</span> Real SQL Workspace</h2>
+        <button class="run-btn" id="runBtn" disabled>Loading Engine...</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <textarea id="sqlInput" spellcheck="false" aria-label="SQL Input"></textarea>
+        </div>
+        <div class="result-pane" id="sqlOutput">
+            <h3 class="result-header">Database Result</h3>
+            <div id="outputContent">
+                <p class="loading">Initializing WebAssembly Database Engine...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sqlInput = document.getElementById('sqlInput');
+        const outputContent = document.getElementById('outputContent');
+        const runBtn = document.getElementById('runBtn');
+        let db = null; // This will hold our real database!
+
+        // 1. Fetch the code passed from the main app's memory
+        const savedCode = localStorage.getItem('careerPathTempCode');
+        sqlInput.value = savedCode ? savedCode : "SELECT * FROM Customers;";
+
+        // 2. Initialize the sql.js WebAssembly Engine
+        const config = {
+            locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${filename}`
+        };
+
+        initSqlJs(config).then(function(SQL) {
+            // Create a brand new database in the browser's memory
+            db = new SQL.Database();
+
+            // Pre-fill the database with our tutorial tables!
+            db.run(`
+                CREATE TABLE Customers (CustomerID INTEGER PRIMARY KEY, CustomerName TEXT, ContactName TEXT, Country TEXT);
+                INSERT INTO Customers VALUES (1, 'Alfreds Futterkiste', 'Maria Anders', 'Germany');
+                INSERT INTO Customers VALUES (2, 'Ana Trujillo Emparedados', 'Ana Trujillo', 'Mexico');
+                INSERT INTO Customers VALUES (3, 'Antonio Moreno Taquería', 'Antonio Moreno', 'Mexico');
+                INSERT INTO Customers VALUES (4, 'Around the Horn', 'Thomas Hardy', 'UK');
+                INSERT INTO Customers VALUES (5, 'Berglunds snabbköp', 'Christina Berglund', 'Sweden');
+
+                CREATE TABLE Orders (OrderID INTEGER PRIMARY KEY, CustomerID INTEGER, OrderDate TEXT, ShipperID INTEGER);
+                INSERT INTO Orders VALUES (10248, 90, '1996-07-04', 3);
+                INSERT INTO Orders VALUES (10249, 81, '1996-07-05', 1);
+                INSERT INTO Orders VALUES (10250, 34, '1996-07-08', 2);
+            `);
+
+            // Enable the Run button now that the DB is ready
+            runBtn.innerText = "Run SQL ❯";
+            runBtn.disabled = false;
+            
+            // Auto-run the initial code
+            executeSQL();
+        }).catch(err => {
+            outputContent.innerHTML = `<p class="status-error">Error loading database engine: ${err.message}</p>`;
+        });
+
+        // 3. The Execution Function
+        function executeSQL() {
+            if (!db) return;
+            const query = sqlInput.value.trim();
+            outputContent.innerHTML = ''; // Clear old results
+
+            if (query === '') {
+                outputContent.innerHTML = '<p class="status-error">Please enter a SQL query.</p>';
+                return;
+            }
+
+            try {
+                // Execute the REAL SQL query!
+                const results = db.exec(query);
+
+                if (results.length === 0) {
+                    // This happens on UPDATE, DELETE, or INSERT where no rows are returned
+                    outputContent.innerHTML = '<p class="status-success">✔ Query executed successfully. No rows to display.</p>';
+                    return;
+                }
+
+                // If it's a SELECT query, build an HTML table from the real data
+                let tableHTML = '<table><thead><tr>';
+                
+                // Add Table Headers (Column Names)
+                results[0].columns.forEach(col => {
+                    tableHTML += `<th>${col}</th>`;
+                });
+                tableHTML += '</tr></thead><tbody>';
+
+                // Add Table Rows (Data)
+                results[0].values.forEach(row => {
+                    tableHTML += '<tr>';
+                    row.forEach(val => {
+                        // Handle NULL values gracefully
+                        tableHTML += `<td>${val !== null ? val : '<em>NULL</em>'}</td>`;
+                    });
+                    tableHTML += '</tr>';
+                });
+                
+                tableHTML += '</tbody></table>';
+                tableHTML += `<p class="status-success">✔ ${results[0].values.length} rows returned.</p>`;
+                
+                outputContent.innerHTML = tableHTML;
+
+            } catch (err) {
+                // If they type bad SQL, catch the real error and show it!
+                outputContent.innerHTML = `<p class="status-error">✖ Error: ${err.message}</p>`;
+            }
+        }
+
+        // Run when the button is clicked
+        runBtn.addEventListener('click', executeSQL);
+    </script>
+</body>
+</html>

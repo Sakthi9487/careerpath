@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live JS Editor - CareerPath</title>
+    
+<link rel="stylesheet" href="../../assets/css/editor.css">
+    <style>
+    #jsInput { color: #f1fa8c; }
+    .visual-output { flex: 1; background-color: #ffffff; display: flex; flex-direction: column; border-bottom: 2px solid #333; }
+    .console-output { flex: 1; background-color: #1e1e2f; display: flex; flex-direction: column; }
+    #consoleDiv { flex: 1; padding: 10px 20px; font-family: 'Courier New', Courier, monospace; overflow-y: auto; color: #cbd5e1; font-size: 14px; }
+    .log-line { padding: 4px 0; border-bottom: 1px solid #333; }
+    .log-error { color: #ff4757; }
+    .log-normal { color: #00ffb3; }
+</style>
+</head>
+<body>
+    <div class="header">
+        <h2><span style="color: #00ffb3;">JS</span> Real JavaScript Workspace</h2>
+        <button class="run-btn" id="runBtn">Run Code ❯</button>
+    </div>
+    <div class="workspace">
+        <div class="editor-pane">
+            <p class="pane-label">script.js (JavaScript)</p>
+            <textarea id="jsInput" spellcheck="false" aria-label="JavaScript Input"></textarea>
+        </div>
+        <div class="result-pane">
+            <div class="visual-output">
+                <p class="pane-label" style="color:#000; padding:10px 20px 0;">Visual DOM Output</p>
+                <iframe id="htmlOutput" title="Live Preview"></iframe>
+            </div>
+            <div class="console-output">
+                <p class="pane-label" style="padding:10px 20px 0;">Console Output</p>
+                <div id="consoleDiv"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const jsInput = document.getElementById('jsInput');
+        const htmlOutput = document.getElementById('htmlOutput');
+        const consoleDiv = document.getElementById('consoleDiv');
+        const runBtn = document.getElementById('runBtn');
+
+        // Fetch saved code or use a default example
+        const savedCode = localStorage.getItem('careerPathJsCode');
+        jsInput.value = savedCode ? savedCode : `// 1. Log a message to the console below!
+console.log("Hello from JavaScript!");
+
+// 2. Do some math
+let a = 10;
+let b = 20;
+console.log("The sum of a and b is:", a + b);
+
+// 3. Manipulate the visual webpage above!
+document.body.innerHTML = "<h1>JavaScript successfully manipulated the DOM! 🎉</h1>";
+document.body.style.color = "#2a2a40";
+document.body.style.textAlign = "center";
+document.body.style.fontFamily = "sans-serif";`;
+
+        // Listen for messages from the iframe (our hijacked console.log)
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.type === 'console') {
+                const logElement = document.createElement('div');
+                logElement.className = 'log-line ' + (event.data.level === 'error' ? 'log-error' : 'log-normal');
+                logElement.textContent = `> ${event.data.message}`;
+                consoleDiv.appendChild(logElement);
+                
+                // Auto-scroll to bottom of console
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            }
+        });
+
+        function executeJS() {
+            // Clear the console
+            consoleDiv.innerHTML = '';
+            
+            const jsCode = jsInput.value;
+            
+            // We inject a special script to override console.log so we can capture it
+            const injectedHTML = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>body { font-family: sans-serif; }</style>
+                    <script>
+                        // Intercept console.log and console.error
+                        const originalLog = console.log;
+                        const originalError = console.error;
+                        
+                        console.log = function(...args) {
+                            const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ');
+                            window.parent.postMessage({ type: 'console', level: 'log', message: msg }, '*');
+                            originalLog.apply(console, args);
+                        };
+                        
+                        console.error = function(...args) {
+                            const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a) : a).join(' ');
+                            window.parent.postMessage({ type: 'console', level: 'error', message: msg }, '*');
+                            originalError.apply(console, args);
+                        };
+
+                        // Catch syntax/runtime errors
+                        window.onerror = function(msg, url, line) {
+                            window.parent.postMessage({ type: 'console', level: 'error', message: msg + ' (Line ' + line + ')' }, '*');
+                            return false;
+                        };
+                    <\/script>
+                </head>
+                <body>
+                    <script>
+                        try {
+                            ${jsCode}
+                        } catch(err) {
+                            console.error(err.message);
+                        }
+                    <\/script>
+                </body>
+                </html>
+            `;
+            
+            const iframeDoc = htmlOutput.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(injectedHTML);
+            iframeDoc.close();
+        }
+
+        runBtn.addEventListener('click', executeJS);
+
+        // Run instantly on load
+        executeJS();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1014 @@
+/* =====================================================
+   RESET & ROOT
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --primary: #4A6CF7;
+    --accent: #00C985;
+    --bg-main: #020617;
+    --bg-secondary: #050B1C;
+    --bg-section: #071026;
+    --card-bg: #0F172A;
+    --surface: #0B1225;
+    --border: rgba(255, 255, 255, 0.14);
+    --text-main: #E5EDFF;
+    --text-secondary: #9AA4B2;
+    --text-muted: #94A3B8;
+    --text-disabled: #64748B;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-main);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-muted);
+}
+
+/* HEADER */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #020617;
+    z-index: 1100;
+}
+
+.header>.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    height: 70px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo h3 {
+    font-family: Inter, sans-serif;
+    color: var(--text-main);
+}
+
+.logo a {
+    font-family: Inter, sans-serif;
+}
+
+.logos {
+    width: 45px;
+    height: 45px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #7ba5ff, #4a6cff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.logos a {
+    color: var(--text-main);
+}
+
+nav>ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+}
+
+ul>li {
+    color: var(--text-main);
+    font-family: Inter, sans-serif;
+}
+
+ul button {
+    padding: 8px;
+    border-radius: 1rem;
+    border: none;
+    font-family: Inter, sans-serif;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    cursor: pointer;
+}
+
+ul button a {
+    color: var(--text-main);
+}
+
+.top-search {
+    width: 350px;
+    height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    background: transparent;
+    gap: 10px;
+}
+
+.top-search>input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.top-search input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* MOBILE NAV */
+.mobile-nav {
+    position: fixed;
+    top: 70px;
+    right: -260px;
+    width: 220px;
+    height: 100vh;
+    background: var(--card-bg);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    z-index: 10000;
+    font-family: Inter, sans-serif;
+    font-size: 1.5rem;
+    transition: right 0.35s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.mobile-nav.open {
+    display: flex;
+    right: 0;
+    opacity: 1;
+    gap: 40px;
+}
+
+/* COURSE NAV (fixed below header) */
+.top {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #020617;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1000;
+}
+
+.top-nav {
+    width: 100%;
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav_container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 12px 20px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.nav_container::-webkit-scrollbar {
+    display: none;
+}
+
+.top-nav a {
+    font-size: 1rem;
+    font-family: Inter, sans-serif;
+    color: var(--text-main);
+}
+
+.top-nav a:hover {
+    text-decoration: underline;
+    color: var(--accent);
+}
+
+/* PROFILE */
+.profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.initial {
+    display: none;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.profile span {
+    font-family: Inter, sans-serif;
+    display: none;
+}
+
+.profile-menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    width: 230px;
+    background: var(--card-bg);
+    backdrop-filter: blur(14px);
+    border-radius: 18px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+    padding: 8px;
+    display: none;
+    font-family: Inter, sans-serif;
+    z-index: 2000;
+}
+
+.profile-menu.open {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: .2s ease;
+}
+
+.profile-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* SIDEBAR — top offset = header(70) + course-nav(37) = 107px */
+.side-content {
+    position: fixed;
+    top: 107px;
+    left: 0;
+    width: 300px;
+    height: calc(100vh - 107px);
+    background: var(--card-bg);
+    overflow-y: auto;
+    border-right: 1px solid var(--border);
+    transition: left 0.35s ease;
+    z-index: 900;
+}
+
+.side-content h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 40px 0;
+    color: var(--accent);
+    font-family: Inter, sans-serif;
+}
+
+.side-content ul {
+    list-style: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.side-content ul li a {
+    color: var(--text-main);
+    font-weight: 500;
+    font-family: Inter, sans-serif;
+    transition: 0.3s;
+}
+
+.side-content ul li a:hover,
+.side-content ul li a.active {
+    color: var(--accent);
+    background: rgba(0, 201, 133, 0.12);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.side-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: none;
+}
+
+.side-close button {
+    background: var(--card-bg);
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+}
+
+/* TUTORIAL CARD */
+.tutor-card {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9999;
+}
+
+.tutor-contents {
+    background: var(--card-bg);
+    width: 90%;
+    max-width: 900px;
+    height: 85vh;
+    border-radius: 16px;
+    padding: 40px 30px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.tutor-close {
+    position: fixed;
+    top: 100px;
+    right: 420px;
+    z-index: 999;
+}
+
+.tutor-close button {
+    background: var(--accent);
+    border: none;
+    color: var(--bg-main);
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.tutor-top {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.tutor-top h1 {
+    font-family: Inter, sans-serif;
+    color: var(--accent);
+}
+
+.tutor-row .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.tutor-row h3 {
+    font-size: 1.5rem;
+    font-family: Inter, sans-serif;
+    color: var(--text-main);
+}
+
+.tutor-row a {
+    color: var(--accent);
+}
+
+.tutor-row a span {
+    color: var(--text-main);
+}
+
+.tutor-frontend-col ul,
+.tutor-backend-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tutor-frontend-col h3,
+.tutor-backend-col h3 {
+    margin: 20px;
+}
+
+/* REFERENCE CARD */
+.reference-card {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+}
+
+.reference-contents {
+    background: var(--card-bg);
+    width: 92%;
+    max-width: 900px;
+    height: 90vh;
+    border-radius: 16px;
+    padding: 30px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.reference-close {
+    position: fixed;
+    top: 80px;
+    right: 420px;
+    z-index: 999;
+}
+
+.reference-close button {
+    background: var(--accent);
+    border: none;
+    color: var(--bg-main);
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+}
+
+.reference-top {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px;
+}
+
+.reference-top h1 {
+    font-family: Inter, sans-serif;
+    color: var(--accent);
+}
+
+.reference-row .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.reference-row h3 {
+    font-size: 1.5rem;
+    font-family: Inter, sans-serif;
+    color: var(--text-main);
+}
+
+.reference-row a {
+    color: var(--accent);
+}
+
+.reference-row a span {
+    color: var(--text-main);
+}
+
+.frontend-col ul,
+.backend-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.frontend-col h3,
+.backend-col h3 {
+    margin: 20px;
+}
+
+/* MAIN CONTENT — clears sidebar + fixed header+topnav */
+#mainContent {
+    margin-left: 300px;
+    padding-top: 107px;
+}
+
+/* SECTION SEARCH BAR */
+.search {
+    width: 350px;
+    height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    display: none;
+    align-items: center;
+    padding: 0 15px;
+    background: transparent;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search>input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(0, 201, 133, 0.3);
+}
+
+.search input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* DIVIDER */
+hr {
+    border: none;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    max-width: 900px;
+    margin: 40px 0;
+}
+
+/* CATEGORY */
+.category {
+    margin-bottom: 40px;
+}
+
+/* ALL CONTENT SECTIONS */
+.python-builtins,
+.data-types,
+.string-methods,
+.list-methods,
+.dictionary-methods,
+.tuple-methods,
+.set-methods,
+.file-methods,
+.python-keywords,
+.operators,
+.modules,
+.exception-handling {
+    padding: 50px 80px 20px 80px;
+    font-family: Inter, sans-serif;
+}
+
+.python-builtins {
+    padding-top: 60px;
+}
+
+/* Section headings */
+.python-builtins h2,
+.data-types h2,
+.string-methods h2,
+.list-methods h2,
+.dictionary-methods h2,
+.tuple-methods h2,
+.set-methods h2,
+.file-methods h2,
+.python-keywords h2,
+.operators h2 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin: 20px 0;
+}
+
+.modules h1,
+.exception-handling h1 {
+    font-size: 2.8rem;
+    color: var(--accent);
+    margin: 20px 0;
+}
+
+.modules h2,
+.exception-handling h2 {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin: 20px 0;
+}
+
+section h3 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+section p,
+section .desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+section ul,
+section ol {
+    max-width: 900px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+section ul li,
+section ol li {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+section ul li:last-child,
+section ol li:last-child {
+    border-bottom: none;
+}
+
+/* Inline code badges */
+section code {
+    background: rgba(0, 201, 133, 0.12);
+    color: var(--accent);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    white-space: nowrap;
+}
+
+/* WIKIPEDIA AUTO-KW LINKS */
+.auto-kw {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
+.auto-kw:hover {
+    opacity: 0.75;
+}
+
+/* PYTHON CODE BLOCKS (dark) */
+.python-code {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 10px 0;
+    font-family: "Fira Code", "Consolas", "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.python-code code {
+    background: none;
+    padding: 0;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+.kw {
+    color: #c792ea;
+    font-weight: 600;
+}
+
+.cls {
+    color: #82aaff;
+}
+
+.str {
+    color: #c3e88d;
+}
+
+.cmt {
+    color: #546e7a;
+    font-style: italic;
+}
+
+.num {
+    color: #f78c6c;
+}
+
+/* RESPONSIVE 1024px */
+@media (max-width:1024px) {
+    .reference-close {
+        top: 70px;
+        right: 120px;
+    }
+
+    .profile span {
+        display: none;
+    }
+
+    .side-content {
+        width: 260px;
+    }
+
+    #mainContent {
+        margin-left: 260px;
+    }
+
+    .reference-contents {
+        padding: 60px 30px;
+    }
+
+    .reference-row .container {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+/* RESPONSIVE 992px */
+@media (max-width:992px) {
+    .reference-close {
+        top: 70px;
+        right: 120px;
+    }
+      .tutor-close {
+        top: 60px;
+        right: 100px;
+    }
+
+    .side-content {
+        width: 240px;
+    }
+
+    #mainContent {
+        margin-left: 240px;
+    }
+
+    .search {
+        display: flex;
+    }
+
+    .top-search {
+        display: none;
+    }
+
+    .python-builtins,
+    .data-types,
+    .string-methods,
+    .list-methods,
+    .dictionary-methods,
+    .tuple-methods,
+    .set-methods,
+    .file-methods,
+    .python-keywords,
+    .operators,
+    .modules,
+    .exception-handling {
+        padding: 40px 40px 20px 40px;
+    }
+}
+
+/* RESPONSIVE 768px */
+@media (max-width:768px) {
+    .header>.container {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        padding: 0 10px;
+        height: 70px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .initial {
+        display: block;
+    }
+
+    .profile span {
+        display: block;
+    }
+    .top{
+        display: block;
+    }
+    nav {
+        display: none;
+    }
+
+    .desk-refer {
+        display: none;
+    }
+
+    .top-search {
+        display: none;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .side-content {
+        top: 0;
+        left: -280px;
+        width: 260px;
+        height: 100vh;
+        margin-top: 0;
+        z-index: 1200;
+    }
+
+    .side-content.open {
+        left: 0;
+    }
+
+    .side-close {
+        display: block;
+    }
+
+    #mainContent {
+        margin-left: 0;
+        padding-top: 107px;
+    }
+
+    .python-builtins,
+    .data-types,
+    .string-methods,
+    .list-methods,
+    .dictionary-methods,
+    .tuple-methods,
+    .set-methods,
+    .file-methods,
+    .python-keywords,
+    .operators,
+    .modules,
+    .exception-handling {
+        padding: 30px 20px 20px 20px;
+    }
+
+    .reference-card {
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .reference-contents {
+        width: 100%;
+        height: auto;
+        max-height: 85vh;
+        padding: 30px 20px;
+    }
+
+    .reference-row .container {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+    }
+
+    .reference-close {
+        top: 25px;
+        right: 100px;
+    }
+      .tutor-close {
+        top: 60px;
+        right: 100px;
+    }
+
+    .frontend-col h3,
+    .backend-col h3 {
+        margin: 10px 0;
+    }
+
+    .python-code {
+        font-size: 13px;
+        padding: 14px;
+    }
+
+    .profile-menu.open {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* RESPONSIVE 640px */
+@media (max-width:640px) {
+    .header>.container {
+        justify-content: space-around;
+    }
+}
+
+/* RESPONSIVE 480px */
+@media (max-width:480px) {
+    .header>.container {
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 0 10px;
+    }
+
+    .logos {
+        display: none;
+    }
+
+    .logo h3 {
+        font-size: 1.4rem;
+    }
+
+    .profile {
+        gap: 3px;
+    }
+
+    .top-search {
+        display: none;
+    }
+
+    .side-content {
+        width: 230px;
+    }
+
+    .python-builtins,
+    .data-types,
+    .string-methods,
+    .list-methods,
+    .dictionary-methods,
+    .tuple-methods,
+    .set-methods,
+    .file-methods,
+    .python-keywords,
+    .operators,
+    .modules,
+    .exception-handling {
+        padding: 25px 16px 16px 16px;
+    }
+
+    h1 {
+        font-size: 1.9rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    section ul li,
+    section ol li {
+        font-size: 0.88rem;
+    }
+
+    .python-code {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    ul button {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+
+      .reference-close {
+        top: 25px;
+        right: 300px;
+    }
+      .tutor-close {
+        top: 60px;
+        right: 300px;
+    }
+}

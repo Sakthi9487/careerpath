@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPath - Learn Skills That Build Careers</title>
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SHARED NAVBAR (injected by navbar.js) -->
+    <div id="navbar-root"></div>
+
+    <!-- hero section -->
+    <section class="hero">
+        <div class="hero-wrapper">
+            <div class="search">
+                <input type="text" placeholder="Search skills ,courses,roles..." id="search-hero">
+                <button class="icon" id="search-btns">🔍</button>
+            </div>
+            <div class="container">
+
+                <h1>Learn skills that actually build <span>careers</span></h1>
+                <p>
+                    <span>Discover courses designed around real job roles,guided learning paths,and</span>
+                    <span>skill-based growth-- all without distractions.</span>
+                </p>
+
+                <div class="hero-btn">
+                    <button class="hero-btn1"><a href="#Courses">Explore Courses</a></button>
+                    <button class="hero-btn2"><a href="./pages/auth/register.html">Get Started</a></button>
+                </div>
+
+            </div>
+            <a href="./pages/roadmaps/whereto.html" class="where-start">Where to Start ?</a>
+        </div>
+    </section>
+
+    <div class="chat" id="chatMsg">
+        <div class="container">
+            <img src="./assets/images/icons8-message-50.png" alt="">
+        </div>
+    </div>
+
+    <div class="chat-widget" id="chat-widget">
+        <div class="chat-header">
+            <span>Chat</span>
+            <button id="chat-close">❌</button>
+        </div>
+        <div class="chat-body">
+            <p>Hello! This is a static message.</p>
+            <p>How can we help you today?</p>
+            <div class="chat-input" id="chat-input">
+                <input type="text">
+            </div>
+        </div>
+    </div>
+
+    <!-- DYNAMIC TUTORIALS GRID -->
+    <section class="tutorials-showcase reveal" id="tutorials-showcase">
+        <div class="container">
+            <h2>Explore Tutorials</h2>
+            <p class="tutorials-subtitle">Master any technology with our hands-on, step-by-step tutorials</p>
+
+            <!-- Category Filter Tabs -->
+            <div class="tutorials-filter" id="tutorials-filter">
+                <button class="filter-tab active" data-filter="all">All</button>
+            </div>
+
+            <!-- Tutorial Cards Grid -->
+            <div class="tutorials-grid" id="tutorials-grid">
+                <!-- Populated dynamically by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- languages -->
+    <section class="languages-grid reveal">
+        <h2>Programming Languages</h2>
+        <div class="grid-row">
+            <div class="tile">HTML</div>
+            <div class="tile">CSS</div>
+            <div class="tile">JavaScript</div>
+        </div>
+        <div class="grid-row">
+            <div class="tile">Python</div>
+            <div class="tile">Java</div>
+            <div class="tile">C++</div>
+        </div>
+        <div class="grid-row">
+            <div class="tile">PHP</div>
+            <div class="tile">React</div>
+            <div class="tile">Node.js</div>
+        </div>
+        <div class="grid-row">
+            <div class="tile">Angular</div>
+            <div class="tile">Express</div>
+            <div class="tile">SQL</div>
+        </div>
+    </section>
+
+    <!-- Log in and sign up -->
+    <section class="signup-section reveal">
+        <h2>Join CareerPath</h2>
+        <p>Sign up to track your progress, earn certificates, and access personalized tutorials.</p>
+
+        <div class="signup-content">
+            <ul class="signup-benefits">
+                <li>📈 Track your learning progress</li>
+                <li>🎓 Earn certificates to boost your resume</li>
+                <li>🤝 Join a community of learners</li>
+            </ul>
+            <div class="signup-buttons">
+                <button class="btn-log"><a href="./pages/auth/login.html"
+                        style="text-decoration:none;color:inherit;">Login</a></button>
+                <button class="btn-sign"><a href="./pages/auth/register.html"
+                        style="text-decoration:none;color:inherit;">Sign Up</a></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- editor section -->
+    <section class="code-editor-section reveal">
+        <h2>Try It Yourself</h2>
+        <p class="editor-tagline">Switch between Frontend & Backend code 👩‍💻</p>
+
+        <!-- Toggle Buttons -->
+        <div class="editor-tabs">
+            <button id="btn-frontend" class="active">Frontend</button>
+            <button id="btn-backend">Backend</button>
+        </div>
+
+        <!-- Code Editor -->
+        <textarea id="code-editor">
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Hello Frontend!</h1>
+  <p>This is a sample HTML snippet.</p>
+</body>
+</html>
+</textarea>
+
+        <!-- Run Button -->
+        <button class="btn-run" onclick="runCode()">▶ Run Code</button>
+
+        <!-- Output -->
+        <iframe id="output-box"></iframe>
+    </section>
+
+    <!-- Exercise and Quiz section -->
+    <section class="practice-section reveal">
+        <h2>Exercises & Quizzes</h2>
+        <p class="practice-tagline">Test your skills with hands-on practice and quick challenges!</p>
+
+        <div class="practice-cards">
+            <!-- Exercises Card -->
+            <div class="card exercise-card">
+                <div class="card-icon">💪</div>
+                <h3>Exercises</h3>
+                <p>Sharpen your skills with structured challenges. Build clarity, accuracy, and confidence through
+                    hands‑on practice.</p>
+                <a href="./pages/exercise.html" class="btn-exercise">Level Up Skills</a>
+            </div>
+            <!-- Quizzes Card -->
+            <div class="card quiz-card">
+                <div class="card-icon">🧠</div>
+                <h3>Quizzes</h3>
+                <p>Test your knowledge with smart quizzes. Measure progress, boost confidence, and earn certificates as
+                    you master topics.</p>
+                <a href="./pages/quiz.html" class="btn-quiz">Test My Knowledge</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- top categories -->
+    <section class="top-category reveal">
+        <div class="container">
+            <div class="category-wrapper">
+                <h2>Top Categories</h2>
+                <div class="categories-btn">
+                    <button class="category-btns">Development</button>
+                    <button class="category-btns">Data & AI</button>
+                    <button class="category-btns">Design</button>
+                    <button class="category-btns">Business</button>
+                    <button class="category-btns">Cloud & DevOps</button>
+                    <button class="category-btns">Soft Skills</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- featured courses -->
+    <section class="features reveal" id="Courses">
+        <div class="container">
+            <h2>Featured Courses</h2>
+            <p>industry-relevant courses focused on skill mastery.</p>
+
+            <div class="feature-wrapper" id="course-card">
+                <!-- Populated from backend -->
+            </div>
+            <div class="view">
+                <button class="category-btns"><a href="./pages/roadmaps/courses.html">View More</a></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- explore roadmaps -->
+    <section class="features reveal" id="Roadmaps">
+        <div class="container">
+            <h2>Explore Roadmaps</h2>
+            <p>Structured learning paths designed for real job roles.</p>
+
+            <div class="feature-wrapper" id="roadmap-card">
+                <!-- Populated from backend -->
+            </div>
+            <div class="view">
+                <button class="category-btns"><a href="./pages/roadmaps/roadmaps.html">View All Roadmaps</a></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- career-path -->
+    <section class="career reveal">
+        <div class="container">
+            <h2>How CareerPath Helps</h2>
+            <p>Designed for every role in the ecosystem.</p>
+            <div class="career-wrapper">
+                <div class="student-card">
+                    <div>
+                        <img src="" alt="">
+                        <h4>Students</h4>
+                        <p>
+                            <span>Explore career-focused learning paths designed to take you from fundamentals to
+                                job-ready</span>
+                            <span>skills. Learn through structured courses, hands-on projects, real-world assessments,
+                                and</span>
+                            <span>guided road maps aligned with industry roles. Track your progress, build a strong
+                                portfolio,</span>
+                            <span>and gain clarity on what to learn, when to learn, and why it matters for your future
+                                career.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="jobseeker-card">
+                    <div>
+                        <img src="" alt="">
+                        <h4>Job Seekers</h4>
+                        <p>
+                            <span>Explore career-focused learning paths designed to take you from fundamentals to
+                                job-ready</span>
+                            <span>skills. Learn through structured courses, hands-on projects, real-world assessments,
+                                and</span>
+                            <span>guided road maps aligned with industry roles. Track your progress, build a strong
+                                portfolio,</span>
+                            <span>and gain clarity on what to learn, when to learn, and why it matters for your future
+                                career.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="hirers-card">
+                    <div>
+                        <img src="" alt="">
+                        <h4>Hirers</h4>
+                        <p>
+                            <span>Explore career-focused learning paths designed to take you from fundamentals to
+                                job-ready</span>
+                            <span>skills. Learn through structured courses, hands-on projects, real-world assessments,
+                                and</span>
+                            <span>guided road maps aligned with industry roles. Track your progress, build a strong
+                                portfolio,</span>
+                            <span>and gain clarity on what to learn, when to learn, and why it matters for your future
+                                career.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="mentor-card">
+                    <div>
+                        <img src="" alt="">
+                        <h4>Mentors</h4>
+                        <p>
+                            <span>Explore career-focused learning paths designed to take you from fundamentals to
+                                job-ready</span>
+                            <span>skills. Learn through structured courses, hands-on projects, real-world assessments,
+                                and</span>
+                            <span>guided road maps aligned with industry roles. Track your progress, build a strong
+                                portfolio,</span>
+                            <span>and gain clarity on what to learn, when to learn, and why it matters for your future
+                                career.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRO USER -->
+    <section class="pro reveal">
+        <h1>Become a Plus User</h1>
+        <h3>And unlock powerful features:</h3>
+        <div class="pro-wrapper">
+            <div class="container">
+                <ul>
+                    <li><span>✓</span>Browse CareerPath without ads</li>
+                    <li><span>✓</span>Build and host Websites</li>
+                    <li><span>✓</span>Unlimited challenges</li>
+                    <li><span>✓</span>Unlimited practice tests</li>
+                    <li><span>✓</span>Get extra credits</li>
+                    <li><span>✓</span>Priority support</li>
+                </ul>
+            </div>
+        </div>
+        <button><a href="./pages/plususer.html">Learn More</a></button>
+    </section>
+
+    <!-- CERTIFICATE -->
+    <section class="certificate reveal">
+        <div>
+            <h2><span>Kickstart</span> your career</h2>
+            <p>Get certified by completing a course</p>
+            <button><a href="./pages/roadmaps/courses.html">Get started</a></button>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="learning reveal">
+        <div class="learning-wrapper">
+            <div class="container">
+                <!-- TOP-LINKS -->
+                <div class="top-links">
+                    <div class="logos"><a href="#navbarHeader">CP</a></div>
+                    <p><a href="">PLUS</a></p>
+                    <p><a href="">GET CERTIFICATE</a></p>
+                    <p><a href="">FOR TEACHERS</a></p>
+                    <p><a href="">BOOTCAMPS</a></p>
+                    <p><a href="">CONTACT US</a></p>
+                </div>
+                <!-- BOTTOM-LINKS -->
+                <div class="link-wrapper">
+                    <div class="top-links-1">
+                        <h4>Top Tutorials</h4>
+                        <a href="./pages/tutorial.html">HTML Tutorial</a><a href="">CSS Tutorial</a><a
+                            href="">JavaScript
+                            Tutorial</a><a href="">How To Tutorial</a><a href="">SQL Tutorial</a><a href="">Python
+                            Tutorial</a>
+                        <a href="">CareerPath Tutorial</a><a href="">Bootstrap Tutorial</a><a href="">PHP Tutorial</a><a
+                            href="">JAVA Tutorial</a><a href="">C++ Tutorial</a><a href="">JQuery Tutorial</a>
+                    </div>
+                    <div class="top-links-2">
+                        <h4>Top References</h4>
+                        <a href="./pages/references/htmlreference.html">HTML Reference</a><a href="">CSS Reference</a><a
+                            href="">JavaScript
+                            Reference</a><a href="">How To Reference</a><a href="">SQL Reference</a><a href="">Python
+                            Reference</a>
+                        <a href="">CareerPath Reference</a><a href="">Bootstrap Reference</a><a href="">PHP
+                            Reference</a><a href="">JAVA Reference</a><a href="">AngularJS Reference</a><a
+                            href="">JQuery Reference</a>
+                    </div>
+                    <div class="top-links-3">
+                        <h4>Blogs</h4>
+                        <a href="">Python</a><a href=""></a><a href="">JavaScript</a><a href="">Java</a><a
+                            href="">C</a><a href="">C++</a>
+                        <a href="">Full-Stack</a><a href="">Data Science</a><a href="">Front-End</a><a
+                            href="">Back-End</a>
+                        <a href="">DataBase</a>
+                        <a href="">AIML</a>
+                    </div>
+                    <div class="top-links-4">
+                        <h4>Get Certified</h4>
+                        <a href="">HTML Certified</a><a href="">CSS Certified</a><a href="">JavaScript Certified</a><a
+                            href="">Front End Certified</a><a href="">SQL Certified</a><a href="">Python Certified</a>
+                        <a href="">C# Certified</a><a href="">C++ Certified</a><a href="">PHP Certified</a><a
+                            href="">Java Certified</a><a href="">XML Certified</a><a href="">JQuery Certified</a>
+                    </div>
+                </div>
+                <!-- SOCIAL-MEDIA -->
+                <div class="social-media">
+                    <p><span>
+                            CareerPath is optimized for learning and training. Examples might be simplified to
+                            improve reading and learning. Tutorials, references, and examples are constantly reviewed to
+                            avoid
+                        </span>
+                        <span>errors, but we cannot warrant full correctness of all content. While using CareerPath,
+                            you agree to have read and accepted our terms of use, cookies and privacy policy.</span>
+                    </p>
+                    <p class="copy-rights">2026 <a href="#navbarHeader">CareerPath</a> . Learn . build . Grow</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/landingpage.js"></script>
+    <script>
+        // Featured Courses — fetch from backend and link to modules
+        (async function loadFeaturedCourses() {
+            const container = document.getElementById("course-card");
+            if (!container) return;
+
+            try {
+                const res = await fetch("http://localhost:8080/api/user/modules");
+                if (!res.ok) throw new Error("API error");
+                const modules = await res.json();
+
+                // Show up to 4 featured courses
+                const featured = modules.slice(0, 4);
+
+                const colors = ["#f7df1e", "#61dafb", "#3776ab", "#e48c00"];
+
+                container.innerHTML = featured.map((m, i) => {
+                    const abbr = (m.name || "").substring(0, 3).toUpperCase();
+                    const bg = colors[i % colors.length];
+                    const duration = m.durationValue
+                        ? `${m.durationValue} ${(m.durationUnit || "").toLowerCase()}`
+                        : "";
+                    return `
+                    <a href="./pages/roadmaps/skills.html?courseId=${m.id}" class="course-card" style="cursor:pointer; text-decoration:none; color:inherit;">
+                        <div class="card-head" style="background:${bg}">
+                            <h3>${abbr}</h3>
+                        </div>
+                        <h4>${m.name}</h4>
+                        <p>${m.description || ""}</p>
+                        <p class="level">${m.difficulty || ""} ${duration ? '<span>.</span> ' + duration : ''}</p>
+                    </a>`;
+                }).join("");
+
+            } catch (err) {
+                console.warn("Could not load featured courses:", err);
+                // leave section empty or show fallback
+            }
+        })();
+
+        // Explore Roadmaps — fetch from backend
+        (async function loadFeaturedRoadmaps() {
+            const container = document.getElementById("roadmap-card");
+            if (!container) return;
+
+            try {
+                const res = await fetch("http://localhost:8080/api/user/roadmaps");
+                if (!res.ok) throw new Error("API error");
+                const roadmaps = await res.json();
+
+                const featured = roadmaps.slice(0, 4);
+                const colors = ["#6c5ce7", "#00b894", "#e17055", "#0984e3"];
+
+                container.innerHTML = featured.map((r, i) => {
+                    const abbr = (r.title || "").substring(0, 3).toUpperCase();
+                    const bg = colors[i % colors.length];
+                    const duration = r.durationValue
+                        ? `${r.durationValue} ${(r.durationUnit || "").toLowerCase()}`
+                        : "";
+                    return `
+                    <a href="./pages/roadmaps/modules.html?roadmapId=${r.id}" class="course-card" style="cursor:pointer; text-decoration:none; color:inherit;">
+                        <div class="card-head" style="background:${bg}">
+                            <h3>${abbr}</h3>
+                        </div>
+                        <h4>${r.title}</h4>
+                        <p>${r.jobRole || ""}</p>
+                        <p class="level">${r.difficulty || ""} ${duration ? '<span>.</span> ' + duration : ''}</p>
+                    </a>`;
+                }).join("");
+
+            } catch (err) {
+                console.warn("Could not load featured roadmaps:", err);
+            }
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,712 @@
+/* ==========================================
+   SHARED NAVBAR STYLES
+   Used by navbar.js across all pages
+   ========================================== */
+
+/* ---- HEADER ---- */
+.navbar-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #020617;
+    padding: 0 20px 12px 20px;
+    z-index: 10000;
+}
+
+.navbar-header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Hamburger */
+.navbar-hamburger {
+    display: none;
+    font-size: 1.8rem;
+    color: #E5EDFF;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.navbar-hamburger.active {
+    transform: rotate(90deg);
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.navbar-logo-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #7ba5ff, #4a6cff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #E5EDFF;
+    text-decoration: none;
+}
+
+.navbar-logo h3 {
+    font-family: 'Inter', sans-serif;
+    color: #E5EDFF;
+    font-size: 1.15rem;
+    margin: 0;
+}
+
+.navbar-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+/* Tutorials / References Buttons */
+.navbar-tutor-btn,
+.navbar-refer-btn {
+    font-family: 'Inter', sans-serif;
+    color: #94A3B8;
+    cursor: pointer;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+}
+
+.navbar-tutor-btn:hover,
+.navbar-refer-btn:hover {
+    color: #00C985;
+    background: rgba(0, 201, 133, 0.08);
+}
+
+.navbar-desk-only {
+    display: inline-flex;
+}
+
+/* Search */
+.navbar-search {
+    width: 320px;
+    height: 38px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: transparent;
+    gap: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.navbar-search:focus-within {
+    border-color: #00C985;
+    box-shadow: 0 0 0 2px rgba(0, 201, 133, 0.2);
+}
+
+.navbar-search input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar-search input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-search-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+/* Desktop Nav Items */
+.navbar-nav-items {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-nav-items li a {
+    color: #E5EDFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.navbar-nav-items li a:hover {
+    color: #00C985;
+}
+
+.navbar-auth-btn {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    color: #E5EDFF;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.navbar-auth-btn a {
+    color: #E5EDFF;
+    text-decoration: none;
+}
+
+.navbar-auth-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(74, 108, 247, 0.3);
+}
+
+/* Profile Avatar */
+.navbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    position: relative;
+}
+
+.navbar-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #4A6CF7, #00C985);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #E5EDFF;
+}
+
+.navbar-profile span {
+    font-family: 'Inter', sans-serif;
+    display: none;
+}
+
+/* Profile Menu */
+.navbar-profile-menu {
+    position: absolute;
+    top: 56px;
+    right: 20px;
+    width: 200px;
+    background: #0F172A;
+    backdrop-filter: blur(14px);
+    border-radius: 14px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    padding: 6px;
+    display: none;
+    font-family: 'Inter', sans-serif;
+    z-index: 10001;
+    animation: navFadeIn 0.2s ease;
+}
+
+@keyframes navFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.navbar-profile-menu.open {
+    display: block;
+}
+
+.navbar-profile-menu a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #9AA4B2;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.navbar-profile-menu a:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #E5EDFF;
+}
+
+/* ---- MOBILE NAV ---- */
+.navbar-mobile-nav {
+    position: fixed;
+    top: 62px;
+    right: -280px;
+    width: 250px;
+    height: 100vh;
+    background: #0F172A;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    gap: 16px;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    transition: right 0.35s ease, opacity 0.3s ease;
+    opacity: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navbar-mobile-nav.open {
+    right: 0;
+    opacity: 1;
+}
+
+.navbar-mobile-nav a {
+    color: #9AA4B2;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color 0.2s;
+}
+
+.navbar-mobile-nav a:hover {
+    color: #00C985;
+}
+
+/* ---- COURSE NAV BAR ---- */
+.navbar-course-strip {
+    position: sticky;
+    top: 62px;
+    background: #0F172A;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    z-index: 9998;
+}
+
+.navbar-course-strip .strip-inner {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.navbar-course-strip .strip-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.navbar-course-strip a {
+    font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s;
+    flex-shrink: 0;
+}
+
+.navbar-course-strip a:hover {
+    color: #00C985;
+    background: rgba(0, 201, 133, 0.08);
+}
+
+/* ---- TUTORIALS POPUP ---- */
+.navbar-tutor-popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 10002;
+    backdrop-filter: blur(4px);
+}
+
+.navbar-tutor-popup.open {
+    display: flex;
+}
+
+.navbar-tutor-popup-inner {
+    background: #0F172A;
+    width: 92%;
+    max-width: 900px;
+    max-height: 82vh;
+    border-radius: 18px;
+    padding: 36px 30px;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    animation: navFadeIn 0.25s ease;
+}
+
+.navbar-tutor-popup-inner::-webkit-scrollbar {
+    width: 6px;
+}
+
+.navbar-tutor-popup-inner::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.navbar-tutor-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: #00C985;
+    border: none;
+    color: #020617;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.navbar-tutor-close:hover {
+    background: #38bdf8;
+}
+
+.navbar-tutor-title {
+    font-family: 'Inter', sans-serif;
+    color: #00C985;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.navbar-tutor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.navbar-tutor-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    color: #E5EDFF;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.navbar-tutor-item:hover {
+    background: rgba(0, 201, 133, 0.08);
+    border-color: rgba(0, 201, 133, 0.25);
+    transform: translateY(-2px);
+}
+
+.navbar-tutor-item-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.navbar-tutor-category {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #64748B;
+    padding-left: 4px;
+}
+
+.navbar-tutor-category:first-of-type {
+    margin-top: 0;
+}
+
+/* ---- REFERENCES POPUP ---- */
+.navbar-refer-popup {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 10002;
+    backdrop-filter: blur(4px);
+}
+
+.navbar-refer-popup.open {
+    display: flex;
+}
+
+.navbar-refer-popup-inner {
+    background: #0F172A;
+    width: 92%;
+    max-width: 720px;
+    max-height: 82vh;
+    border-radius: 18px;
+    padding: 36px 30px;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    animation: navFadeIn 0.25s ease;
+}
+
+.navbar-refer-popup-inner::-webkit-scrollbar {
+    width: 6px;
+}
+
+.navbar-refer-popup-inner::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.navbar-refer-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: #00C985;
+    border: none;
+    color: #020617;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.navbar-refer-close:hover {
+    background: #38bdf8;
+}
+
+.navbar-refer-title {
+    font-family: 'Inter', sans-serif;
+    color: #E5EDFF;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.navbar-refer-subtitle {
+    font-family: 'Inter', sans-serif;
+    color: #64748B;
+    font-size: 0.88rem;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+/* Reference sections */
+.navbar-ref-section {
+    margin-bottom: 28px;
+}
+
+.navbar-ref-section:last-child {
+    margin-bottom: 0;
+}
+
+.navbar-ref-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navbar-ref-section-icon {
+    font-size: 1.3rem;
+}
+
+.navbar-ref-section-header h3 {
+    font-family: 'Inter', sans-serif;
+    color: #E5EDFF;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Reference cards */
+.navbar-ref-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.navbar-ref-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #E5EDFF;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.navbar-ref-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 0;
+    background: linear-gradient(180deg, #4A6CF7, #00C985);
+    border-radius: 0 3px 3px 0;
+    transition: height 0.25s ease;
+}
+
+.navbar-ref-card:hover {
+    background: rgba(74, 108, 247, 0.06);
+    border-color: rgba(74, 108, 247, 0.2);
+    transform: translateX(4px);
+}
+
+.navbar-ref-card:hover::after {
+    height: 60%;
+}
+
+.navbar-ref-card.coming-soon {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.navbar-ref-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: rgba(74, 108, 247, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.navbar-ref-card:hover .navbar-ref-card-icon {
+    background: rgba(74, 108, 247, 0.18);
+}
+
+.navbar-ref-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.navbar-ref-card-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #E5EDFF;
+    margin: 0 0 3px;
+}
+
+.navbar-ref-card-info p {
+    font-size: 0.78rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.navbar-ref-card-arrow {
+    font-size: 1.1rem;
+    color: #334155;
+    transition: color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+}
+
+.navbar-ref-card:hover .navbar-ref-card-arrow {
+    color: #4A6CF7;
+    transform: translateX(3px);
+}
+
+/* Spacer for fixed header */
+.navbar-spacer {
+    height: 65px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1024px) {
+    .navbar-nav-items {
+        display: none;
+    }
+
+    .navbar-desk-only {
+        display: none;
+    }
+
+    .navbar-hamburger {
+        display: block;
+    }
+
+    .navbar-search {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-search {
+        display: none;
+    }
+
+    .navbar-tutor-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .navbar-course-strip .strip-inner {
+        gap: 14px;
+        padding: 8px 14px;
+    }
+
+    .navbar-refer-popup-inner {
+        width: 96%;
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-tutor-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .navbar-tutor-popup-inner {
+        width: 96%;
+        padding: 24px 16px;
+    }
+}
