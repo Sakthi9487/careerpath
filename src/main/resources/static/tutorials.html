@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tutorial | CareerPath</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+ 
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-family: Inter, system-ui;
+            background: #e5e7eb;
+            color: #0f172a;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        :root {
+            --primary: #4A6CF7;
+            --accent: #00C985;
+            --border: rgba(0, 0, 0, .12);
+            --sidebar: #f8fafc;
+            --code: #0B1225;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background:
+                radial-gradient(600px 200px at 20% 0%, rgba(74, 108, 247, .35), transparent 45%),
+                radial-gradient(600px 200px at 85% 100%, rgba(0, 201, 133, .25), transparent 45%),
+                linear-gradient(180deg, #020617, #050b1c);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            z-index: 1000;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .hamburger {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .hamburger:hover {
+            color: var(--accent)
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: grid;
+            place-items: center;
+            color: #fff;
+            font-weight: 800;
+        }
+
+        .brand {
+            color: #e5edff;
+            font-weight: 700
+        }
+
+        .header-left a {
+            color: #9aa4b2;
+            font-size: 14px
+        }
+
+        .header-left a:hover {
+            color: #fff
+        }
+
+        .header-search {
+            width: 360px;
+            position: relative
+        }
+
+        .header-search span {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9aa4b2
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 10px 14px 10px 40px;
+            border-radius: 999px;
+            border: none;
+            background: #0b1225;
+            color: #e5edff
+        }
+
+        .header-right {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .header-right a {
+            color: #9aa4b2
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            font-weight: 600
+        }
+
+ 
+        .wrapper {
+            display: flex;
+            height: calc(100vh - 64px);
+            margin-top: 64px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+
+        .sidebar {
+            width: 260px;
+            min-width: 260px;
+            flex-shrink: 0;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+            transition: width .3s ease, opacity .2s ease;
+        }
+
+        .wrapper.sidebar-closed .sidebar {
+            width: 0;
+            min-width: 0;
+            opacity: 0;
+            overflow: hidden;
+            border: none;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+        }
+
+   
+        .content {
+            flex: 1;
+            min-width: 0;
+            background: #fff;
+            padding: 40px 60px;
+            overflow-y: auto;
+        }
+
+        .progress {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 999px;
+            margin-bottom: 20px;
+            overflow: hidden
+        }
+
+        .progress span {
+            display: block;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent))
+        }
+
+        .tip {
+            background: #ecfeff;
+            border-left: 4px solid var(--accent);
+            padding: 12px 16px;
+            font-size: 14px;
+            margin-bottom: 30px;
+            border-radius: 6px
+        }
+
+        .desc {
+            font-size: 16px;
+            line-height: 1.75;
+            white-space: pre-line;
+            margin-bottom: 24px
+        }
+
+        .example {
+            background: #f1f5f9;
+            border-radius: 14px;
+            padding: 22px;
+            margin: 30px 0
+        }
+
+        .code {
+            background: var(--code);
+            color: #e5edff;
+            padding: 18px;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 14.5px;
+            white-space: pre-wrap;
+            position: relative
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            background: #020617;
+            color: #9aa4b2;
+            border: 1px solid rgba(255, 255, 255, .15);
+            padding: 4px 10px;
+            font-size: 12px;
+            border-radius: 6px;
+            cursor: pointer
+        }
+
+        .try-btn {
+            margin-top: 16px;
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 8px;
+            font-weight: 600
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 80px 0 40px;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 26px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 999px;
+            cursor: pointer;
+            border: none;
+            transition: all .25s ease;
+        }
+
+        .nav-btn .icon {
+            font-size: 14px
+        }
+
+        .nav-btn.prev {
+            background: #fff;
+            color: #0f172a;
+            border: 1px solid rgba(0, 0, 0, .15);
+        }
+
+        .nav-btn.prev:hover {
+            background: #f1f5f9;
+            transform: translateX(-2px);
+        }
+
+        .nav-btn.next {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(74, 108, 247, .35);
+        }
+
+        .nav-btn.next:hover {
+            transform: translateX(2px) translateY(-1px);
+            box-shadow: 0 14px 35px rgba(74, 108, 247, .45);
+        }
+
+        .nav-btn:disabled {
+            opacity: .45;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, .75);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000
+        }
+
+        .modal-box {
+            width: 92%;
+            max-width: 1000px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px
+        }
+
+        .editor {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px
+        }
+
+        textarea {
+            width: 100%;
+            height: 280px;
+            background: #020617;
+            color: #e5edff;
+            border-radius: 12px;
+            padding: 14px
+        }
+
+        iframe {
+            width: 100%;
+            height: 280px;
+            border-radius: 12px;
+            border: 1px solid var(--border)
+        }
+
+        .tutorial {
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background: var(--code);
+            color: white;
+            cursor: pointer;
+            max-width: 300px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <span class="hamburger" onclick="toggleSidebar()">☰</span>
+            <div href="/Landing.html"
+			class="logo">CP</div>
+            <span class="brand">CareerPath</span>
+            <select name="" id="tutorials" class="tutorial">
+                <option value="" selected disabled>select tutorials</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+            </select>
+            <a href="/reference.html">References</a>
+        </div>
+
+        <div class="header-search">
+            <span>🔍</span>
+            <input placeholder="Search HTML topics..." />
+        </div>
+
+        <div class="header-right">
+            <a>Jobs</a>
+            <a>Resume Builder</a>
+            <a href="/login.html"
+			class="btn">Login / Sign Up</a>
+        </div>
+    </header>
+
+    <div class="wrapper" id="wrapper">
+        <aside class="sidebar" id="sidebar"></aside>
+
+        <main class="content">
+            <div class="progress"><span id="progressBar"></span></div>
+            <div class="tip"><strong>Tip:</strong> Sign in to track your progress.</div>
+
+            <h1 id="title"></h1>
+            <div class="desc" id="desc"></div>
+
+            <div class="example">
+                <h4>Example</h4>
+                <div class="code">
+                    <button class="copy-btn" onclick="copyCode()">Copy</button>
+                    <div id="codeBlock"></div>
+                </div>
+                <div class="try-btn" onclick="openEditor()">Try it Yourself »</div>
+            </div>
+
+            <div class="nav-buttons">
+                <button id="prevBtn" class="nav-btn prev" onclick="prevTopic()">
+                    <span class="icon">❮</span> Previous
+                </button>
+
+                <button id="nextBtn" class="nav-btn next" onclick="nextTopic()">
+                    Next <span class="icon">❯</span>
+                </button>
+            </div>
+        </main>
+    </div>
+
+
+    <div class="modal" id="editorModal">
+        <div class="modal-box">
+            <h3>Try It Yourself</h3>
+            <div class="editor">
+                <textarea id="editor"></textarea>
+                <iframe id="output"></iframe>
+            </div><br>
+            <button class="btn" onclick="runCode()">Run</button>
+            <button class="btn" onclick="closeEditor()">Close</button>
+        </div>
+    </div>
+
+    <script>
+  
+        const topics = [
+
+           
+
+            {
+                title: "HTML Home",
+                desc: `
+• HTML is the standard markup language used to create web pages.
+• HTML stands for <strong>HyperText Markup Language</strong>.
+• It is <strong>not</strong> a programming language — it does not perform logic or calculations.
+
+• HTML is used to define the <strong>structure</strong> of a webpage using elements like headings,
+paragraphs, links, images, and forms.
+• Every website you see on the internet is built using HTML.
+Browsers read HTML files and convert them into visual pages.
+  `,
+                code: `<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Heading</h1>
+<p>My first paragraph.</p>
+
+</body>
+</html>`
+            },
+
+            {
+                title: "What is HTML?",
+                desc: `
+HTML is a language used to describe the structure of web pages.
+
+Key points:
+• HTML stands for HyperText Markup Language  
+• HTML uses tags to define elements  
+• HTML is interpreted by web browsers  
+• HTML files are saved with .html or .htm extension  
+
+HTML works together with CSS (for styling) and JavaScript (for interactivity).
+  `,
+                code: `<p>This is an HTML paragraph.</p>`
+            },
+
+            {
+                title: "HTML Tags",
+                desc: `
+HTML tags are keywords enclosed in angle brackets < >.
+
+Most HTML tags come in pairs:
+• Opening tag <tag>  
+• Closing tag </tag>  
+
+Tags tell the browser how content should be displayed.
+Some tags are empty (they do not need a closing tag), such as <br> and <img>.
+  `,
+                code: `<b>This text is bold</b>`
+            },
+
+            {
+                title: "HTML Document Structure",
+                desc: `
+Every HTML document follows a basic structure.
+
+• <html> → Root of the document  
+• <head> → Contains page information (title, metadata)  
+• <body> → Contains visible page content  
+
+This structure helps browsers correctly understand and display your webpage.
+  `,
+                code: `<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+  <h1>Hello World</h1>
+</body>
+</html>`
+            },
+
+
+            {
+                title: "HTML Headings",
+                desc: `
+HTML headings are used to define titles and subtitles.
+
+There are 6 heading levels:
+• <h1> → Most important  
+• <h6> → Least important  
+
+Headings help:
+• Organize content  
+• Improve readability  
+• Improve SEO (search engine ranking)  
+
+Use headings in order — do not skip levels.
+  `,
+                code: `<h1>Main Heading</h1>
+<h2>Sub Heading</h2>
+<h3>Section Heading</h3>`
+            },
+
+            {
+                title: "HTML Paragraphs",
+                desc: `
+Paragraphs are defined using the <p> tag.
+
+Browsers automatically add space before and after paragraphs.
+Paragraphs are used for normal blocks of text such as descriptions or articles.
+  `,
+                code: `<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>`
+            },
+
+            {
+                title: "Line Breaks & Horizontal Lines",
+                desc: `
+Use <br> to create a new line without starting a new paragraph.
+
+Use <hr> to create a horizontal line that separates content.
+
+These elements are called empty elements — they do not need a closing tag.
+  `,
+                code: `<p>This is<br>broken into<br>lines</p>
+<hr>`
+            },
+
+            {
+                title: "HTML Comments",
+                desc: `
+HTML comments are used to explain code.
+
+Comments are ignored by browsers and are not displayed on the page.
+They are very useful for developers and team collaboration.
+  `,
+                code: `<!-- This is a comment -->
+<p>Visible text</p>`
+            },
+
+      
+
+            {
+                title: "Text Formatting",
+                desc: `
+HTML provides formatting tags to change the appearance and meaning of text.
+
+Common formatting tags:
+• <b> → Bold text  
+• <i> → Italic text  
+• <strong> → Important text  
+• <em> → Emphasized text  
+
+Use <strong> and <em> for meaning, not just appearance.
+  `,
+                code: `<b>Bold</b><br>
+<i>Italic</i><br>
+<strong>Important</strong><br>
+<em>Emphasized</em>`
+            },
+
+            {
+                title: "Preformatted Text",
+                desc: `
+The <pre> tag displays text exactly as written in the HTML file.
+
+It preserves:
+• Spaces  
+• Line breaks  
+• Formatting  
+
+Useful for displaying code or structured text.
+  `,
+                code: `<pre>
+This text
+   keeps spaces
+      and line breaks
+</pre>`
+            },
+
+  
+
+            {
+                title: "HTML Links",
+                desc: `
+Links allow users to navigate between pages.
+
+Links are created using the <a> tag.
+The href attribute defines the destination URL.
+  `,
+                code: `<a href="https://example.com">Visit Example</a>`
+            },
+
+            {
+                title: "Link Target Attribute",
+                desc: `
+The target attribute controls where the linked page opens.
+
+Common values:
+• _self → Same tab (default)  
+• _blank → New tab  
+
+Opening external links in a new tab improves user experience.
+  `,
+                code: `<a href="https://example.com" target="_blank">
+Open in new tab
+</a>`
+            },
+
+            {
+                title: "HTML Images",
+                desc: `
+Images are displayed using the <img> tag.
+
+Important attributes:
+• src → Image source  
+• alt → Alternate text (for accessibility)  
+• width / height → Image size  
+
+Always include alt text for accessibility and SEO.
+  `,
+                code: `<img src="image.jpg" alt="Sample Image" width="200">`
+            },
+
+         
+
+            {
+                title: "Unordered Lists",
+                desc: `
+Unordered lists display items with bullet points.
+
+Use unordered lists when order does not matter.
+  `,
+                code: `<ul>
+  <li>Coffee</li>
+  <li>Milk</li>
+</ul>`
+            },
+
+            {
+                title: "Ordered Lists",
+                desc: `
+Ordered lists display items with numbers.
+
+Use ordered lists when sequence or steps matter.
+  `,
+                code: `<ol>
+  <li>Step One</li>
+  <li>Step Two</li>
+</ol>`
+            },
+
+            {
+                title: "Definition Lists",
+                desc: `
+Definition lists are used to define terms and descriptions.
+
+They are commonly used in glossaries and documentation.
+  `,
+                code: `<dl>
+  <dt>HTML</dt>
+  <dd>Markup language</dd>
+</dl>`
+            },
+
+           
+
+            {
+                title: "HTML Tables",
+                desc: `
+Tables organize data into rows and columns.
+
+Basic table elements:
+• <table> → Table container  
+• <tr> → Table row  
+• <td> → Table cell  
+
+Tables are best used for data, not layout.
+  `,
+                code: `<table border="1">
+<tr>
+  <td>Name</td>
+  <td>Age</td>
+</tr>
+<tr>
+  <td>Alice</td>
+  <td>22</td>
+</tr>
+</table>`
+            },
+
+            {
+                title: "Table Headers",
+                desc: `
+Table headers are defined using <th>.
+
+Header cells are bold and centered by default.
+They help describe table data clearly.
+  `,
+                code: `<table border="1">
+<tr>
+  <th>Name</th>
+  <th>Age</th>
+</tr>
+</table>`
+            },
+
+         
+
+            {
+                title: "HTML Forms",
+                desc: `
+Forms allow users to enter and submit data.
+
+Forms are commonly used for:
+• Login pages  
+• Registration forms  
+• Contact forms  
+
+The <form> tag wraps all input elements.
+  `,
+                code: `<form>
+  <input type="text" placeholder="Name">
+</form>`
+            },
+
+            {
+                title: "Input Types",
+                desc: `
+HTML provides many input types to collect different kinds of data.
+
+Common input types:
+• text  
+• password  
+• radio  
+• checkbox  
+• submit  
+
+Choosing the right input type improves usability.
+  `,
+                code: `<input type="text"><br>
+<input type="password"><br>
+<input type="submit">`
+            },
+
+      
+
+            {
+                title: "HTML Iframes",
+                desc: `
+An iframe is used to embed another webpage inside your page.
+
+Common uses:
+• Embedding videos  
+• Showing maps  
+• Displaying external content  
+
+Use iframes carefully for security and performance.
+  `,
+                code: `<iframe src="https://example.com"
+width="300" height="200"></iframe>`
+            }
+
+        ];
+
+
+        let current = parseInt(localStorage.getItem("htmlProgress")) || 0;
+        let sidebarOpen = true;
+
+
+        topics.forEach((t, i) => {
+            const a = document.createElement("a");
+            a.innerText = t.title;
+            a.onclick = () => loadTopic(i);
+            sidebar.appendChild(a);
+        });
+
+        function loadTopic(i) {
+            current = i;
+            localStorage.setItem("htmlProgress", i);
+            title.innerText = topics[i].title;
+            desc.innerText = topics[i].desc;
+            codeBlock.innerText = topics[i].code;
+
+            document.querySelectorAll(".sidebar a").forEach((a, idx) => {
+                a.classList.toggle("active", idx === i);
+            });
+
+            progressBar.style.width = ((i + 1) / topics.length * 100) + "%";
+            prevBtn.disabled = i === 0;
+            nextBtn.disabled = i === topics.length - 1;
+            document.querySelector(".content").scrollTop = 0;
+        }
+
+        function nextTopic() { if (current < topics.length - 1) loadTopic(current + 1); }
+        function prevTopic() { if (current > 0) loadTopic(current - 1); }
+
+        function toggleSidebar() {
+            sidebarOpen = !sidebarOpen;
+            wrapper.classList.toggle("sidebar-closed", !sidebarOpen);
+        }
+
+        function openEditor() {
+            editorModal.style.display = "flex";
+            editor.value = codeBlock.innerText;
+        }
+        function closeEditor() { editorModal.style.display = "none"; }
+        function runCode() { output.srcdoc = editor.value; }
+
+        function copyCode() {
+            navigator.clipboard.writeText(codeBlock.innerText);
+        }
+
+        loadTopic(current);
+    </script>
+
+</body>
+
+</html>
